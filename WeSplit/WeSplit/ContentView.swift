@@ -2,7 +2,7 @@
 //  ContentView.swift
 //  WeSplit
 //
-//  Created by Sam Johnson on 2022-11-04.
+//  Created by Sam Johnson on 2022-11-05.
 //
 
 import SwiftUI
@@ -17,12 +17,12 @@ struct ContentView: View {
     var body: some View {
         Form {
             Section {
-                TextField("Amount", value: $checkAmount, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
+                TextField("Amount", value: $checkAmount, format: .currency(code: Locale.current.currencyCode ?? "USD"))
                     .keyboardType(.decimalPad)
             }
             
             Section {
-                Text(checkAmount, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
+                Text(checkAmount, format: .currency(code: Locale.current.currencyCode ?? "USD"))
             }
         }
     }
