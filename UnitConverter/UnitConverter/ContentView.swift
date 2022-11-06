@@ -8,14 +8,91 @@
 import SwiftUI
 
 struct ContentView: View {
-    var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+
+    enum TemperatureScale: String, CaseIterable {
+        case kelvin
+        case celsius
+        case fahrenheit
+    }
+    
+    @State private var inputDegrees = 0.0
+    @State private var inputScaleSelection = TemperatureScale.celsius
+    @State private var outputScaleSelection = TemperatureScale.fahrenheit
+    @FocusState private var inputIsFocused: Bool
+
+//    let scales = ["Celsius", "Fahrenheit", "Kelvin"]
+    
+    var outputDegrees: Double {
+        var kelvinDegrees: Double
+        
+        switch inputScaleSelection {
+        case .celsius:
+            kelvinDegrees = inputDegrees + 273.15
+        case .kelvin:
+            kelvinDegrees = inputDegrees
+        case .fahrenheit:
+            kelvinDegrees = (inputDegrees - 32) * (5/9) + 273.15
         }
-        .padding()
+        
+        switch outputScaleSelection {
+        case .celsius:
+            return kelvinDegrees - 273.15
+        case .kelvin:
+            return kelvinDegrees
+        case .fahrenheit:
+            return (kelvinDegrees - 273.15) * (9/5) + 32
+        }
+    }
+    var outputFormatted: String {
+        return "\(outputDegrees)° \(outputScaleSelection)"
+    }
+    
+    var body: some View {
+        NavigationView {
+            Form {
+                Section {
+                    TextField("Enter degrees", value: $inputDegrees, format: .number)
+                        .keyboardType(.decimalPad)
+                        .focused($inputIsFocused)
+                } header: {
+                    Text("Enter degrees")
+                }
+                Section {
+                    Picker("Input unit", selection: $inputScaleSelection) {
+                        ForEach(TemperatureScale.allCases, id: \.rawValue) { item in
+                            Text(item.rawValue)
+                        }
+                    }
+                    .pickerStyle(.segmented)
+                } header: {
+                    Text("Input unit")
+                }
+                Section {
+                    Picker("Output unit", selection: $outputScaleSelection) {
+                        ForEach(TemperatureScale.allCases, id: \.rawValue) { item in
+                            Text(item.rawValue)
+                        }
+                    }
+                    .pickerStyle(.segmented)
+                } header: {
+                    Text("Output unit")
+                }
+                Section {
+                    Text(outputFormatted)
+                } header: {
+                    Text("Answer")
+                }
+            }
+            .navigationTitle("Temperature Converter")
+            .toolbar {
+                ToolbarItemGroup(placement: .keyboard) {
+                    Spacer()
+                    Button("Done") {
+                        inputIsFocused = false
+                    }
+                }
+            }
+        }
     }
 }
 
