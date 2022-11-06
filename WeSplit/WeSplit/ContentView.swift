@@ -15,28 +15,37 @@ struct ContentView: View {
 
     let tipPercentages = [10, 15, 20, 25, 0]
     
-    var totalPerPerson: Double {
-        let peopleCount = Double(numberOfPeopleIndex + 2)
+    var grandTotal: Double {
         let tipSelection = Double(tipPercentage)
-        
         let tipValue = checkAmount / 100 * tipSelection
         let grandTotal = checkAmount + tipValue
+        return grandTotal
+    }
+    
+    var totalPerPerson: Double {
+        let peopleCount = Double(numberOfPeopleIndex + 2)
         let totalPerPerson = grandTotal / peopleCount
         return totalPerPerson
+    }
+    
+    var currencyFormat: FloatingPointFormatStyle<Double>.Currency {
+        .currency(code: Locale.current.currencyCode ?? "USD")
     }
     
     var body: some View {
         NavigationView {
             Form {
                 Section {
-                    TextField("Amount", value: $checkAmount, format: .currency(code: Locale.current.currencyCode ?? "USD"))
+                    TextField("Amount", value: $checkAmount, format: currencyFormat)
                         .keyboardType(.decimalPad)
                         .focused($amountIsFocused)
                 }
                 
-                Picker("Number of people", selection: $numberOfPeopleIndex) {
-                    ForEach(2..<100) {
-                        Text("\($0) people")
+                Section {
+                    Picker("Number of people", selection: $numberOfPeopleIndex) {
+                        ForEach(2..<100) {
+                            Text("\($0) people")
+                        }
                     }
                 }
                 
@@ -52,7 +61,15 @@ struct ContentView: View {
                 }
                 
                 Section {
-                    Text(totalPerPerson, format: .currency(code: Locale.current.currencyCode ?? "USD"))
+                    Text(totalPerPerson, format: currencyFormat)
+                } header: {
+                    Text("Amount per person: \(checkAmount) * \(tipPercentage + 100)% / \(numberOfPeopleIndex + 2)")
+                }
+                
+                Section {
+                    Text(grandTotal, format: currencyFormat)
+                } header: {
+                    Text("Total check amount")
                 }
             }
             .navigationTitle("WeSplit")
