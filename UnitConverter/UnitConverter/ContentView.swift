@@ -9,10 +9,14 @@ import SwiftUI
 
 struct ContentView: View {
 
-    enum TemperatureScale: String, CaseIterable {
+    enum TemperatureScale: String, CaseIterable, Identifiable {
         case kelvin
         case celsius
         case fahrenheit
+
+        var id: String {
+            self.rawValue
+        }
     }
     
     @State private var inputDegrees = 0.0
@@ -59,8 +63,8 @@ struct ContentView: View {
                 }
                 Section {
                     Picker("Input unit", selection: $inputScaleSelection) {
-                        ForEach(TemperatureScale.allCases, id: \.rawValue) { item in
-                            Text(item.rawValue)
+                        ForEach(TemperatureScale.allCases, id: \.self) { item in
+                            Text(item.rawValue.capitalized)
                         }
                     }
                     .pickerStyle(.segmented)
@@ -69,8 +73,8 @@ struct ContentView: View {
                 }
                 Section {
                     Picker("Output unit", selection: $outputScaleSelection) {
-                        ForEach(TemperatureScale.allCases, id: \.rawValue) { item in
-                            Text(item.rawValue)
+                        ForEach(TemperatureScale.allCases, id: \.self) { item in
+                            Text(item.rawValue.capitalized)
                         }
                     }
                     .pickerStyle(.segmented)
