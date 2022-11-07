@@ -23,15 +23,8 @@ struct ContentView: View {
     @State private var inputScaleSelection = TemperatureScale.celsius
     @State private var outputScaleSelection = TemperatureScale.fahrenheit
     @FocusState private var inputIsFocused: Bool
-
-//    let scales = ["Celsius", "Fahrenheit", "Kelvin"]
     
     var outputDegrees: Double {
-        //TODO: default rounding looks bad if input and output are the same
-        if inputScaleSelection == outputScaleSelection {
-            return inputDegrees
-        }
-        
         var kelvinDegrees: Double
         
         switch inputScaleSelection {
@@ -53,7 +46,7 @@ struct ContentView: View {
         }
     }
     var outputFormatted: String {
-        return "\(outputDegrees)° \(outputScaleSelection)"
+        return "\(outputDegrees.formatted())° \(outputScaleSelection.rawValue.capitalized)"
     }
     
     var body: some View {
