@@ -27,6 +27,11 @@ struct ContentView: View {
 //    let scales = ["Celsius", "Fahrenheit", "Kelvin"]
     
     var outputDegrees: Double {
+        //TODO: default rounding looks bad if input and output are the same
+        if inputScaleSelection == outputScaleSelection {
+            return inputDegrees
+        }
+        
         var kelvinDegrees: Double
         
         switch inputScaleSelection {
@@ -56,7 +61,7 @@ struct ContentView: View {
             Form {
                 Section {
                     TextField("Enter degrees", value: $inputDegrees, format: .number)
-                        .keyboardType(.decimalPad)
+                        .keyboardType(.decimalPad) // TODO: decimalPad doesn't have a minus sign
                         .focused($inputIsFocused)
                 } header: {
                     Text("Enter degrees")
