@@ -7,20 +7,24 @@
 
 import SwiftUI
 
-struct ContentView: View {
-    var motto1: some View {
-        Text("Foo")
-    }
-    let motto2 = Text("Bar")
-
-    @ViewBuilder var spells: some View {
-        Text("Lumos")
-        Text("Obliviate")
-    }
+struct CapsuleText: View {
+    var text: String
     
     var body: some View {
-        VStack {
-            spells
+        Text(text)
+            .font(.largeTitle)
+            .padding()
+            .background(.blue)
+            .clipShape(Capsule())
+    }
+}
+
+struct ContentView: View {
+    var body: some View {
+        VStack(spacing: 10) {
+            CapsuleText(text: "First")
+            CapsuleText(text: "Second")
+                .foregroundColor(.yellow)
         }
     }
 }
