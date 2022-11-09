@@ -12,23 +12,14 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            Button("Hello, world!") {
-                useRedText.toggle()
-            }
-            .foregroundColor(useRedText ? .red : .blue)
-            
-            if useRedText {
-                Button("Hello, world!") {
-                    useRedText.toggle()
-                }
-                .foregroundColor(.red)
-            } else {
-                Button("Hello, world!") {
-                    useRedText.toggle()
-                }
-                .foregroundColor(.blue)
-            }
+            Text("Bubbles")
+                .font(.largeTitle)
+                .blur(radius: 0)
+            Text("Blossom")
+            Text("Buttercup")
         }
+        .font(.title)
+        .blur(radius: 5)
     }
 }
 
