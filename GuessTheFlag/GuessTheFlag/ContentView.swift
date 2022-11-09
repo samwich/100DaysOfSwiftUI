@@ -16,14 +16,16 @@ struct ContentView: View {
     
     var body: some View {
         ZStack {
-            Color.blue
+            LinearGradient(gradient: Gradient(colors: [.blue, .black]), startPoint: .top, endPoint: .bottom)
                 .ignoresSafeArea()
             VStack(spacing: 30) {
                 VStack {
-                    Text("Tap the flag on")
+                    Text("Tap the flag of")
                         .foregroundColor(.white)
+                        .font(.subheadline.weight(.heavy))
                     Text(countries[correctAnswer])
                         .foregroundColor(.white)
+                        .font(.largeTitle.weight(.semibold))
                 }
                 
                 ForEach(0..<3) { number in
@@ -31,6 +33,9 @@ struct ContentView: View {
                         flagTapped(number)
                     } label: {
                         Image(countries[number])
+                            .renderingMode(.original) // doesn't seem to make a difference in my simulator
+                            .clipShape(Capsule())
+                            .shadow(radius: 5)
                     }
                 }
             }
