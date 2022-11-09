@@ -8,18 +8,20 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var useRedText = false
+    var motto1: some View {
+        Text("Foo")
+    }
+    let motto2 = Text("Bar")
+
+    @ViewBuilder var spells: some View {
+        Text("Lumos")
+        Text("Obliviate")
+    }
     
     var body: some View {
         VStack {
-            Text("Bubbles")
-                .font(.largeTitle)
-                .blur(radius: 0)
-            Text("Blossom")
-            Text("Buttercup")
+            spells
         }
-        .font(.title)
-        .blur(radius: 5)
     }
 }
 
