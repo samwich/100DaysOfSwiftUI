@@ -9,24 +9,17 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Spacer()
-            ForEach(0..<3) { i in
-                Spacer()
-                HStack {
-                    ForEach(0..<3) { j in
-                        Spacer()
-                        Image(systemName: "globe")
-                            .imageScale(.large)
-                            .foregroundColor(.accentColor)
-                        Text("\(i * 3 + j + 1)")
-                    }
-                    Spacer()
-                }
-                Spacer()
+        ZStack {
+            VStack(spacing: 0) {
+                Color.red
+                Color.mint
+
             }
-            Spacer()
-        }
+            Text("Your content")
+                .foregroundStyle(.secondary)
+                .padding(50)
+                .background(.ultraThinMaterial)
+        }.ignoresSafeArea()
     }
 }
 
