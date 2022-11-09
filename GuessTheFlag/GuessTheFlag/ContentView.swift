@@ -10,6 +10,11 @@ import SwiftUI
 struct ContentView: View {
     @State private var showingScore = false
     @State private var scoreTitle = ""
+    @State private var score = 0
+    
+    let maxRounds = 8
+    @State private var showingGameSummary = false
+    @State private var round = 1
     
     @State private var countries = ["Estonia", "France", "Germany", "Ireland", "Italy", "Nigeria", "Poland", "Russia", "Spain", "UK", "US"].shuffled()
     @State private var correctAnswer = Int.random(in: 0...2)
@@ -55,12 +60,17 @@ struct ContentView: View {
                 .clipShape(RoundedRectangle(cornerRadius: 20))
                 
                 Spacer()
-                Spacer()
 
-                Text("Score: TODO")
+                Text("Score: \(score)")
                     .foregroundColor(.white)
                     .font(.title.bold())
-
+                
+                Spacer()
+                
+                Text("Round: \(round)/\(maxRounds)")
+                    .foregroundColor(.white)
+                    .font(.title.bold())
+                
                 Spacer()
             }
             .padding()
@@ -68,24 +78,43 @@ struct ContentView: View {
         .alert(scoreTitle, isPresented: $showingScore) {
             Button("Continue", action: askQuestion)
         } message: {
-            Text("Your score is TODO")
+            Text("Your score is \(score)")
+        }
+        .alert("Game over!", isPresented: $showingGameSummary) {
+            Button("Play Again", action: newGame)
+        } message: {
+            Text("You scored \(score) out of \(maxRounds)")
         }
     }
     
     func flagTapped(_ number: Int) {
         if number == correctAnswer {
-            scoreTitle = "Correct"
+            scoreTitle = "Correct! That's the flag of \(countries[number])"
+            score += 1
         } else {
-            scoreTitle = "Wrong"
+            scoreTitle = "Wrong! That's the flag of \(countries[number])"
         }
         
-        showingScore = true
+        if round < maxRounds {
+            showingScore = true
+        } else {
+            showingGameSummary = true
+        }
+        
     }
     
     func askQuestion() {
+        round += 1
         countries.shuffle()
         correctAnswer = Int.random(in: 0...2)
     }
+
+    func newGame() {
+        round = 0
+        score = 0
+        askQuestion()
+    }
+
 }
 
 struct ContentView_Previews: PreviewProvider {
