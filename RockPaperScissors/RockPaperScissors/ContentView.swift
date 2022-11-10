@@ -11,12 +11,19 @@ struct ContentView: View {
     let possibleMoves = ["Rock", "Paper", "Scissors"]
     let winningMoves = ["Scissors", "Rock", "Paper"]
     let losingMoves = ["Paper", "Scissors", "Rock"]
-    let maxTurns = 10
-    @State private var turnNumber = 0
+    let maxTurns = 3
+    @State private var turnNumber = 1
     @State private var score = 0
     @State private var appMove = Int.random(in: 0...2)
     @State private var turnGoal = Bool.random()
-
+    @State private var showingSummary = false
+    
+    func newGame() {
+        turnNumber = 1
+        score = 0
+        appMove = Int.random(in: 0...2)
+        turnGoal = Bool.random()
+    }
     
     var body: some View {
         VStack {
@@ -26,7 +33,9 @@ struct ContentView: View {
             Text("Score: \(score)")
                 .font(.largeTitle)
             Spacer()
-            Text("Opponent's move: \(possibleMoves[appMove])")
+            Text("Opponent's move:")
+                .font(.largeTitle)
+            Text(possibleMoves[appMove])
                 .font(.largeTitle)
             Spacer()
             Text("Try to: \(turnGoal ? "Win" : "Lose")")
@@ -43,13 +52,22 @@ struct ContentView: View {
                         score -= 1
                     }
                     
-                    // if turn number < 10 else
-                    turnGoal.toggle()
-                    turnNumber += 1
+                    if turnNumber < maxTurns {
+                        turnGoal.toggle()
+                        appMove = Int.random(in: 0...2)
+                        turnNumber += 1
+                    } else {
+                        showingSummary.toggle()
+                    }
                 }
                     .font(.largeTitle)
                 Spacer()
             }
+        }
+        .alert("Game Over", isPresented: $showingSummary) {
+            Button("Play again", action: newGame)
+        } message: {
+            Text("Final score: \(score)")
         }
         .padding()
     }
