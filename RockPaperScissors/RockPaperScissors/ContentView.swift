@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ContentView: View {
     let possibleMoves = ["Rock", "Paper", "Scissors"]
+    let winningMoves = ["Scissors", "Rock", "Paper"]
+    let losingMoves = ["Paper", "Scissors", "Rock"]
     let maxTurns = 10
     @State private var turnNumber = 0
     @State private var score = 0
@@ -30,8 +32,21 @@ struct ContentView: View {
             Text("Try to: \(turnGoal ? "Win" : "Lose")")
                 .font(.largeTitle)
             Spacer()
-            ForEach(possibleMoves, id: \.self) { move in
-                Button(move) {}
+            ForEach(0..<3) { moveIndex in
+                Button(possibleMoves[moveIndex]) {
+                    
+                    if turnGoal && winningMoves[moveIndex] == possibleMoves[appMove] {
+                        score += 1
+                    } else if !turnGoal && losingMoves[moveIndex] == possibleMoves[appMove] {
+                        score += 1
+                    } else {
+                        score -= 1
+                    }
+                    
+                    // if turn number < 10 else
+                    turnGoal.toggle()
+                    turnNumber += 1
+                }
                     .font(.largeTitle)
                 Spacer()
             }
