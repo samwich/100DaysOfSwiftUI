@@ -11,7 +11,7 @@ struct ContentView: View {
     let possibleMoves = ["Rock", "Paper", "Scissors"]
     let winningMoves = ["Scissors", "Rock", "Paper"]
     let losingMoves = ["Paper", "Scissors", "Rock"]
-    let maxTurns = 3
+    let maxTurns = 10
     @State private var turnNumber = 1
     @State private var score = 0
     @State private var appMove = Int.random(in: 0...2)
@@ -41,12 +41,12 @@ struct ContentView: View {
             Text("Try to: \(turnGoal ? "Win" : "Lose")")
                 .font(.largeTitle)
             Spacer()
-            ForEach(0..<3) { moveIndex in
-                Button(possibleMoves[moveIndex]) {
+            ForEach(0..<3) { playerMove in
+                Button(possibleMoves[playerMove]) {
                     
-                    if turnGoal && winningMoves[moveIndex] == possibleMoves[appMove] {
+                    if turnGoal && winningMoves[playerMove] == possibleMoves[appMove] {
                         score += 1
-                    } else if !turnGoal && losingMoves[moveIndex] == possibleMoves[appMove] {
+                    } else if !turnGoal && losingMoves[playerMove] == possibleMoves[appMove] {
                         score += 1
                     } else {
                         score -= 1
@@ -60,7 +60,7 @@ struct ContentView: View {
                         showingSummary.toggle()
                     }
                 }
-                    .font(.largeTitle)
+                .font(.largeTitle)
                 Spacer()
             }
         }
