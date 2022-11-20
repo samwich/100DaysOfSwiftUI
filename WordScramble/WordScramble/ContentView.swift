@@ -22,6 +22,13 @@ struct ContentView: View {
         }
         .listStyle(.grouped)
     }
+    func loadFile() {
+        if let fileURL = Bundle.main.url(forResource: "some-file", withExtension: "txt") {
+            if let fileContents = try? String(contentsOf: fileURL) {
+                // we loaded the file into a string
+            }
+        }
+    }
 }
 
 struct ContentView_Previews: PreviewProvider {
