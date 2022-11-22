@@ -30,6 +30,8 @@ struct ContentView: View {
     @State private var countries = ["Estonia", "France", "Germany", "Ireland", "Italy", "Nigeria", "Poland", "Russia", "Spain", "UK", "US"].shuffled()
     @State private var correctAnswer = Int.random(in: 0...2)
     
+    @State private var tappedButton: Int? = nil
+
     var body: some View {
         ZStack {
             RadialGradient(stops: [
@@ -60,6 +62,12 @@ struct ContentView: View {
                         } label: {
                             FlagImage(image: countries[number])
                         }
+                        .rotation3DEffect(
+                            .degrees(number == tappedButton ? 360 : 0),
+                            axis: (x: 0, y:1, z:0)
+                        )
+                        .opacity( (tappedButton == nil) || (tappedButton == number) ? 1 : 0.25)
+                        .blur(radius: (tappedButton == nil) || (tappedButton == number) ? 0 : 5)
                     }
                 }
                 .frame(maxWidth: .infinity)
@@ -96,6 +104,10 @@ struct ContentView: View {
     }
     
     func flagTapped(_ number: Int) {
+        withAnimation {
+            tappedButton = number
+        }
+
         if number == correctAnswer {
             scoreTitle = "Correct! That's the flag of \(countries[number])"
             score += 1
@@ -108,13 +120,15 @@ struct ContentView: View {
         } else {
             showingGameSummary = true
         }
-        
     }
     
     func askQuestion() {
-        round += 1
-        countries.shuffle()
-        correctAnswer = Int.random(in: 0...2)
+        withAnimation {
+            tappedButton = nil
+            round += 1
+            countries.shuffle()
+            correctAnswer = Int.random(in: 0...2)
+        }
     }
 
     func newGame() {
@@ -122,7 +136,6 @@ struct ContentView: View {
         score = 0
         askQuestion()
     }
-
 }
 
 struct ContentView_Previews: PreviewProvider {
