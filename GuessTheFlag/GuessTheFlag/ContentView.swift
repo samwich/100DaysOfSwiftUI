@@ -68,6 +68,7 @@ struct ContentView: View {
                         )
                         .opacity( (tappedButton == nil) || (tappedButton == number) ? 1 : 0.25)
                         .blur(radius: (tappedButton == nil) || (tappedButton == number) ? 0 : 5)
+                        .animation(.default, value: tappedButton)
                     }
                 }
                 .frame(maxWidth: .infinity)
@@ -104,9 +105,7 @@ struct ContentView: View {
     }
     
     func flagTapped(_ number: Int) {
-        withAnimation {
-            tappedButton = number
-        }
+        tappedButton = number
 
         if number == correctAnswer {
             scoreTitle = "Correct! That's the flag of \(countries[number])"
@@ -123,12 +122,10 @@ struct ContentView: View {
     }
     
     func askQuestion() {
-        withAnimation {
-            tappedButton = nil
-            round += 1
-            countries.shuffle()
-            correctAnswer = Int.random(in: 0...2)
-        }
+        tappedButton = nil
+        round += 1
+        countries.shuffle()
+        correctAnswer = Int.random(in: 0...2)
     }
 
     func newGame() {
