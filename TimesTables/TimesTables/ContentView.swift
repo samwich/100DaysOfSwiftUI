@@ -21,7 +21,7 @@ struct ContentView: View {
         
     @State private var round = 0
     @State private var score = 0
-    @State private var question = (0,0)
+    @State private var question = (0, 0)
     @State private var answer: Int?
     @FocusState private var answerInputIsFocused: Bool
 
@@ -45,12 +45,16 @@ struct ContentView: View {
             } else {
                 Form {
                     Text("Question \(round)")
-                    Text("What is _ x _ ?")
+                    Text("What is \(question.0) x \(question.1) ?")
                     TextField("Answer", value: $answer, format: .number)
                         .keyboardType(.decimalPad)
                         .focused($answerInputIsFocused)
                     Button("OK") {
-                        //                            answerInputIsFocused = false
+                        let correctAnswer = question.0 * question.1
+                        if answer == correctAnswer {
+                            score += 1
+                        }
+                        answerInputIsFocused = false
                         showingResult = true
                     }
                 }
@@ -58,14 +62,14 @@ struct ContentView: View {
                 .alert("Result", isPresented: $showingResult) {
                     Button("Next", action: nextQuestion)
                 } message: {
-                    Text("the correct answer was TODO")
+                    Text("You answered \(answer?.formatted() ?? ""), the correct answer was \(question.0 * question.1)")
                 }
                 .alert("Practice Summary", isPresented: $showingSummary) {
                     Button("Next") {
                         gameInProgress = false
                     }
                 } message: {
-                    Text("You got TODO questions correct!")
+                    Text("You got \(score) questions correct!")
                 }
             }
         }
@@ -73,6 +77,7 @@ struct ContentView: View {
     
     func newGame() {
         round = 0
+        score = 0
         nextQuestion()
         gameInProgress = true
     }
@@ -83,6 +88,7 @@ struct ContentView: View {
         } else {
             round += 1
             answer = nil
+            question = (Int.random(in: lowestOperand...highestOperand), Int.random(in: lowestOperand...highestOperand))
         }
     }
 }
