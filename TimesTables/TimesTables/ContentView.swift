@@ -9,11 +9,11 @@ import SwiftUI
 
 struct ContentView: View {
     let possibleOperands = 2...12
-    let questionCountOptions = [5, 10, 20]
+    let questionCountOptions = [2, 5, 10, 20]
 
     @State private var lowestOperand = 2
     @State private var highestOperand = 2
-    @State private var questionCount = 5
+    @State private var questionCount = 2
     
     @State private var gameInProgress = false
     @State private var showingResult = false
@@ -49,15 +49,12 @@ struct ContentView: View {
                     TextField("Answer", value: $answer, format: .number)
                         .keyboardType(.decimalPad)
                         .focused($answerInputIsFocused)
-                }
-                .toolbar {
-                    ToolbarItemGroup(placement: .keyboard) {
-                        Spacer()
-                        Button("OK") {
-                            showingResult = true
-                        }
+                    Button("OK") {
+                        //                            answerInputIsFocused = false
+                        showingResult = true
                     }
                 }
+                .navigationTitle("Question \(round)")
                 .alert("Result", isPresented: $showingResult) {
                     Button("Next", action: nextQuestion)
                 } message: {
@@ -83,6 +80,7 @@ struct ContentView: View {
             showingSummary = true
         } else {
             round += 1
+            answer = nil
         }
     }
 }
