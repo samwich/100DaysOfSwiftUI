@@ -9,7 +9,6 @@ import SwiftUI
 
 struct Game {
     var round = 0
-    var score = 0
     var lowestOperand: Int
     var highestOperand: Int
     var questionCount: Int
@@ -29,6 +28,12 @@ struct Game {
             )
         }
     }
+    
+    var score: Int {
+        questions
+            .map { $0.score }
+            .reduce(0) { $0 + $1 }
+    }
 }
 
 struct Question {
@@ -44,8 +49,28 @@ struct Question {
         a * b
     }
     
+    var isCorrect: Bool {
+        answer == correctAnswer
+    }
+    
     var score: Int {
-        answer == correctAnswer ? 1 : 0
+        isCorrect ? 1 : 0
+    }
+    
+//    if a == game.questions[game.round - 1].correctAnswer {
+//        //            game.score += 1
+//        resultTitle = "Correct!"
+//        resultMessage = "+1 to your score"
+//    } else {
+//        resultTitle = "Incorrect"
+//        resultMessage = "You answered \(a?.formatted() ?? ""), the correct answer was \(question.correctAnswer)"
+//
+    var resultTitle: String {
+        isCorrect ? "Correct!" : "Incorrect"
+    }
+    
+    var resultMessage: String {
+        isCorrect ? "+1 to your score" : "You answered \(answer?.formatted() ?? ""), the correct answer was \(correctAnswer)"
     }
 }
 
@@ -101,15 +126,19 @@ struct ContentView: View {
     }
     
     func checkAndScoreAnswer(a: Int?) {
-        if a == game.questions[game.round - 1].correctAnswer {
-            game.score += 1
-            resultTitle = "Correct!"
-            resultMessage = "+1 to your score"
-        } else {
-            resultTitle = "Incorrect"
-            resultMessage = "You answered \(a?.formatted() ?? ""), the correct answer was \(question.correctAnswer)"
+        let q = game.questions[game.round - 1]
+        
+        resultTitle = q.resultTitle
+        resultMessage = q.resultMessage
 
-        }
+//        if a == q.correctAnswer {
+//            game.score += 1
+//            resultTitle = "Correct!"
+//            resultMessage = "+1 to your score"
+//        } else {
+//            resultTitle = "Incorrect"
+//            resultMessage = "You answered \(a?.formatted() ?? ""), the correct answer was \(question.correctAnswer)"
+//        }
         answerInputIsFocused = false
         showingResult = true
     }
