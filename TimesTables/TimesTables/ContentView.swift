@@ -20,6 +20,7 @@ struct ContentView: View {
     @State private var showingSummary = false
         
     @State private var round = 0
+    @State private var score = 0
     @State private var question = (0,0)
     @State private var answer: Int?
     @FocusState private var answerInputIsFocused: Bool
@@ -37,8 +38,7 @@ struct ContentView: View {
                     }
                     .pickerStyle(.segmented)
                     Button("Begin") {
-                        gameInProgress = true
-                        nextQuestion()
+                        newGame()
                     }
                 }
                 .navigationTitle("Times Tables")
@@ -72,6 +72,8 @@ struct ContentView: View {
     }
     
     func newGame() {
+        round = 0
+        nextQuestion()
         gameInProgress = true
     }
     
