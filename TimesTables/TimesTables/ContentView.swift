@@ -8,14 +8,82 @@
 import SwiftUI
 
 struct ContentView: View {
+    let possibleOperands = 2...12
+    let questionCountOptions = [5, 10, 20]
+
+    @State private var lowestOperand = 2
+    @State private var highestOperand = 2
+    @State private var questionCount = 5
+    
+    @State private var gameInProgress = false
+    @State private var showingResult = false
+    @State private var showingSummary = false
+        
+    @State private var round = 0
+    @State private var question = (0,0)
+    @State private var answer: Int?
+    @FocusState private var answerInputIsFocused: Bool
+
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        NavigationView {
+            if !gameInProgress {
+                Form {
+                    Text("Game Setup")
+                    Stepper("Highest Operand \(highestOperand)", value: $highestOperand, in: possibleOperands)
+                    Picker("Question count", selection: $questionCount) {
+                        ForEach(questionCountOptions, id: \.self) { item in
+                            Text(item.formatted())
+                        }
+                    }
+                    .pickerStyle(.segmented)
+                    Button("Begin") {
+                        gameInProgress = true
+                        nextQuestion()
+                    }
+                }
+                .navigationTitle("Times Tables")
+            } else {
+                Form {
+                    Text("Question \(round)")
+                    Text("What is _ x _ ?")
+                    TextField("Answer", value: $answer, format: .number)
+                        .keyboardType(.decimalPad)
+                        .focused($answerInputIsFocused)
+                }
+                .toolbar {
+                    ToolbarItemGroup(placement: .keyboard) {
+                        Spacer()
+                        Button("OK") {
+                            showingResult = true
+                        }
+                    }
+                }
+                .alert("Result", isPresented: $showingResult) {
+                    Button("Next", action: nextQuestion)
+                } message: {
+                    Text("the correct answer was TODO")
+                }
+                .alert("Practice Summary", isPresented: $showingSummary) {
+                    Button("Next") {
+                        gameInProgress = false
+                    }
+                } message: {
+                    Text("You got TODO questions correct!")
+                }
+            }
         }
-        .padding()
+    }
+    
+    func newGame() {
+        gameInProgress = true
+    }
+    
+    func nextQuestion() {
+        if round >= questionCount {
+            showingSummary = true
+        } else {
+            round += 1
+        }
     }
 }
 
