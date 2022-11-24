@@ -27,15 +27,7 @@ struct ContentView: View {
             if !gameInProgress {
                 GameSettingsView(startGame: playGame)
             } else {
-                Form {
-                    Text("Question \(round)")
-                    Text("What is \(question.0) x \(question.1) ?")
-                    TextField("Answer", value: $answer, format: .number)
-                        .keyboardType(.decimalPad)
-                        .focused($answerInputIsFocused)
-                    Button("OK", action: checkAndScoreAnswer)
-                }
-                .navigationTitle("Question \(round)")
+                QuestionView(round: round, question: question, checkAnswer: checkAndScoreAnswer)
                 .alert("Result", isPresented: $showingResult) {
                     Button("Next", action: nextQuestion)
                 } message: {
@@ -48,6 +40,7 @@ struct ContentView: View {
                 } message: {
                     Text("You got \(score) questions correct!")
                 }
+
             }
         }
     }
@@ -73,9 +66,10 @@ struct ContentView: View {
         }
     }
     
-    func checkAndScoreAnswer() {
+    func checkAndScoreAnswer(a: Int?) {
+        answer = a
         let correctAnswer = question.0 * question.1
-        if answer == correctAnswer {
+        if a == correctAnswer {
             score += 1
         }
         answerInputIsFocused = false
@@ -109,6 +103,30 @@ struct GameSettingsView: View {
         }
         .navigationTitle("Times Tables")
     }
+}
+
+struct QuestionView: View {
+    var round: Int
+    var question: (Int, Int)
+    var checkAnswer: (Int?) -> ()
+    
+    @State var answer: Int?
+    @FocusState private var answerInputIsFocused: Bool
+
+    var body: some View {
+        VStack {
+            Text("Question \(round)")
+            Text("What is \(question.0) x \(question.1) ?")
+            TextField("Answer", value: $answer, format: .number)
+                .keyboardType(.decimalPad)
+                .focused($answerInputIsFocused)
+            Button("OK") {
+                checkAnswer(answer)
+            }
+        }
+        .navigationTitle("Question \(round)")
+    }
+
 }
 
 struct ContentView_Previews: PreviewProvider {
