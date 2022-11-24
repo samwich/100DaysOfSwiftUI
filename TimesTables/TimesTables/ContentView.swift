@@ -14,6 +14,8 @@ struct ContentView: View {
     
     @State private var gameInProgress = false
     @State private var showingResult = false
+    @State private var resultTitle = ""
+    @State private var resultMessage = ""
     @State private var showingSummary = false
         
     @State private var round = 0
@@ -28,10 +30,10 @@ struct ContentView: View {
                 GameSettingsView(startGame: playGame)
             } else {
                 QuestionView(round: round, question: question, checkAnswer: checkAndScoreAnswer)
-                    .alert("Result", isPresented: $showingResult) {
+                    .alert(resultTitle, isPresented: $showingResult) {
                         Button("Next", action: nextQuestion)
                     } message: {
-                        Text("You answered \(answer?.formatted() ?? ""), the correct answer was \(question.0 * question.1)")
+                        Text(resultMessage)
                     }
                     .alert("Practice Summary", isPresented: $showingSummary) {
                         Button("Next") {
@@ -70,6 +72,12 @@ struct ContentView: View {
         let correctAnswer = question.0 * question.1
         if a == correctAnswer {
             score += 1
+            resultTitle = "Correct!"
+            resultMessage = "+1 to your score"
+        } else {
+            resultTitle = "Incorrect"
+            resultMessage = "You answered \(answer?.formatted() ?? ""), the correct answer was \(correctAnswer)"
+
         }
         answerInputIsFocused = false
         showingResult = true
