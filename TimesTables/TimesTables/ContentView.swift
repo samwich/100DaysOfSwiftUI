@@ -7,23 +7,50 @@
 
 import SwiftUI
 
-//struct Question {
-//    var a: Int
-//    var b: Int
-//    
-//    var question: String {
-//        "What is \(a)x\(b)?"
-//    }
-//    
-//    var answer: Int {
-//        a * b
-//    }
-//}
+struct Game {
+    var round = 0
+    var score = 0
+    var lowestOperand: Int
+    var highestOperand: Int
+    var questionCount: Int
+    var questions: [Question] = []
+    
+    init(lowestOperand: Int = 2, highestOperand: Int = 2, questionCount: Int = 2) {
+        self.lowestOperand = lowestOperand
+        self.highestOperand = highestOperand
+        self.questionCount = questionCount
+        
+        for _ in 1...questionCount {
+            questions.append(
+                Question(
+                    a: Int.random(in: lowestOperand...highestOperand),
+                    b: Int.random(in: lowestOperand...highestOperand)
+                )
+            )
+        }
+    }
+}
+
+struct Question {
+    var a: Int
+    var b: Int
+    var answer: Int?
+    
+    var questionText: String {
+        "What is \(a)x\(b)?"
+    }
+    
+    var correctAnswer: Int {
+        a * b
+    }
+    
+    var score: Int {
+        answer == correctAnswer ? 1 : 0
+    }
+}
 
 struct ContentView: View {
-    @State private var lowestOperand = 2
-    @State private var highestOperand = 2
-    @State private var questionCount = 2
+    @State private var game = Game()
     
     @State private var gameInProgress = false
     @State private var showingResult = false
@@ -31,10 +58,8 @@ struct ContentView: View {
     @State private var resultMessage = ""
     @State private var showingSummary = false
         
-    @State private var round = 0
-    @State private var score = 0
-    @State private var question = (0, 0)
-    @State private var answer: Int?
+    @State private var question = Question(a: 0, b: 0)
+//    @State private var answer: Int?
     @FocusState private var answerInputIsFocused: Bool
     
     var body: some View {
@@ -42,7 +67,7 @@ struct ContentView: View {
             if !gameInProgress {
                 GameSettingsView(startGame: playGame)
             } else {
-                QuestionView(round: round, question: question, checkAnswer: checkAndScoreAnswer)
+                QuestionView(game: $game, checkAnswer: checkAndScoreAnswer)
                     .alert(resultTitle, isPresented: $showingResult) {
                         Button("Next", action: nextQuestion)
                     } message: {
@@ -53,43 +78,36 @@ struct ContentView: View {
                             gameInProgress = false
                         }
                     } message: {
-                        Text("You got \(score) questions correct!")
+                        Text("You got \(game.score) questions correct!")
                     }
             }
         }
     }
     
     func playGame(low: Int, high: Int, rounds: Int) {
-        lowestOperand = low
-        highestOperand = high
-        questionCount = rounds
-        round = 0
-        score = 0
+        game = Game(lowestOperand: low, highestOperand: high, questionCount: rounds)
         nextQuestion()
         gameInProgress = true
         
     }
     
     func nextQuestion() {
-        if round >= questionCount {
+        if game.round >= game.questionCount {
             showingSummary = true
         } else {
-            round += 1
-            answer = nil
-            question = (Int.random(in: lowestOperand...highestOperand), Int.random(in: lowestOperand...highestOperand))
+            game.round += 1
+            question = game.questions[game.round - 1]
         }
     }
     
     func checkAndScoreAnswer(a: Int?) {
-        answer = a
-        let correctAnswer = question.0 * question.1
-        if a == correctAnswer {
-            score += 1
+        if a == game.questions[game.round - 1].correctAnswer {
+            game.score += 1
             resultTitle = "Correct!"
             resultMessage = "+1 to your score"
         } else {
             resultTitle = "Incorrect"
-            resultMessage = "You answered \(answer?.formatted() ?? ""), the correct answer was \(correctAnswer)"
+            resultMessage = "You answered \(a?.formatted() ?? ""), the correct answer was \(question.correctAnswer)"
 
         }
         answerInputIsFocused = false
@@ -98,7 +116,7 @@ struct ContentView: View {
 }
 
 struct GameSettingsView: View {
-    var startGame: (_ lowOperand: Int, _ highOperand: Int, _ questionCount: Int) -> ()
+    var startGame: (Int, Int, Int) -> ()
     
     let possibleOperands = 2...12
     let questionCountOptions = [2, 5, 10, 20]
@@ -126,25 +144,23 @@ struct GameSettingsView: View {
 }
 
 struct QuestionView: View {
-    var round: Int
-    var question: (Int, Int)
+    @Binding var game: Game
     var checkAnswer: (Int?) -> ()
     
-    @State var answer: Int?
     @FocusState private var answerInputIsFocused: Bool
 
     var body: some View {
         Form {
-            Text("Question \(round)")
-            Text("What is \(question.0) x \(question.1) ?")
-            TextField("Answer", value: $answer, format: .number)
+            Text("Question \(game.round)")
+            Text(game.questions[game.round - 1].questionText)
+            TextField("Answer", value: $game.questions[game.round - 1].answer, format: .number)
                 .keyboardType(.decimalPad)
                 .focused($answerInputIsFocused)
             Button("OK") {
-                checkAnswer(answer)
+                checkAnswer(game.questions[game.round - 1].answer)
             }
         }
-        .navigationTitle("Question \(round)")
+        .navigationTitle("Question \(game.round)")
     }
 
 }
