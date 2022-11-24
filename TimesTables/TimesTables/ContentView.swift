@@ -21,26 +21,25 @@ struct ContentView: View {
     @State private var question = (0, 0)
     @State private var answer: Int?
     @FocusState private var answerInputIsFocused: Bool
-
+    
     var body: some View {
         NavigationView {
             if !gameInProgress {
                 GameSettingsView(startGame: playGame)
             } else {
                 QuestionView(round: round, question: question, checkAnswer: checkAndScoreAnswer)
-                .alert("Result", isPresented: $showingResult) {
-                    Button("Next", action: nextQuestion)
-                } message: {
-                    Text("You answered \(answer?.formatted() ?? ""), the correct answer was \(question.0 * question.1)")
-                }
-                .alert("Practice Summary", isPresented: $showingSummary) {
-                    Button("Next") {
-                        gameInProgress = false
+                    .alert("Result", isPresented: $showingResult) {
+                        Button("Next", action: nextQuestion)
+                    } message: {
+                        Text("You answered \(answer?.formatted() ?? ""), the correct answer was \(question.0 * question.1)")
                     }
-                } message: {
-                    Text("You got \(score) questions correct!")
-                }
-
+                    .alert("Practice Summary", isPresented: $showingSummary) {
+                        Button("Next") {
+                            gameInProgress = false
+                        }
+                    } message: {
+                        Text("You got \(score) questions correct!")
+                    }
             }
         }
     }
