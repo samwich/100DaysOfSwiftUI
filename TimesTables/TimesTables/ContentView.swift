@@ -7,6 +7,19 @@
 
 import SwiftUI
 
+//struct Question {
+//    var a: Int
+//    var b: Int
+//    
+//    var question: String {
+//        "What is \(a)x\(b)?"
+//    }
+//    
+//    var answer: Int {
+//        a * b
+//    }
+//}
+
 struct ContentView: View {
     @State private var lowestOperand = 2
     @State private var highestOperand = 2
