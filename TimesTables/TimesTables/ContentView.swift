@@ -8,9 +8,6 @@
 import SwiftUI
 
 struct ContentView: View {
-    let possibleOperands = 2...12
-    let questionCountOptions = [2, 5, 10, 20]
-
     @State private var lowestOperand = 2
     @State private var highestOperand = 2
     @State private var questionCount = 2
@@ -28,20 +25,7 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             if !gameInProgress {
-                Form {
-                    Text("Game Setup")
-                    Stepper("Highest Operand \(highestOperand)", value: $highestOperand, in: possibleOperands)
-                    Picker("Question count", selection: $questionCount) {
-                        ForEach(questionCountOptions, id: \.self) { item in
-                            Text(item.formatted())
-                        }
-                    }
-                    .pickerStyle(.segmented)
-                    Button("Begin") {
-                        newGame()
-                    }
-                }
-                .navigationTitle("Times Tables")
+                GameSettingsView(startGame: playGame)
             } else {
                 Form {
                     Text("Question \(round)")
@@ -49,14 +33,7 @@ struct ContentView: View {
                     TextField("Answer", value: $answer, format: .number)
                         .keyboardType(.decimalPad)
                         .focused($answerInputIsFocused)
-                    Button("OK") {
-                        let correctAnswer = question.0 * question.1
-                        if answer == correctAnswer {
-                            score += 1
-                        }
-                        answerInputIsFocused = false
-                        showingResult = true
-                    }
+                    Button("OK", action: checkAndScoreAnswer)
                 }
                 .navigationTitle("Question \(round)")
                 .alert("Result", isPresented: $showingResult) {
@@ -75,11 +52,15 @@ struct ContentView: View {
         }
     }
     
-    func newGame() {
+    func playGame(low: Int, high: Int, rounds: Int) {
+        lowestOperand = low
+        highestOperand = high
+        questionCount = rounds
         round = 0
         score = 0
         nextQuestion()
         gameInProgress = true
+        
     }
     
     func nextQuestion() {
@@ -90,6 +71,43 @@ struct ContentView: View {
             answer = nil
             question = (Int.random(in: lowestOperand...highestOperand), Int.random(in: lowestOperand...highestOperand))
         }
+    }
+    
+    func checkAndScoreAnswer() {
+        let correctAnswer = question.0 * question.1
+        if answer == correctAnswer {
+            score += 1
+        }
+        answerInputIsFocused = false
+        showingResult = true
+    }
+}
+
+struct GameSettingsView: View {
+    var startGame: (_ lowOperand: Int, _ highOperand: Int, _ questionCount: Int) -> ()
+    
+    let possibleOperands = 2...12
+    let questionCountOptions = [2, 5, 10, 20]
+    
+    @State private var lowestOperand = 2
+    @State private var highestOperand = 2
+    @State private var questionCount = 2
+
+    var body: some View {
+        Form {
+            Text("Game Setup")
+            Stepper("Highest Operand \(highestOperand)", value: $highestOperand, in: possibleOperands)
+            Picker("Question count", selection: $questionCount) {
+                ForEach(questionCountOptions, id: \.self) { item in
+                    Text(item.formatted())
+                }
+            }
+            .pickerStyle(.segmented)
+            Button("Begin") {
+                startGame(lowestOperand, highestOperand, questionCount)
+            }
+        }
+        .navigationTitle("Times Tables")
     }
 }
 
