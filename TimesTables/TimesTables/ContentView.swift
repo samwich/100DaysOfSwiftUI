@@ -113,7 +113,7 @@ struct QuestionView: View {
     @FocusState private var answerInputIsFocused: Bool
 
     var body: some View {
-        VStack {
+        Form {
             Text("Question \(round)")
             Text("What is \(question.0) x \(question.1) ?")
             TextField("Answer", value: $answer, format: .number)
