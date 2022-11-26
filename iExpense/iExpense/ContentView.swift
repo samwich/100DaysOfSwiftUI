@@ -8,16 +8,9 @@
 import SwiftUI
 
 struct ItemListView: View {
-    @ObservedObject var expenses: Expenses
-    @State var type: String
-    @State private var items: [ExpenseItem]
-    
-    init(expenses: Expenses, type: String) {
-        self.expenses = expenses
-        self.type = type
-        self.items = expenses.items.filter { $0.type == type }
-    }
-    
+    let items: [ExpenseItem]
+    let deleteItems: (IndexSet) -> Void
+        
     var body: some View {
         ForEach(items) { item in
             HStack {
@@ -33,13 +26,9 @@ struct ItemListView: View {
                     .foregroundColor(colorForAmount(item.amount))
             }
         }
-        .onDelete(perform: removeItems)
+        .onDelete(perform: deleteItems)
     }
     
-    func removeItems(at offsets: IndexSet) {
-        expenses.items.remove(atOffsets: offsets)
-    }
-
     func colorForAmount(_ amount: Double) -> Color {
         if amount < 10 {
             return .green
@@ -59,10 +48,10 @@ struct ContentView: View {
         NavigationView {
             List {
                 Section("Personal") {
-                    ItemListView(expenses: expenses, type: "Personal")
+                    ItemListView(items: expenses.personalItems, deleteItems: removePersonalItems)
                 }
                 Section("Business") {
-                    ItemListView(expenses: expenses, type: "Business")
+                    ItemListView(items: expenses.businessItems, deleteItems: removeBusinessItems)
                 }
             }
             .navigationTitle("iExpense")
@@ -77,6 +66,28 @@ struct ContentView: View {
                 AddView(expenses: expenses)
             }
         }
+    }
+    
+    func removeItems(at offsets: IndexSet, in inputArray: [ExpenseItem]) {
+        var offsetsToDelete = IndexSet()
+        
+        for offset in offsets {
+            let item = inputArray[offset]
+            
+            if let targetOffset = expenses.items.firstIndex(of: item) {
+                offsetsToDelete.insert(targetOffset)
+            }
+        }
+        
+        expenses.items.remove(atOffsets: offsetsToDelete)
+    }
+
+    func removePersonalItems(at offsets: IndexSet) {
+        removeItems(at: offsets, in: expenses.personalItems)
+    }
+
+    func removeBusinessItems(at offsets: IndexSet) {
+        removeItems(at: offsets, in: expenses.businessItems)
     }
 }
 
