@@ -7,6 +7,50 @@
 
 import SwiftUI
 
+struct ItemListView: View {
+    @ObservedObject var expenses: Expenses
+    @State var type: String
+    @State private var items: [ExpenseItem]
+    
+    init(expenses: Expenses, type: String) {
+        self.expenses = expenses
+        self.type = type
+        self.items = expenses.items.filter { $0.type == type }
+    }
+    
+    var body: some View {
+        ForEach(items) { item in
+            HStack {
+                VStack(alignment: .leading) {
+                    Text(item.name)
+                        .font(.headline)
+                    Text(item.type)
+                }
+                
+                Spacer()
+                
+                Text(item.amount, format: .currency(code: Locale.current.currencyCode ?? "USD"))
+                    .foregroundColor(colorForAmount(item.amount))
+            }
+        }
+        .onDelete(perform: removeItems)
+    }
+    
+    func removeItems(at offsets: IndexSet) {
+        expenses.items.remove(atOffsets: offsets)
+    }
+
+    func colorForAmount(_ amount: Double) -> Color {
+        if amount < 10 {
+            return .green
+        } else if amount > 100 {
+            return .red
+        } else {
+            return .primary
+        }
+    }
+}
+
 struct ContentView: View {
     @StateObject var expenses = Expenses()
     @State private var showingAddExpense = false
@@ -14,21 +58,12 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             List {
-                ForEach(expenses.items) { item in
-                    HStack {
-                        VStack(alignment: .leading) {
-                            Text(item.name)
-                                .font(.headline)
-                            Text(item.type)
-                        }
-                        
-                        Spacer()
-                        
-                        Text(item.amount, format: .currency(code: Locale.current.currencyCode ?? "USD"))
-                            .foregroundColor(colorForAmount(amount: item.amount))
-                    }
+                Section("Personal") {
+                    ItemListView(expenses: expenses, type: "Personal")
                 }
-                .onDelete(perform: removeItems)
+                Section("Business") {
+                    ItemListView(expenses: expenses, type: "Business")
+                }
             }
             .navigationTitle("iExpense")
             .toolbar {
@@ -41,20 +76,6 @@ struct ContentView: View {
             .sheet(isPresented: $showingAddExpense) {
                 AddView(expenses: expenses)
             }
-        }
-    }
-    
-    func removeItems(at offsets: IndexSet) {
-        expenses.items.remove(atOffsets: offsets)
-    }
-    
-    func colorForAmount(amount: Double) -> Color {
-        if amount < 10 {
-            return .green
-        } else if amount > 100 {
-            return .red
-        } else {
-            return .primary
         }
     }
 }
