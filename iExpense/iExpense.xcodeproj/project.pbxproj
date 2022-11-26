@@ -12,6 +12,7 @@
 		221F667E2931839D00C97628 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 221F667D2931839D00C97628 /* Assets.xcassets */; };
 		221F66812931839D00C97628 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 221F66802931839D00C97628 /* Preview Assets.xcassets */; };
 		221F6688293193DE00C97628 /* ExpenseItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221F6687293193DE00C97628 /* ExpenseItem.swift */; };
+		221F668A2931966700C97628 /* Expenses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221F66892931966700C97628 /* Expenses.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +22,7 @@
 		221F667D2931839D00C97628 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		221F66802931839D00C97628 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		221F6687293193DE00C97628 /* ExpenseItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseItem.swift; sourceTree = "<group>"; };
+		221F66892931966700C97628 /* Expenses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expenses.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +57,7 @@
 			children = (
 				221F66792931839C00C97628 /* iExpenseApp.swift */,
 				221F667B2931839C00C97628 /* ContentView.swift */,
+				221F66892931966700C97628 /* Expenses.swift */,
 				221F6687293193DE00C97628 /* ExpenseItem.swift */,
 				221F667D2931839D00C97628 /* Assets.xcassets */,
 				221F667F2931839D00C97628 /* Preview Content */,
@@ -140,6 +143,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				221F668A2931966700C97628 /* Expenses.swift in Sources */,
 				221F667C2931839C00C97628 /* ContentView.swift in Sources */,
 				221F6688293193DE00C97628 /* ExpenseItem.swift in Sources */,
 				221F667A2931839C00C97628 /* iExpenseApp.swift in Sources */,
