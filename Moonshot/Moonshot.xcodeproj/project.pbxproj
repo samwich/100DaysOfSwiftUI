@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2241D96C29358FC900B6368D /* MissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2241D96B29358FC900B6368D /* MissionView.swift */; };
 		226AF5972932915D00115EEE /* MoonshotApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226AF5962932915D00115EEE /* MoonshotApp.swift */; };
 		226AF5992932915D00115EEE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226AF5982932915D00115EEE /* ContentView.swift */; };
 		226AF59B2932915E00115EEE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 226AF59A2932915E00115EEE /* Assets.xcassets */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2241D96B29358FC900B6368D /* MissionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionView.swift; sourceTree = "<group>"; };
 		226AF5932932915D00115EEE /* Moonshot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Moonshot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		226AF5962932915D00115EEE /* MoonshotApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoonshotApp.swift; sourceTree = "<group>"; };
 		226AF5982932915D00115EEE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -65,6 +67,7 @@
 			children = (
 				226AF5962932915D00115EEE /* MoonshotApp.swift */,
 				226AF5982932915D00115EEE /* ContentView.swift */,
+				2241D96B29358FC900B6368D /* MissionView.swift */,
 				2289903B29356EEA00807855 /* Astronaut.swift */,
 				2289903F2935744400807855 /* Mission.swift */,
 				2289903D29356F3200807855 /* Bundle-Decodable.swift */,
@@ -157,6 +160,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2241D96C29358FC900B6368D /* MissionView.swift in Sources */,
 				2289903C29356EEA00807855 /* Astronaut.swift in Sources */,
 				2289904229357F8500807855 /* Color-Theme.swift in Sources */,
 				226AF5992932915D00115EEE /* ContentView.swift in Sources */,
