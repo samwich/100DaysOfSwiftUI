@@ -73,7 +73,10 @@ struct MissionView: View {
                                                 .foregroundColor(.secondary)
                                         }
                                     }
-                                    .padding(.horizontal)
+                                    .padding(.trailing)
+                                    .background(.lightBackground)
+                                    .clipShape(Capsule())
+                                    .padding(.leading)
                                 }
                             }
                         }
