@@ -27,6 +27,9 @@ struct MissionView: View {
                         .frame(maxWidth: geometry.size.width * 0.6)
                         .padding(.top)
                     
+                    Text(mission.launchDate?.formatted(date: .complete, time: .omitted) ?? "no date")
+                        .foregroundColor(.secondary)
+                    
                     VStack(alignment: .leading) {
                         Rectangle()
                             .frame(height: 2)
