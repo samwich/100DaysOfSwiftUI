@@ -299,10 +299,17 @@ GeometryReader, ScrollView, NavigationLink
 ## Day 45 - 9.3 Drawing
 * [Special effects in SwiftUI: blurs, blending, and more](https://www.hackingwithswift.com/books/ios-swiftui/special-effects-in-swiftui-blurs-blending-and-more)
     * an `Image` and `shape.fill(.red).blendMode(.multiply)` in a `VSTack` is equivalent to just `image.colorMultiply(.red)`
-    * 
+    * `.blendMode`
+      * `.normal`
+      * `.multiply`
+      * `.screen`
 * [Animating simple shapes with animatableData](https://www.hackingwithswift.com/books/ios-swiftui/animating-simple-shapes-with-animatabledata)
-    * 
+    * `withAnimation {}` isn't animating the trapezoid offset change
+    * to make a view animatable, you have to give it an `animatableData` computed property, then `withAnimation` will work
 * [Animating complex shapes with AnimatablePair](https://www.hackingwithswift.com/books/ios-swiftui/animating-complex-shapes-with-animatablepair)
-    * 
+    * `animatableData` is a single property, but what if we want to animate more than one value?
+    * using `var animatableData: AnimatablePair<Double, CGFloat>` let's us animate a pair of values
+    * to animate more that two values, treat AnimatablePair like a cons cell from LISP: `AnimatablePair<Double, AnimatablePair<Foo, AnimatablePair<Bar, Baz>>>`
+      * access the value of type `Bar` with `newValue.second.second.first`
 * [Creating a spirograph with SwiftUI](https://www.hackingwithswift.com/books/ios-swiftui/creating-a-spirograph-with-swiftui)
-    * 
+
