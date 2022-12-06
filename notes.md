@@ -1,25 +1,25 @@
-100 Days of Swift
+# 100 Days of Swift
 
 https://www.hackingwithswift.com/100/swiftui
 
-100 days of swift
-2022-11-01 - Days 1-4
-2022-11-02 - Days 5-7.3
-2022-11-03 - Days 7.4-9.1
+## 100 days of swift
+    2022-11-01 - Days 1-4
+    2022-11-02 - Days 5-7.3
+    2022-11-03 - Days 7.4-9.1
 
-100 days of swiftUI
-2022-11-04 Day 10-15
-2022-11-05 Day 16-17
-2022-11-06 Day 18-19
-2022-11-07 Day 20.1-20.3
-2022-11-08 Day 20.4-22
+## 100 days of swiftUI
+    2022-11-04 Day 10-15
+    2022-11-05 Day 16-17
+    2022-11-06 Day 18-19
+    2022-11-07 Day 20.1-20.3
+    2022-11-08 Day 20.4-22
 
 
-Day 16-18 WeSplit
+## Day 16-18 WeSplit
 Form, NavigationView, @State, @FocusState, Picker, TextField, ForEach
 
 
-Day 19 Challenge Day - Unit Converter
+## Day 19 Challenge Day - Unit Converter
 
 Let's do temperature conversion between Celsius, Fahrenheit, and Kelvin
 
@@ -35,44 +35,47 @@ Interface
 
 Technical details
 - Underlying store in celsius or kelvin
-- iOS 15.6
+- iOS 15.5
 - 
 
-Notes
+### Notes
 The instructions strongly suggested I use an array to store the conversion types. I missed that and used an enum. Combining enum with ForEach was  a bit of a yak-shave.
 Foundation Units and Measurement would be a better way to do the conversions.
 I couldn't figure out how to customize Double.formatted(), so I left it as the default with no arguments.
 
 - had to set deployment target to iOS 15.5 because that's what I have downloaded for the simulator
 
-Day 20 Guess the Flag
+## Day 20 Guess the Flag
 HStack, VStack, ZStack, Image, LinearGradient
 
-Day 23 Views and Modifiers
+## Day 23 Views and Modifiers
 
 View composition with
-struct Foo: View { 
-    var body: some View Text("foo") 
-}
+
+    struct Foo: View { 
+        var body: some View Text("foo") 
+    }
 
 View Modifier with
-struct Foo: ViewModifier { 
-    func body(content: c) -> some View { content.clipShape(Capsule()) } 
-}
+
+    struct Foo: ViewModifier { 
+        func body(content: c) -> some View { content.clipShape(Capsule()) } 
+    }
 
 Custom container with
-struct Foo<Content: View>: View {
-    let number: Int
-    let content: (Int) -> Content
-    var body: some View { content(number) }
-}
 
-// use in ContentView body:
-Foo(number: 1) { element in
-    Text(element)
-}
+    struct Foo<Content: View>: View {
+        let number: Int
+        let content: (Int) -> Content
+        var body: some View { content(number) }
+    }
 
-Day 25 Rock Paper Scissors
+    // use in ContentView body:
+    Foo(number: 1) { element in
+        Text(element)
+    }
+
+## Day 25 Rock Paper Scissors
 
 Requirements
 - randomly select win or lose for the first move of the game
@@ -98,47 +101,45 @@ User Interface
 Technical
 - property to store possible moves
 - properties for the app's current choice and win/lose
-- use toggle() to switch win/lose for each turn
+- use `toggle()` to switch win/lose for each turn
 
 How do we calculate which moves are winners and which moves are losers?
 - using the hint to store winning and losing moves in parallel arrays - I might have gone for a dictionary here
-- 
-- 
 
-Day 26 BetterRest
+## Day 26 BetterRest
 Stepper, DatePicker, DateFormatter, CreateML.app
 
-Day 27 BetterRest
+## Day 27 BetterRest
 Stepper, DatePicker, DateFormatter
 
-Day 29 Word Scramble
+## Day 29 Word Scramble
 List, Bundle.main.url(forResource:), UITextChecker, NSRange, NSNotFound
 onAppear(), fatalError()
 
-Day 30 Word Scramble
+## Day 30 Word Scramble
 withAnimation(), .autocapitalization(.none), .onSubmit, fatalError(), .onAppear(perform:)
 
-Day 32 Animations
-implicit animation
-explicit animation
-withAnimation() {}
+## Day 32 Animations
+* implicit animation
+* explicit animation
+* `withAnimation() {}`
 
-Day 33 Animations
-multiple animations, gesture animations, transitions
-.offset, .gesture, DragGesture().onChanged/.onEnded, CGSize.zero
-.transition(.asymmentric ...)
+## Day 33 Animations
+* multiple animations, gesture animations, transitions
+* .offset, .gesture, DragGesture().onChanged/.onEnded, CGSize.zero
+* `.transition(.asymmentric ...)`
 
-Day 34 Update Guess the Flag with Animations
+## Day 34 Update Guess the Flag with Animations
 - TODO: try using transition(.asymmetric) so the flag flips on tap, but cross fades for the next round
 - I used explicit withAnimation{}, but the HWS+ solution used implicit .animation()
 - I subscribed to HWS+
 
-Day 35 Consolidation III - Challenge - Times Tables
+## Day 35 Consolidation III - Challenge - Times Tables
 - select multiplication tables from 2 to 12
 - select how many questions to solve: 5, 10, 20
 - generate questions within the difficulty range
 
-Basic UI
+### Basic UI
 - game setup
     - stepper for highest operand
     - horizontal chooser for number of questions
@@ -155,16 +156,16 @@ Basic UI
     - you got _ of _ correct
     - "Play again" button -> game setup
 
-Day 36 iExpense
-@StateObject, @ObservedObject @EnvironmentObject
-@Published
-.sheet(isPresented:) {}
-ForEach.onDelete(perform:)
-UserDefaults, @AppStorage
-Codable protocol
-IndexSet
+## Day 36 iExpense
+    @StateObject, @ObservedObject @EnvironmentObject
+    @Published
+    .sheet(isPresented:) {}
+    ForEach.onDelete(perform:)
+    UserDefaults, @AppStorage
+    Codable protocol
+    IndexSet
 
-Day 37 iExpense
+## Day 37 iExpense
 * Building a list we can delete from
     * Expenses class
         * ObservableObject protocol
@@ -187,7 +188,7 @@ Day 37 iExpense
     * @Environment(\.dismiss) to access dismiss()
     * make the list items more useful
 
-Day 38 - iExpense Wrap up
+## Day 38 - iExpense Wrap up
 On reading the solution article:
 - I could do the currency code from memory
 - I should make the amount style a View protocol extension because it could be useful in other views for this app.
@@ -199,7 +200,7 @@ On reading the solution article:
     - a separate delete function for each type seems like a code smell
 
 
-Day 39 - Moonshot
+## Day 39 - Moonshot
 GeometryReader, ScrollView, NavigationLink
 * Resizing images to fit the screen using GeometryReader
     * .clipped
@@ -220,7 +221,7 @@ GeometryReader, ScrollView, NavigationLink
     * ScrollView > LazyVGrid(columns: layout) { grid item content }
     * layout: GridItem(.fixed or .adaptive with size constraints)
 
-Day 40 - Moonshot
+## Day 40 - Moonshot
 * Loading a specific kind of Codable data
     * extension Bundle.main.decode(filename)
     * decode() extension returns a fixed type of [String: Astronaut]
@@ -237,7 +238,7 @@ Day 40 - Moonshot
     * .overlay(Shape().stroke()) to create a frame around something
     * make the nav title white by doing ScrollView {}.preferredColorScheme(.dark)
 
-Day 41 - Moonshot
+## Day 41 - Moonshot
 * Showing mission details with ScrollView and GeometryReader
     * use GeometryReader to size mission.image
     * SwiftUI Preview needs
@@ -251,9 +252,9 @@ Day 41 - Moonshot
             * I ended up splitting the .padding(.horizontal) into .padding(.trailing) .background(Color) .clipShape(Capsule()) .padding(.leading) to make the capsule shaped background that I wanted.
 * Finishing up with one last view
 
-Day 42 - Moonshot: Wrap up
+## Day 42 - Moonshot: Wrap up
+
 1. Add the launch date to MissionView, below the mission badge. You might choose to format this differently given that more space is available, but it’s down to you.
-    - 
 2. Extract one or two pieces of view code into their own new SwiftUI views – the horizontal scroll view in MissionView is a great candidate, but if you followed my styling then you could also move the Rectangle dividers out too.
     - crew members view
 3. For a tough challenge, add a toolbar item to ContentView that toggles between showing missions as a grid and as a list.
@@ -264,7 +265,7 @@ Day 42 - Moonshot: Wrap up
     - there is still lots of redundancy between the two views
     - early on I considered just making the gridItem 100% wide to act like a list row. maybe that's the easy way to get the translation animation to work
 
-Day 43 - 9.1 Drawing
+## Day 43 - 9.1 Drawing
 * Drawing: Introduction
 * Creating custom paths with SwiftUI
     * Path { path in }
