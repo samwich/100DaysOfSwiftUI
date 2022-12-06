@@ -284,25 +284,24 @@ Day 43 - 9.1 Drawing
     * .strokeBorder() draws the line offset so that it is contained within the shape and does not leave the shape's border
         * available when something conforms to the InsettableShape protocol
 
-Day 44 - 9.2 Drawing
+## Day 44 - 9.2 Drawing
 * Transforming shapes using CGAffineTransform and even-odd fills
-    * stride(from: to: by:)
-    * CGAffineTransform(rotationAngle:, translationX:, y: )
-    * FillStyle(eoFill: true)
+    * `stride(from: to: by:)`
+    * `CGAffineTransform(rotationAngle:, translationX:, y: )`
+    * `FillStyle(eoFill: true)`
 * Creative borders and fills using ImagePaint
-    * ImagePaint(image: scale:)
-    * works as background, stroke, border, fill
+    * `ImagePaint(image: scale:)`
+    * works as `background`, `stroke`, `border`, `fill`
 * Enabling high-performance Metal rendering with drawingGroup()
-    * drawingGroup() modifier
+    * `drawingGroup()` modifier
 
-Day 45 - 9.3 Drawing
-* Special effects in SwiftUI: blurs, blending, and more
+## Day 45 - 9.3 Drawing
+* [Special effects in SwiftUI: blurs, blending, and more](https://www.hackingwithswift.com/books/ios-swiftui/special-effects-in-swiftui-blurs-blending-and-more)
+    * an `Image` and `shape.fill(.red).blendMode(.multiply)` in a `VSTack` is equivalent to just `image.colorMultiply(.red)`
     * 
-* Animating simple shapes with animatableData
+* [Animating simple shapes with animatableData](https://www.hackingwithswift.com/books/ios-swiftui/animating-simple-shapes-with-animatabledata)
     * 
-* Animating complex shapes with AnimatablePair
+* [Animating complex shapes with AnimatablePair](https://www.hackingwithswift.com/books/ios-swiftui/animating-complex-shapes-with-animatablepair)
     * 
-* Creating a spirograph with SwiftUI
+* [Creating a spirograph with SwiftUI](https://www.hackingwithswift.com/books/ios-swiftui/creating-a-spirograph-with-swiftui)
     * 
-
-
