@@ -327,5 +327,5 @@ GeometryReader, ScrollView, NavigationLink
 2. Make the line thickness of your Arrow shape animatable.
     * Make `insetAmount` available via `animatableData` property.
 3. Create a ColorCyclingRectangle shape that is the rectangular cousin of ColorCyclingCircle, allowing us to control the position of the gradient using one or more properties.
-    * x
-
+    * Just copy `ColorCyclingCircle` and replace `Circle` with `Rectangle`
+    * Make `LinearGradient` startPoint and endPoint controllable.

@@ -10,6 +10,7 @@ import SwiftUI
 struct ColorCyclingRectangle: View {
     var amount = 0.0
     var steps = 100
+    var gradientOriginX: Double
     
     var body: some View {
         ZStack {
@@ -20,10 +21,10 @@ struct ColorCyclingRectangle: View {
                         LinearGradient(
                             colors: [
                                 color(for: value, brightness: 1),
-                                color(for: value, brightness: 0.3)
+                                color(for: value, brightness: 0.2)
                             ],
-                            startPoint: .top,
-                            endPoint: .bottom
+                            startPoint: UnitPoint(x: gradientOriginX, y: 0.0),
+                            endPoint: UnitPoint(x: 1.0 - gradientOriginX, y: 1.0)
                         ),
                         lineWidth: 2
                     )
@@ -76,9 +77,8 @@ struct Arrow: InsettableShape {
 }
 
 struct ContentView: View {
-    @State private var rows = 4
-    @State private var columns = 4
     @State private var arrowBorderWidth: CGFloat = 20
+    @State private var rectangleGradientX = 0.5
 
     var body: some View {
         VStack {
@@ -88,12 +88,19 @@ struct ContentView: View {
                     style: StrokeStyle(lineWidth: arrowBorderWidth, lineCap: .round, lineJoin: .round)
                 )
                 .padding()
+
+            Text(arrowBorderWidth.formatted())
             Button("Change Border") {
                 withAnimation {
                     arrowBorderWidth = arrowBorderWidth == 20.0 ? 50.0 : 20.0
                 }
             }
-            ColorCyclingRectangle()
+
+            ColorCyclingRectangle(gradientOriginX: rectangleGradientX)
+                .padding()
+
+            Text(rectangleGradientX.formatted())
+            Slider(value: $rectangleGradientX)
                 .padding()
         }
     }
