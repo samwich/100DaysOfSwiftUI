@@ -7,37 +7,40 @@
 
 import SwiftUI
 
-struct Checkerboard: Shape {
-    var rows: Int
-    var columns: Int
+struct ColorCyclingRectangle: View {
+    var amount = 0.0
+    var steps = 100
     
-    var animatableData: AnimatablePair<Double, Double> {
-        get { AnimatablePair(Double(rows), Double(columns)) }
-        set {
-            rows = Int(newValue.first)
-            columns = Int(newValue.second)
-        }
-    }
-    
-    func path(in rect: CGRect) -> Path {
-        var path = Path()
-        
-        let rowSize = rect.height / Double(rows)
-        let columnSize = rect.width / Double(columns)
-        
-        for row in 0..<rows {
-            for column in 0..<columns {
-                if (row + column).isMultiple(of: 2) {
-                    let startX = columnSize * Double(column)
-                    let startY = rowSize * Double(row)
-                    
-                    let rect = CGRect(x: startX, y: startY, width: columnSize, height: rowSize)
-                    path.addRect(rect)
-                }
+    var body: some View {
+        ZStack {
+            ForEach(0..<steps) { value in
+                Circle()
+                    .inset(by: Double(value))
+                //                    .strokeBorder(color(for: value, brightness: 1), lineWidth: 2)
+                    .strokeBorder(
+                        LinearGradient(
+                            colors: [
+                                color(for: value, brightness: 1),
+                                color(for: value, brightness: 0.3)
+                            ],
+                            startPoint: .top,
+                            endPoint: .bottom
+                        ),
+                        lineWidth: 2
+                    )
             }
         }
+        .drawingGroup()
+    }
+    
+    func color(for value: Int, brightness: Double) -> Color {
+        var targetHue = Double(value) / Double(steps) + amount
         
-        return path
+        if targetHue > 1 {
+            targetHue -= 1
+        }
+        
+        return Color(hue: targetHue, saturation: 1, brightness: brightness)
     }
 }
 
@@ -91,13 +94,7 @@ struct ContentView: View {
                     arrowBorderWidth = arrowBorderWidth == 20.0 ? 50.0 : 20.0
                 }
             }
-            Checkerboard(rows: rows, columns: columns)
-                .onTapGesture {
-                    withAnimation(.linear(duration: 3)) {
-                        rows = 8
-                        columns = 16
-                    }
-            }
+            ColorCyclingRectangle()
         }
     }
 }
