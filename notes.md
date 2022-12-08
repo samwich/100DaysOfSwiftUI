@@ -313,3 +313,19 @@ GeometryReader, ScrollView, NavigationLink
       * access the value of type `Bar` with `newValue.second.second.first`
 * [Creating a spirograph with SwiftUI](https://www.hackingwithswift.com/books/ios-swiftui/creating-a-spirograph-with-swiftui)
 
+## Day 46 - 9.4 Drawing: Wrap up
+
+2022-12-08
+
+### Challenge - Draw an Arrow
+
+1. Create an Arrow shape – having it point straight up is fine. This could be a rectangle/triangle-style arrow, or perhaps three lines, or maybe something else depending on what kind of arrow you want to draw.
+    * `struct Arrow: Shape`
+    * Draw a triangle and rectangle using `Path`
+    * Conform to `InsettableShape` with `inset(by:)`
+    * Maybe I should be using a `GeometryReader` instead of calculalting things manually?
+2. Make the line thickness of your Arrow shape animatable.
+    * Make `insetAmount` available via `animatableData` property.
+3. Create a ColorCyclingRectangle shape that is the rectangular cousin of ColorCyclingCircle, allowing us to control the position of the gradient using one or more properties.
+    * x
+
