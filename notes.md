@@ -329,3 +329,30 @@ GeometryReader, ScrollView, NavigationLink
 3. Create a ColorCyclingRectangle shape that is the rectangular cousin of ColorCyclingCircle, allowing us to control the position of the gradient using one or more properties.
     * Just copy `ColorCyclingCircle` and replace `Circle` with `Rectangle`
     * Make `LinearGradient` startPoint and endPoint controllable.
+
+## Day 47
+- [What you learned](https://www.hackingwithswift.com/guide/ios-swiftui/4/1/what-you-learned)
+- [Key points](https://www.hackingwithswift.com/guide/ios-swiftui/4/2/key-points)
+- [Challenge](https://www.hackingwithswift.com/guide/ios-swiftui/4/3/challenge)
+
+### There should be:
+- (p1) a list of all activities they want to track, 
+  - (p2) tapping one of the activities should show a detail screen with the description
+    - (p2) make that detail screen contain how many times they have completed it, 
+    - (p2) plus a button incrementing their completion count
+- (p1) plus a form to add new activities – 
+  - a title and 
+  - description should be enough
+- (p3) use Codable and UserDefaults to load and save all your data
+
+### UI
+- `NavigationView`
+  - `ScrollView`
+    - list of activities
+      - activity row view
+        - activity name
+        - `NavigationLink` to activity detail view
+  - `sheet` for new activities
+    - name
+    - description
+    - done button
