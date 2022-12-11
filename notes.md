@@ -356,3 +356,11 @@ GeometryReader, ScrollView, NavigationLink
     - name
     - description
     - done button
+
+### Data
+- struct Activity
+  - name
+  - description
+  - completionCount
+- class Activities
+  - activities: [Activity]
