@@ -14,17 +14,9 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             ScrollView {
-                NavigationLink {
-                    Text("Brush teeth detail")
-                    Text("You've completed Brush teeth 0 times.")
-                    Button("I did it!") {}
-                } label: {
-                    Text("placeholder Brush teeth")
-                        .font(.headline)
-                }
                 ForEach(activities.items) { item in
                     NavigationLink {
-                        ActivityDetailView(activity: item)
+                        ActivityDetailView(activity: item, activities: activities)
                     } label: {
                         Text(item.name)
                             .font(.headline)
