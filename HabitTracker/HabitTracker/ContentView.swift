@@ -19,18 +19,8 @@ struct ContentView: View {
                     Text("You've completed Brush teeth 0 times.")
                     Button("I did it!") {}
                 } label: {
-                    Text("Brush teeth")
+                    Text("placeholder Brush teeth")
                         .font(.headline)
-                }
-                NavigationLink {
-                    Text("item detail!")
-                } label: {
-                    Text("Exercise")
-                }
-                NavigationLink {
-                    Text("item detail!")
-                } label: {
-                    Text("Drink water")
                 }
                 ForEach(activities.items) { item in
                     NavigationLink {

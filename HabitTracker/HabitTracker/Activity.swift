@@ -12,4 +12,8 @@ struct Activity: Identifiable {
     let name: String
     let description: String
     var completionCount = 0
+    
+    mutating func iDidIt() {
+        completionCount += 1
+    }
 }

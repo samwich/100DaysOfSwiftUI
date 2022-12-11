@@ -14,9 +14,9 @@ struct ActivityDetailView: View {
         VStack {
             Text(activity.name)
             Text(activity.description)
-            Text(activity.completionCount.formatted())
+            Text("You've completed \(activity.name) \(activity.completionCount.formatted()) times.")
             Button("I did it!") {
-                activity.completionCount += 1
+                activity.iDidIt()
             }
         }
     }
