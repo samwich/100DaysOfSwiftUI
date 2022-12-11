@@ -346,21 +346,32 @@ GeometryReader, ScrollView, NavigationLink
 - (p3) use Codable and UserDefaults to load and save all your data
 
 ### UI
-- `NavigationView`
-  - `ScrollView`
-    - list of activities
-      - activity row view
-        - activity name
-        - `NavigationLink` to activity detail view
-  - `sheet` for new activities
-    - name
-    - description
-    - done button
+- `ContentView`
+  - `@StateObject` `Activities()`
+  - `@State` `sheetIsShowing`
+  - `NavigationView`
+    - `ScrollView`
+      - `ForEach` of activities
+        - activity row view
+          - activity name
+          - `NavigationLink` to activity detail view
+    - `sheet` for new activities
+      - name
+      - description
+      - done button
 
 ### Data
-- struct Activity
-  - name
-  - description
-  - completionCount
-- class Activities
-  - activities: [Activity]
+- `struct` Activity
+  - fields
+    - name
+    - description
+    - completionCount
+  - protocols
+    - `Identifiable` for `ForEach`
+    - `Equatable` for `indexOf(at:)`
+    - `Codable` for storing in `UserDefaults`
+- `class` Activities
+  - fields
+    - activities: `[Activity]`
+  - protocols
+    - `ObservableObject` for `@StateObject`/`@ObservedObject` and `@Published`
