@@ -418,5 +418,9 @@ GeometryReader, ScrollView, NavigationLink
   - `Section.disabled {order.hasValidAddress == false}`
   - SwiftUI Preview of a subview: Add `NavigationView` to make `navigationTitle` display
 - Preparing for checkout
-  - 
+  - set the cupcake price by position in the type array
+  - `CheckoutView`
+    - The image is 699 pixels tall so that it can be evenly divided by 3.
+    - Reserve some space for the image so the layout doesn't jump around when replacing the placeholder ProgressView
+      - `AsyncImage(url:, scale: 3).frame(height:233)`
 
