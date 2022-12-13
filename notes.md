@@ -388,7 +388,13 @@ GeometryReader, ScrollView, NavigationLink
     - `enum CodingKeys: CodingKey { case name }`
     - `required init(from decoder: Decoder)`
     - `func encode(to encoder: Encoder)`
-- Sending and receiving Codable data with URLSession and SwiftUI
+- [Sending and receiving Codable data with URLSession and SwiftUI](https://www.hackingwithswift.com/books/ios-swiftui/sending-and-receiving-codable-data-with-urlsession-and-swiftui)
+  - async/await
+  - `.task {}` view modifier
+  - loadData()
+    - build URL with `URL(string:)`
+    - fetch `(data, _)` with `try await URLSession.shared.data(from:)`
+    - decode with `JSONDecoder`
 - Loading an image from a remote server
 - Validating and disabling forms
 
