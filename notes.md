@@ -395,6 +395,15 @@ GeometryReader, ScrollView, NavigationLink
     - build URL with `URL(string:)`
     - fetch `(data, _)` with `try await URLSession.shared.data(from:)`
     - decode with `JSONDecoder`
-- Loading an image from a remote server
-- Validating and disabling forms
+- [Loading an image from a remote server](https://www.hackingwithswift.com/books/ios-swiftui/loading-an-image-from-a-remote-server)
+  - You can't apply view modifiers to an `AsyncImage`. Instead, apply them in the `content` closure.
+  - `AsyncImage(url:)`
+  - `AsyncImage(url:, scale:)`
+  - `AsyncImage(url:, content:, placeholder:) { image in } placeholder: {}`
+  - `AsyncImage(url:, scale:, transaction:, content:) { phase in }`
+    - `phase.image`
+    - `phase.error`
+  - `ProgressView()` animated progress indicator
+- [Validating and disabling forms]()
+  - 
 
