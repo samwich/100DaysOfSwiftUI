@@ -8,38 +8,22 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var username = ""
+    @State private var email = ""
 
     var body: some View {
-        VStack {
-            Text("logo.png")
-                .font(.title)
-
-            AsyncImage(url: URL(string: "https://hws.dev/img/logo.png")) { image in
-                image
-                    .resizable()
-                    .scaledToFit()
-            } placeholder: {
-                ProgressView()
+        Form {
+            Section {
+                TextField("Username", text: $username)
+                TextField("Email", text: $email)
             }
-            .frame(width: 200, height: 200)
             
-            Divider()
-            
-            Text("bad.png")
-                .font(.title)
-
-            AsyncImage(url: URL(string: "https://hws.dev/img/bad.png")) { phase in
-                if let image = phase.image {
-                    image
-                        .resizable()
-                        .scaledToFit()
-                } else if phase.error != nil {
-                    Text("There was an error loading the image.")
-                } else {
-                    ProgressView()
+            Section {
+                Button("Create account") {
+                    print("Creating account…")
                 }
             }
-            .frame(width: 200, height: 200)
+            .disabled(username.isEmpty || email.isEmpty)
         }
     }
 }

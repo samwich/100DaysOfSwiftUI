@@ -404,6 +404,6 @@ GeometryReader, ScrollView, NavigationLink
     - `phase.image`
     - `phase.error`
   - `ProgressView()` animated progress indicator
-- [Validating and disabling forms]()
-  - 
+- [Validating and disabling forms](https://www.hackingwithswift.com/books/ios-swiftui/validating-and-disabling-forms)
+  - Apply `.disabled(Bool)` view modifier to `Button()`
 
