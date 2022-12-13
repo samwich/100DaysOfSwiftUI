@@ -414,7 +414,9 @@ GeometryReader, ScrollView, NavigationLink
     - `$`binding -> `@Published` property -> `.animation()` implicit view modifier
   - use computed property with `didSet` to reset sprinkles and frosting when turning off specialRequest
 - Checking for a valid address
-  - 
+  - `Order#hasValidAddress: Bool`
+  - `Section.disabled {order.hasValidAddress == false}`
+  - SwiftUI Preview of a subview: Add `NavigationView` to make `navigationTitle` display
 - Preparing for checkout
   - 
 
