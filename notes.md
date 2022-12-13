@@ -382,7 +382,12 @@ GeometryReader, ScrollView, NavigationLink
 `Codable`, `URLSession`, `disabled()` modifier
 
 - Cupcake Corner: Introduction
-- Adding Codable conformance for @Published properties
+- [Adding Codable conformance for @Published properties](https://www.hackingwithswift.com/books/ios-swiftui/adding-codable-conformance-for-published-properties)
+  - `Codable` doesn't automatically support property wrappers
+  - to conform to `Codable`
+    - `enum CodingKeys: CodingKey { case name }`
+    - `required init(from decoder: Decoder)`
+    - `func encode(to encoder: Encoder)`
 - Sending and receiving Codable data with URLSession and SwiftUI
 - Loading an image from a remote server
 - Validating and disabling forms
