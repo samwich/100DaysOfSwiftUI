@@ -375,3 +375,15 @@ GeometryReader, ScrollView, NavigationLink
     - activities: `[Activity]`
   - protocols
     - `ObservableObject` for `@StateObject`/`@ObservedObject` and `@Published`
+
+
+## Day 49 - Project 10 Part 1 - Cupcake Corner
+
+`Codable`, `URLSession`, `disabled()` modifier
+
+- Cupcake Corner: Introduction
+- Adding Codable conformance for @Published properties
+- Sending and receiving Codable data with URLSession and SwiftUI
+- Loading an image from a remote server
+- Validating and disabling forms
+
