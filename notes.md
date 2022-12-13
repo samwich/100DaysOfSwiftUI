@@ -407,3 +407,14 @@ GeometryReader, ScrollView, NavigationLink
 - [Validating and disabling forms](https://www.hackingwithswift.com/books/ios-swiftui/validating-and-disabling-forms)
   - Apply `.disabled(Bool)` view modifier to `Button()`
 
+## [Day 50 - Project 10 Part 2 - Cupcake Corner](https://www.hackingwithswift.com/100/swiftui/50)
+- Taking basic order details
+  - `class Order: ObservableObject`
+  - `$order.specialRequestEnabled.animation()`
+    - `$`binding -> `@Published` property -> `.animation()` implicit view modifier
+  - use computed property with `didSet` to reset sprinkles and frosting when turning off specialRequest
+- Checking for a valid address
+  - 
+- Preparing for checkout
+  - 
+
