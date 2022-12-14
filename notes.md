@@ -432,3 +432,14 @@ GeometryReader, ScrollView, NavigationLink
     - `required init(from:)`
   - and then we don't get to use the struct-synthesized initializer because we've definied our own, so we make an empty `init() {}`
 - Sending and receiving orders over the internet
+  - `func placeOrder() async …`
+  - `Button()` can't directly execute an async function
+  - so we make a detatched(?) `Task`
+    - `Button("…") { Task { await placeOrder() } }`
+  - `placeOrder()`
+    - `URLRequest`
+      - `.setValue()`
+      - `.httpMethod`
+    - `URLSession.shared.upload(for:from:)`
+    - decode the response
+    - update confirmation method and show alert
