@@ -12,6 +12,7 @@ struct CheckoutView: View {
     
     @State private var confirmationMessage = ""
     @State private var showingConfirmation = false
+    @State private var showingOrderError = false
     
     var body: some View {
         ScrollView {
@@ -43,6 +44,11 @@ struct CheckoutView: View {
         } message: {
             Text(confirmationMessage)
         }
+        .alert("Order error.", isPresented: $showingOrderError) {
+            Button("OK") {}
+        } message: {
+            Text("There was a network or server error while placing your order.")
+        }
     }
     
     func placeOrder() async {
@@ -54,7 +60,7 @@ struct CheckoutView: View {
         let url = URL(string: "https://reqres.in/api/cupcakes")!
         var request = URLRequest(url: url)
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.httpMethod = "POST"
+//        request.httpMethod = "POST"
         
         do {
             let (data, _) = try await URLSession.shared.upload(for: request, from: encoded)
@@ -63,6 +69,7 @@ struct CheckoutView: View {
             showingConfirmation = true
         } catch {
             print("Checkout failed.")
+            showingOrderError = true
         }
     }
 }

@@ -451,4 +451,6 @@ GeometryReader, ScrollView, NavigationLink
      - DRY up the big boolean expression by looping over the fields and applying the same test to each one
        - This loop might not be as fast as a boolean expression, but the loop is less error-prone for this validation.
   2. Show an alert if our call to `placeOrder()` fails.
+     - add an alert()
+     - put `showingOrderError = true` in the `catch` block
   3. Convert `Order` to a `struct` and wrap it in an `ObservableObject` `class`. This will make `Codable` conformance simpler.
