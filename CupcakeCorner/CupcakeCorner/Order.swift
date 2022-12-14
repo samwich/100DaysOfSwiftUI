@@ -7,17 +7,27 @@
 
 import Foundation
 
+@dynamicMemberLookup
 class OrderWrapper: ObservableObject {
+    static let types = ["Vanilla", "Strawberry", "Chocolate", "Rainbow"]
     @Published var order = Order()
+    
+    subscript<T>(dynamicMember keyPath: KeyPath<Order, T>) -> T {
+        order[keyPath: keyPath]
+    }
+    
+    subscript<T>(dynamicMember keyPath: WritableKeyPath<Order, T>) -> T {
+        get {
+            order[keyPath: keyPath]
+        }
+        
+        set {
+            order[keyPath: keyPath] = newValue
+        }
+    }
 }
 
 struct Order: Codable {
-//    enum CodingKeys: CodingKey {
-//        case type, quantity, extraFrosting, addSprinkles, name, streetAddress, city, zip
-//    }
-    
-    static let types = ["Vanilla", "Strawberry", "Chocolate", "Rainbow"]
-    
     var type = 0
     var quantity = 3
 

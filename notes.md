@@ -455,3 +455,7 @@ GeometryReader, ScrollView, NavigationLink
      - put `showingOrderError = true` in the `catch` block
   3. Convert `Order` to a `struct` and wrap it in an `ObservableObject` `class`. This will make `Codable` conformance simpler.
       - `Codable` conformance is much easier, but now every View has to know about OrderWrapper's implementation.
+- HWS+ Solutions:
+  - Print the URLSession error in the catch block
+  - use `@dynamicMemberLookup` with `subscript()` implementations to get rid of all of the `orderWrapper.order.` business. It reminds me of Ruby's `method_missing()`.
+  - KeyPath finally pays off

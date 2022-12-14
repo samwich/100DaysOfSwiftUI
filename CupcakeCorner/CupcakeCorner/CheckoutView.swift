@@ -12,6 +12,7 @@ struct CheckoutView: View {
     
     @State private var confirmationMessage = ""
     @State private var showingConfirmation = false
+    @State private var errorMessage = ""
     @State private var showingOrderError = false
     
     var body: some View {
@@ -26,7 +27,7 @@ struct CheckoutView: View {
                 }
                 .frame(height: 233)
                 
-                Text("Your total is \(orderWrapper.order.cost, format: .currency(code: "USD"))")
+                Text("Your total is \(orderWrapper.cost, format: .currency(code: "USD"))")
                     .font(.title)
                 
                 Button("Place Order") {
@@ -47,7 +48,7 @@ struct CheckoutView: View {
         .alert("Order error.", isPresented: $showingOrderError) {
             Button("OK") {}
         } message: {
-            Text("There was a network or server error while placing your order.")
+            Text(errorMessage)
         }
     }
     
@@ -65,10 +66,10 @@ struct CheckoutView: View {
         do {
             let (data, _) = try await URLSession.shared.upload(for: request, from: encoded)
             let decodedOrder = try JSONDecoder().decode(Order.self, from: data)
-            confirmationMessage = "Your order for \(decodedOrder.quantity)x \(Order.types[decodedOrder.type].lowercased()) cupcakes is on its way!"
+            confirmationMessage = "Your order for \(decodedOrder.quantity)x \(OrderWrapper.types[decodedOrder.type].lowercased()) cupcakes is on its way!"
             showingConfirmation = true
         } catch {
-            print("Checkout failed.")
+            errorMessage = "Checkout failed.\n\nMessage:\(error.localizedDescription)"
             showingOrderError = true
         }
     }
