@@ -443,3 +443,12 @@ GeometryReader, ScrollView, NavigationLink
     - `URLSession.shared.upload(for:from:)`
     - decode the response
     - update confirmation method and show alert
+
+## [Day 52 - Project 10 part 4 - Cupcake Corner: Wrap up](https://www.hackingwithswift.com/books/ios-swiftui/cupcake-corner-wrap-up)
+- Challenge
+  1. Improve the address validation to make sure a string of pure whitespace is invalid.
+     - `.trimmingCharacters(in: .whitespaces)`
+     - DRY up the big boolean expression by looping over the fields and applying the same test to each one
+       - This loop might not be as fast as a boolean expression, but the loop is less error-prone for this validation.
+  2. Show an alert if our call to `placeOrder()` fails.
+  3. Convert `Order` to a `struct` and wrap it in an `ObservableObject` `class`. This will make `Codable` conformance simpler.
