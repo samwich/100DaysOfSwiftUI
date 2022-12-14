@@ -424,3 +424,11 @@ GeometryReader, ScrollView, NavigationLink
     - Reserve some space for the image so the layout doesn't jump around when replacing the placeholder ProgressView
       - `AsyncImage(url:, scale: 3).frame(height:233)`
 
+## [Day 51 – Project 10 part 3 - Cupcake Corner](https://www.hackingwithswift.com/100/swiftui/51)
+- Encoding an ObservableObject class
+  - `Codable` protocol wants definitions for
+    - `enum Foo: CodingKey`
+    - `encode(to:)`
+    - `required init(from:)`
+  - and then we don't get to use the struct-synthesized initializer because we've definied our own, so we make an empty `init() {}`
+- Sending and receiving orders over the internet
