@@ -470,3 +470,15 @@ GeometryReader, ScrollView, NavigationLink
   - `@AppStorage` wrapper - is backed by `UserDefaults`
   - `TextEditor(text:)`
 - How to combine Core Data and SwiftUI
+  - `DataController: ObservableObject`
+    - `NSPersistentContainer(name:)` persists data for the given model
+    - `init() { container.loadPersistentStores }`
+  - `BookwormApp: App`
+    - `@StateObject private var dataController = DataController()` instantiate controller
+    - `ContentView().environment(\.managedObjectContext, dataController.container.viewContext)` make it available to the main view
+  - `ContentView: View`
+    - `@Environment(\.managedObjectContext) var moc` provides a way to operate on the managed objects (ie `moc.save()`)
+    - `@FetchRequest(sortDescriptors: []) var students: FetchedResults<Student>` makes data from Student model available
+    - properties of `student` are all optional, so we'll do a bunch of nil coalescing for now
+    - 
+
