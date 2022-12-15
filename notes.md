@@ -459,3 +459,12 @@ GeometryReader, ScrollView, NavigationLink
   - Print the URLSession error in the catch block
   - use `@dynamicMemberLookup` with `subscript()` implementations to get rid of all of the `orderWrapper.order.` business. It reminds me of Ruby's `method_missing()`.
   - KeyPath finally pays off
+
+## [Day 53 - Project 11 part 1 - Bookworm](https://www.hackingwithswift.com/100/swiftui/53)
+- Bookworm: Introduction
+- Creating a custom component with @Binding
+  - [JARED SINCLAIR - When Should I Use @State, @Binding, @ObservedObject, @EnvironmentObject, or @Environment?](https://jaredsinclair.com/2020/05/07/swiftui-cheat-sheet.html)
+  - Use `@State` when your view needs to mutate one of its own properties.
+  - Use `@Binding` when your view needs to mutate a property owned by an ancestor view, or owned by an observable object that an ancestor has a reference to.
+- Accepting multi-line text input with TextEditor
+- How to combine Core Data and SwiftUI
