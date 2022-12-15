@@ -467,4 +467,6 @@ GeometryReader, ScrollView, NavigationLink
   - Use `@State` when your view needs to mutate one of its own properties.
   - Use `@Binding` when your view needs to mutate a property owned by an ancestor view, or owned by an observable object that an ancestor has a reference to.
 - Accepting multi-line text input with TextEditor
+  - `@AppStorage` wrapper - is backed by `UserDefaults`
+  - `TextEditor(text:)`
 - How to combine Core Data and SwiftUI
