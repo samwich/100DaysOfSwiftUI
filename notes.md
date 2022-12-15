@@ -482,3 +482,10 @@ GeometryReader, ScrollView, NavigationLink
     - properties of `student` are all optional, so we'll do a bunch of nil coalescing for now
     - 
 
+## [Day 54 - Project 11, part 2 - Bookworm](https://www.hackingwithswift.com/100/swiftui/54)
+- Creating books with Core Data
+  - `let newBook = Book(context: moc)` create a new instance of the model
+  - then set its properties
+  - then save it with `moc.save()`
+- Adding a custom star rating component
+- Building a list with @FetchRequest

@@ -13,6 +13,7 @@
 		2225914F294AA6080045D2FF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2225914E294AA6080045D2FF /* Preview Assets.xcassets */; };
 		22B2531A294AB6EC0084ADC4 /* Bookworm.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 22B25318294AB6EC0084ADC4 /* Bookworm.xcdatamodeld */; };
 		22B2531C294AB73B0084ADC4 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B2531B294AB73B0084ADC4 /* DataController.swift */; };
+		22B2531E294AC5E10084ADC4 /* AddBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B2531D294AC5E10084ADC4 /* AddBookView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		2225914E294AA6080045D2FF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		22B25319294AB6EC0084ADC4 /* Bookworm.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Bookworm.xcdatamodel; sourceTree = "<group>"; };
 		22B2531B294AB73B0084ADC4 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		22B2531D294AC5E10084ADC4 /* AddBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 				22259147294AA6080045D2FF /* BookwormApp.swift */,
 				22B2531B294AB73B0084ADC4 /* DataController.swift */,
 				22259149294AA6080045D2FF /* ContentView.swift */,
+				22B2531D294AC5E10084ADC4 /* AddBookView.swift */,
 				22B25318294AB6EC0084ADC4 /* Bookworm.xcdatamodeld */,
 				2225914B294AA6080045D2FF /* Assets.xcassets */,
 				2225914D294AA6080045D2FF /* Preview Content */,
@@ -147,6 +150,7 @@
 				22B2531C294AB73B0084ADC4 /* DataController.swift in Sources */,
 				22B2531A294AB6EC0084ADC4 /* Bookworm.xcdatamodeld in Sources */,
 				22259148294AA6080045D2FF /* BookwormApp.swift in Sources */,
+				22B2531E294AC5E10084ADC4 /* AddBookView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
