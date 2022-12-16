@@ -497,4 +497,10 @@ GeometryReader, ScrollView, NavigationLink
     - it only supports custom rating emojis for 1-5, higher than 5 just shows the 5th emoji
     - it should be initialized with an take an array of emojis so it can support any rating value
   - CoreData objects conform to `Identifiable`
-  - 
+
+## [Day 55 - Project 11, part 3 - Bookworm](https://www.hackingwithswift.com/100/swiftui/55)
+- Showing book details
+  - use `.constant()` to make the `RatingView` read-only
+- Sorting fetch requests with SortDescriptor
+- Deleting from a Core Data fetch request
+- Using an alert to pop a NavigationLink programmatically
