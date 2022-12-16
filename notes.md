@@ -488,4 +488,7 @@ GeometryReader, ScrollView, NavigationLink
   - then set its properties
   - then save it with `moc.save()`
 - Adding a custom star rating component
+  - `RatingView` w/ `@Binding` for the rating value
+  - Tell the previews to use a static value with `.constant(4)`
+  - we create an image function to calculate the image shape for each star, but we put the color logic inline in the .foregroundColor(…) 🤷
 - Building a list with @FetchRequest
