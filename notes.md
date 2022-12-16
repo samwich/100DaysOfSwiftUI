@@ -502,5 +502,6 @@ GeometryReader, ScrollView, NavigationLink
 - Showing book details
   - use `.constant()` to make the `RatingView` read-only
 - Sorting fetch requests with SortDescriptor
+  - `SortDescriptor(\.title, order: .reverse)`
 - Deleting from a Core Data fetch request
 - Using an alert to pop a NavigationLink programmatically
