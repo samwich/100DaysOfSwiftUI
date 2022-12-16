@@ -504,4 +504,7 @@ GeometryReader, ScrollView, NavigationLink
 - Sorting fetch requests with SortDescriptor
   - `SortDescriptor(\.title, order: .reverse)`
 - Deleting from a Core Data fetch request
+  - `ForEach {}` `.onDelete(perform:)`
+  - `managedObjectContext.delete(book)`
+  - `managedObjectContext.save()`
 - Using an alert to pop a NavigationLink programmatically
