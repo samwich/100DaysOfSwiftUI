@@ -50,14 +50,29 @@ struct AddBookView: View {
                         newBook.rating = Int16(rating)
                         newBook.genre = genre
                         newBook.review = review
+                        newBook.date = Date.now
                         
                         try? moc.save()
                         dismiss()
                     }
                 }
+                .disabled(!bookIsValid)
             }
             .navigationTitle("Add Book")
         }
+    }
+    
+    var bookIsValid: Bool {
+        
+        let fields = [title, author, genre]
+        
+        for field in fields {
+            if field.trimmingCharacters(in: .whitespaces).isEmpty {
+                return false
+            }
+        }
+        
+        return true
     }
 }
 

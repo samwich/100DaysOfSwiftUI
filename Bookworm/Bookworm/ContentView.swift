@@ -29,6 +29,7 @@ struct ContentView: View {
                             VStack(alignment: .leading) {
                                 Text(book.title ?? "Unknown Title")
                                     .font(.headline)
+                                    .foregroundColor(book.rating == 1 ? .red : .primary)
                                 Text(book.author ?? "Unknown Author")
                                     .font(.headline)
                             }
@@ -62,7 +63,7 @@ struct ContentView: View {
             let book = books[offset]
             moc.delete(book)
             
-//            try? moc.save()
+            try? moc.save()
         }
     }
 }

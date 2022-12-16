@@ -40,6 +40,9 @@ struct DetailView: View {
             
             RatingView(rating: .constant(Int(book.rating)))
                 .font(.largeTitle)
+            
+            Text(book.date == nil ? "" : "Rated on \(book.date?.formatted(date: .abbreviated, time: .omitted) ?? "unknown date") at \(book.date?.formatted(date: .omitted, time: .shortened) ?? "unknown time").")
+                .font(.caption)
 
         }
         .navigationTitle(book.title ?? "Unknown Book")
@@ -61,7 +64,7 @@ struct DetailView: View {
     
     func deleteBook() {
         moc.delete(book)
-//        try? moc.save()
+        try? moc.save()
         dismiss()
     }
 }

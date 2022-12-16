@@ -512,3 +512,14 @@ GeometryReader, ScrollView, NavigationLink
   - Use the `@Environment` wrapper to include `\.dismiss` and `.managedObjectContext` in `DetailView`
   - `.alert` buttons with roles `.destructive` and `.cancel`
   - put a trash icon in the toolbar
+
+## [Day 6 - Project 11, part 4 - Bookworm](https://www.hackingwithswift.com/100/swiftui/56)
+- our custom view doesn't support accessibility features
+- Right now it’s possible to select no title, author, or genre for books, which causes a problem for the detail view. Please fix this, either by forcing defaults, validating the form, or showing a default picture for unknown genres – you can choose.
+  - I'm putting the validation logic in `AddBookView`, like we did with CupcakeCorner.
+  - I think the validation should live with the data: In the core data model itself, or in some kind of controller.
+- Modify ContentView so that books rated as 1 star are highlighted somehow, such as having their name shown in red.
+  - tried to add a `LinearGradient` to the list item using a `ZStack`, but I couldn't get it to cover the whole background.
+- Add a new “date” attribute to the Book entity, assigning Date.now to it so it gets the current date and time, then format that nicely somewhere in DetailView.
+  - might be nicer to make this "days/weeks/months/years ago"
+
