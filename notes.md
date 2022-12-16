@@ -492,3 +492,9 @@ GeometryReader, ScrollView, NavigationLink
   - Tell the previews to use a static value with `.constant(4)`
   - we create an image function to calculate the image shape for each star, but we put the color logic inline in the .foregroundColor(…) 🤷
 - Building a list with @FetchRequest
+  - Make an EmojiRatingView that takes `rating: Int16` because CoreData will be giving us an Int16
+    - use a switch statement in the example
+    - it only supports custom rating emojis for 1-5, higher than 5 just shows the 5th emoji
+    - it should be initialized with an take an array of emojis so it can support any rating value
+  - CoreData objects conform to `Identifiable`
+  - 
