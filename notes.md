@@ -523,3 +523,14 @@ GeometryReader, ScrollView, NavigationLink
 - Add a new “date” attribute to the Book entity, assigning Date.now to it so it gets the current date and time, then format that nicely somewhere in DetailView.
   - might be nicer to make this "days/weeks/months/years ago"
 
+## [Day 57 – Project 12, part one](https://www.hackingwithswift.com/100/swiftui/57)
+- Core Data: Introduction
+- Why does `\.self` work for `ForEach`?
+- Creating `NSManagedObject` subclasses
+- Conditional saving of `NSManagedObjectContext`
+- Ensuring Core Data objects are unique using constraints
+
+
+## [Day 58 – Project 12, part two](https://www.hackingwithswift.com/100/swiftui/58)
+
+## [Day 59 – Project 12, part three](https://www.hackingwithswift.com/100/swiftui/59)
