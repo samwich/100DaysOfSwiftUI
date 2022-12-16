@@ -501,10 +501,14 @@ GeometryReader, ScrollView, NavigationLink
 ## [Day 55 - Project 11, part 3 - Bookworm](https://www.hackingwithswift.com/100/swiftui/55)
 - Showing book details
   - use `.constant()` to make the `RatingView` read-only
-- Sorting fetch requests with SortDescriptor
+- Sorting fetch requests with `SortDescriptor`
   - `SortDescriptor(\.title, order: .reverse)`
 - Deleting from a Core Data fetch request
   - `ForEach {}` `.onDelete(perform:)`
   - `managedObjectContext.delete(book)`
   - `managedObjectContext.save()`
-- Using an alert to pop a NavigationLink programmatically
+- Using an alert to pop a `NavigationLink` programmatically
+  - Use `dismiss()` to pop the NavigationLink
+  - Use the `@Environment` wrapper to include `\.dismiss` and `.managedObjectContext` in `DetailView`
+  - `.alert` buttons with roles `.destructive` and `.cancel`
+  - put a trash icon in the toolbar
