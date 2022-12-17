@@ -10,37 +10,73 @@ import SwiftUI
 
 struct ContentView: View {
     @Environment(\.managedObjectContext) var moc
-    @State private var lastNameFilter = "A"
-
-    
+    @FetchRequest(sortDescriptors: []) var countries: FetchedResults<Country>
     
     var body: some View {
         VStack {
-            FilteredList(filterKey: "lastName", filterValue: lastNameFilter) { (singer: Singer) in
-                Text("\(singer.wrappedFirstName) \(singer.wrappedLastName)")
+            List {
+                ForEach(countries, id: \.self) { country in
+                    Section(country.wrappedFullName) {
+                        ForEach(country.candyArray, id: \.self) { candy in
+                            Text(candy.wrappedName)
+                        }
+                    }
+                }
             }
             
-            Button("Add Examples") {
-                let x = Singer(context: moc)
-                x.firstName = "Taylor"
-                x.lastName = "Swift"
+            Button("Add") {
+//                // Why make a new country for each candy bar?
+//
+//                let candy1 = Candy(context: moc)
+//                candy1.name = "Mars"
+//                candy1.origin = Country(context: moc)
+//                candy1.origin?.shortName = "UK"
+//                candy1.origin?.fullName = "United Kingdom"
+//
+//                let candy2 = Candy(context: moc)
+//                candy2.name = "KitKat"
+//                candy2.origin = Country(context: moc)
+//                candy2.origin?.shortName = "UK"
+//                candy2.origin?.fullName = "United Kingdom"
+//
+//                let candy3 = Candy(context: moc)
+//                candy3.name = "Twix"
+//                candy3.origin = Country(context: moc)
+//                candy3.origin?.shortName = "UK"
+//                candy3.origin?.fullName = "United Kingdom"
+//
+//                let candy4 = Candy(context: moc)
+//                candy4.name = "Toblerone"
+//                candy4.origin = Country(context: moc)
+//                candy4.origin?.shortName = "CH"
+//                candy4.origin?.fullName = "Switzerland"
 
-                let y = Singer(context: moc)
-                y.firstName = "Ed"
-                y.lastName = "Sheeran"
-
-                let z = Singer(context: moc)
-                z.firstName = "Adele"
-                z.lastName = "Adkins"
+                // Just make the countries first, then add them to the candies as they're created.
+                var uk = Country(context: moc)
+                uk.shortName = "UK"
+                uk.fullName = "United Kingdom"
+                
+                var ch = Country(context: moc)
+                ch.shortName = "CH"
+                ch.fullName = "Switzerland"
+                
+                let candy1 = Candy(context: moc)
+                candy1.name = "Mars"
+                candy1.origin = uk
+                
+                let candy2 = Candy(context: moc)
+                candy2.name = "KitKat"
+                candy2.origin = uk
+                
+                let candy3 = Candy(context: moc)
+                candy3.name = "Twix"
+                candy3.origin = uk
+                
+                let candy4 = Candy(context: moc)
+                candy4.name = "Toblerone"
+                candy4.origin = ch
 
                 try? moc.save()
-            }
-            
-            Button("Show A") {
-                lastNameFilter = "A"
-            }
-            Button("Show S") {
-                lastNameFilter = "S"
             }
         }
     }

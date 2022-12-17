@@ -567,5 +567,20 @@ GeometryReader, ScrollView, NavigationLink
     - closure to configure the view
       - now we pass a closure to `FilteredList` with an explicit type: `{ (singer: Singer) in … }`
 - One-to-many relationships with Core Data, SwiftUI, and @FetchRequest
+  - one `Country` to many `Candy`
+  - add `Country` `shortName` unique constraint
+  - Relationships
+    - Select `Country`
+    - add relationship `candy`, destination `Candy`, change Type to To Many
+    - Select `Candy`
+    - add relationship `origin`, destination `Country`, change inverse to "candy"
+      - this automatically sets "candy" relationship's inverse to "country"
+  - set Codegen to Manual/None, then Editor > Create NSManagedObject Subclass and carefully select the directory and group
+  - add computed properties to unwrap the optional core data attributes
+  - add a `Button` that makes some candy
+    - why did he do it this way, implicitly creating a new country object for each candy and then depending on `NSMergePolicy.mergeByPropertyObjectTrump` to remove the duplicates?
+    - I tried creating the countries first and then assigning them to each candy bar and it seemed to work fine without `NSMergePolicy.mergeByPropertyObjectTrump`
+    - I still hope there's a good reason he's doing it this way.
+    - Ah, I'm reading that it's used with CloudKit, so maybe he's cargo-culting it from there.
 
 ## [Day 59 – Project 12, part three](https://www.hackingwithswift.com/100/swiftui/59)
