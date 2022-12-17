@@ -540,6 +540,10 @@ GeometryReader, ScrollView, NavigationLink
   - `if movie.hasChanges { try? moc.save() }`
   - `if moc.hasChanges { try? moc.save() }`
 - Ensuring Core Data objects are unique using constraints
+  - Data Model Inspector with Entity highlighted > Constraints
+  - `DataController`
+    - `self.container.viewContext.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump`
+      - Merging a bunch of objects seems like a smell. I look forward to seeing an example where this makes sense.
 
 ## [Day 58 – Project 12, part two](https://www.hackingwithswift.com/100/swiftui/58)
 
