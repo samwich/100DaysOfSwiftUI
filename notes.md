@@ -526,10 +526,12 @@ GeometryReader, ScrollView, NavigationLink
 ## [Day 57 – Project 12, part one](https://www.hackingwithswift.com/100/swiftui/57)
 - Core Data: Introduction
 - Why does `\.self` work for `ForEach`?
+  - `Hashable`
+  - CoreData assigns its own objectId
+  - hash values calculated between two runs of the app might be different
 - Creating `NSManagedObject` subclasses
 - Conditional saving of `NSManagedObjectContext`
 - Ensuring Core Data objects are unique using constraints
-
 
 ## [Day 58 – Project 12, part two](https://www.hackingwithswift.com/100/swiftui/58)
 
