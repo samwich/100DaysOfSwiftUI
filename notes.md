@@ -537,6 +537,8 @@ GeometryReader, ScrollView, NavigationLink
     - Select CoreDataProject folder > Create
   - You may add nil-coalescing computed properties to `extension Movie`
 - Conditional saving of `NSManagedObjectContext`
+  - `if movie.hasChanges { try? moc.save() }`
+  - `if moc.hasChanges { try? moc.save() }`
 - Ensuring Core Data objects are unique using constraints
 
 ## [Day 58 – Project 12, part two](https://www.hackingwithswift.com/100/swiftui/58)
