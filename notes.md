@@ -546,5 +546,16 @@ GeometryReader, ScrollView, NavigationLink
       - Merging a bunch of objects seems like a smell. I look forward to seeing an example where this makes sense.
 
 ## [Day 58 – Project 12, part two](https://www.hackingwithswift.com/100/swiftui/58)
+- Filtering @FetchRequest using NSPredicate
+  - `NSPredicate(format: "universe == %@", "Star Wars")`
+  - `NSPredicate(format: "name < %@)`
+  - `NSPredicate(format: "universe IN %@", ["Aliens", "Firefly", "Star Trek"])`
+  - `BEGINSWITH`
+  - `ENDSWITH`
+  - `NOT`
+  - `CONTAINS`
+  - `[c]` case insensitive modifier
+- Dynamically filtering @FetchRequest with SwiftUI
+- One-to-many relationships with Core Data, SwiftUI, and @FetchRequest
 
 ## [Day 59 – Project 12, part three](https://www.hackingwithswift.com/100/swiftui/59)
