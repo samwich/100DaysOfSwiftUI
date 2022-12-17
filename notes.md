@@ -530,6 +530,12 @@ GeometryReader, ScrollView, NavigationLink
   - CoreData assigns its own objectId
   - hash values calculated between two runs of the app might be different
 - Creating `NSManagedObject` subclasses
+  - Inspectors > Data Model > Codegen: Manual/None
+  - Editor > Create NSManagedObject Subclass
+    - CoreDataProject > Next
+    - Movie > Next
+    - Select CoreDataProject folder > Create
+  - You may add nil-coalescing computed properties to `extension Movie`
 - Conditional saving of `NSManagedObjectContext`
 - Ensuring Core Data objects are unique using constraints
 

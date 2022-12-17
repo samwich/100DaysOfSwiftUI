@@ -13,6 +13,8 @@
 		22FB65EE294D37AF0028EFF5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22FB65ED294D37AF0028EFF5 /* Preview Assets.xcassets */; };
 		22FB65F5294D38180028EFF5 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FB65F4294D38180028EFF5 /* DataController.swift */; };
 		22FB65F8294D38880028EFF5 /* CoreDataProject.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 22FB65F6294D38880028EFF5 /* CoreDataProject.xcdatamodeld */; };
+		22FC7782294D526F008A29BA /* Movie+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FC7780294D526F008A29BA /* Movie+CoreDataClass.swift */; };
+		22FC7783294D526F008A29BA /* Movie+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FC7781294D526F008A29BA /* Movie+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +25,8 @@
 		22FB65ED294D37AF0028EFF5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		22FB65F4294D38180028EFF5 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		22FB65F7294D38880028EFF5 /* CoreDataProject.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataProject.xcdatamodel; sourceTree = "<group>"; };
+		22FC7780294D526F008A29BA /* Movie+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Movie+CoreDataClass.swift"; path = "CoreDataProject/Movie+CoreDataClass.swift"; sourceTree = "<group>"; };
+		22FC7781294D526F008A29BA /* Movie+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Movie+CoreDataProperties.swift"; path = "CoreDataProject/Movie+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +43,8 @@
 		22FB65DA294D37AE0028EFF5 = {
 			isa = PBXGroup;
 			children = (
+				22FC7780294D526F008A29BA /* Movie+CoreDataClass.swift */,
+				22FC7781294D526F008A29BA /* Movie+CoreDataProperties.swift */,
 				22FB65F6294D38880028EFF5 /* CoreDataProject.xcdatamodeld */,
 				22FB65E5294D37AE0028EFF5 /* CoreDataProject */,
 				22FB65E4294D37AE0028EFF5 /* Products */,
@@ -146,6 +152,8 @@
 				22FB65E9294D37AE0028EFF5 /* ContentView.swift in Sources */,
 				22FB65F5294D38180028EFF5 /* DataController.swift in Sources */,
 				22FB65F8294D38880028EFF5 /* CoreDataProject.xcdatamodeld in Sources */,
+				22FC7782294D526F008A29BA /* Movie+CoreDataClass.swift in Sources */,
+				22FC7783294D526F008A29BA /* Movie+CoreDataProperties.swift in Sources */,
 				22FB65E7294D37AE0028EFF5 /* CoreDataProjectApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
