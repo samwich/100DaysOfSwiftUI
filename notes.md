@@ -556,6 +556,16 @@ GeometryReader, ScrollView, NavigationLink
   - `CONTAINS`
   - `[c]` case insensitive modifier
 - Dynamically filtering @FetchRequest with SwiftUI
+  - To update the fetch request with new predicates
+    - create a new `FilteredList` view with `init(filter: String)`
+      - the init body is: `_fetchRequest = FetchRequest<Singer>(sortDescriptors: [], predicate: NSPredicate(format: "lastName BEGINSWITH %@", filter))`
+    - then show it with `FilteredList(filter: lastNameFilter)`
+  - Make the `FilteredList` view generic
+    - `Singer` -> `T: NSManagedObject`
+    - key name
+      - `%K` will insert an argument without adding single quotes around it: `NSPredicate(format: "%K BEGINSWITH %@", filterKey, filterValue)`
+    - closure to configure the view
+      - now we pass a closure to `FilteredList` with an explicit type: `{ (singer: Singer) in … }`
 - One-to-many relationships with Core Data, SwiftUI, and @FetchRequest
 
 ## [Day 59 – Project 12, part three](https://www.hackingwithswift.com/100/swiftui/59)

@@ -10,38 +10,37 @@ import SwiftUI
 
 struct ContentView: View {
     @Environment(\.managedObjectContext) var moc
-    @FetchRequest(sortDescriptors: [],
-//                  predicate: NSPredicate(format: "name < %@", "F")
-//                  predicate: NSPredicate(format: "universe IN %@", ["Aliens", "Star Trek"])
-//                  predicate: NSPredicate(format: "name BEGINSWITH %@", "E")
-//                  predicate: NSPredicate(format: "name CONTAINS[c] %@", "t")
-                  predicate: NSPredicate(format: "NOT name BEGINSWITH %@", "E")
-    ) var ships: FetchedResults<Ship>
+    @State private var lastNameFilter = "A"
+
+    
     
     var body: some View {
         VStack {
-            List(ships, id: \.self) { ship in
-                Text(ship.name ?? "Unknown name")
+            FilteredList(filterKey: "lastName", filterValue: lastNameFilter) { (singer: Singer) in
+                Text("\(singer.wrappedFirstName) \(singer.wrappedLastName)")
             }
             
             Button("Add Examples") {
-                let ship1 = Ship(context: moc)
-                ship1.name = "Enterprise"
-                ship1.universe = "Star Trek"
-                
-                let ship2 = Ship(context: moc)
-                ship2.name = "Defiant"
-                ship2.universe = "Star Trek"
-                
-                let ship3 = Ship(context: moc)
-                ship3.name = "Millennium Falcon"
-                ship3.universe = "Star Wars"
-                
-                let ship4 = Ship(context: moc)
-                ship4.name = "Executor"
-                ship4.universe = "Star Wars"
-                
+                let x = Singer(context: moc)
+                x.firstName = "Taylor"
+                x.lastName = "Swift"
+
+                let y = Singer(context: moc)
+                y.firstName = "Ed"
+                y.lastName = "Sheeran"
+
+                let z = Singer(context: moc)
+                z.firstName = "Adele"
+                z.lastName = "Adkins"
+
                 try? moc.save()
+            }
+            
+            Button("Show A") {
+                lastNameFilter = "A"
+            }
+            Button("Show S") {
+                lastNameFilter = "S"
             }
         }
     }
