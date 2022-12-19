@@ -569,3 +569,14 @@ GeometryReader, ScrollView, NavigationLink
 - One-to-many relationships with Core Data, SwiftUI, and @FetchRequest
 
 ## [Day 59 – Project 12, part three](https://www.hackingwithswift.com/100/swiftui/59)
+All three of these tasks require you to modify the FilteredList view we made:
+
+- Make it accept a string parameter that controls which predicate is applied. You can use Swift’s string interpolation to place this in the predicate.
+  - using `%@` doesn't work. you have to use string interpolation as suggested.
+- Modify the predicate string parameter to be an enum such as .beginsWith, then make that enum get resolved to a string inside the initializer.
+  - I made the enum `String, CaseIterable, Identifiable` to make it work in `ForEach` and make the case values strings.
+  - I just had to use `.rawValue` to get it to display in a `Text()`
+  - I didn't have to do anything special for the value to get resolved to a string.
+- Make FilteredList accept an array of `SortDescriptor` objects to get used in its fetch request.
+  - This ended up a bit messy since I'm only using one `SortDescriptor`, but `FilteredList` definitely takes an array of them.
+
