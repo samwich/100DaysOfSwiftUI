@@ -10,39 +10,70 @@ import SwiftUI
 
 struct ContentView: View {
     @Environment(\.managedObjectContext) var moc
-    @State private var lastNameFilter = "A"
-
-    
+    @State private var lastNameFilter = "S"
+    @State private var filterPredicate = MyPredicate.contains
+    @State private var sortBy: [SortDescriptor<Singer>] = [SortDescriptor(\.lastName)]
+        
+    let letters = ["A", "I", "S"]
     
     var body: some View {
         VStack {
-            FilteredList(filterKey: "lastName", filterValue: lastNameFilter) { (singer: Singer) in
+            FilteredList(filterKey: "lastName", filterPredicate: filterPredicate, filterValue: lastNameFilter, sortDescriptors: sortBy) { (singer: Singer) in
                 Text("\(singer.wrappedFirstName) \(singer.wrappedLastName)")
             }
             
-            Button("Add Examples") {
-                let x = Singer(context: moc)
-                x.firstName = "Taylor"
-                x.lastName = "Swift"
-
-                let y = Singer(context: moc)
-                y.firstName = "Ed"
-                y.lastName = "Sheeran"
-
-                let z = Singer(context: moc)
-                z.firstName = "Adele"
-                z.lastName = "Adkins"
-
-                try? moc.save()
+            Section("Last name") {
+                Picker("Predicate", selection: $filterPredicate) {
+                    ForEach(MyPredicate.allCases, id: \.self) {predicate in
+                        Text(predicate.rawValue)
+                    }
+                }
+                .pickerStyle(.segmented)
+                
+                Picker("Letter", selection: $lastNameFilter) {
+                    ForEach(letters, id: \.self) { letter in
+                        Text(letter)
+                    }
+                }
+                .pickerStyle(.segmented)
             }
             
-            Button("Show A") {
-                lastNameFilter = "A"
+            Section("Sort by") {
+                Button("First Name") {
+                    withAnimation {
+                        sortBy = [SortDescriptor(\.firstName)]
+                    }
+                }
+                Button("Last Name") {
+                    withAnimation {
+                        sortBy = [SortDescriptor(\.lastName)]
+                    }
+                }
             }
-            Button("Show S") {
-                lastNameFilter = "S"
+            
+            Section("Setup") {
+                Button("Add Examples") {
+                    let x = Singer(context: moc)
+                    x.firstName = "Taylor"
+                    x.lastName = "Swift"
+                    
+                    let y = Singer(context: moc)
+                    y.firstName = "Ed"
+                    y.lastName = "Sheeran"
+                    
+                    let yy = Singer(context: moc)
+                    yy.firstName = "Kate"
+                    yy.lastName = "Bush"
+                    
+                    let z = Singer(context: moc)
+                    z.firstName = "Adele"
+                    z.lastName = "Adkins"
+                    
+                    try? moc.save()
+                }
             }
         }
+        .padding()
     }
 }
 
