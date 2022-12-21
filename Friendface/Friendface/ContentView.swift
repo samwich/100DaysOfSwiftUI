@@ -10,7 +10,7 @@ import SwiftUI
 struct ContentView: View {
     @State var users: [User] = []
     @Environment(\.managedObjectContext) var moc
-    @FetchRequest(sortDescriptors: []) var cachedUsers: FetchedResults<CachedUser>
+    @FetchRequest(sortDescriptors: [SortDescriptor(\.name)]) var cachedUsers: FetchedResults<CachedUser>
     
     let apiString = "https://www.hackingwithswift.com/samples/friendface.json"
     

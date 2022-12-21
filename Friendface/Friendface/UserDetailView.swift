@@ -28,8 +28,12 @@ struct UserDetailView: View {
 
                 Text(user.wrappedRegistered.formatted())
             }
+            .padding()
             
-            Text(user.wrappedTags)
+            Section {
+                Text(user.wrappedTags)
+            }
+            .padding()
 
             List(user.friendsArray) { friend in
                 Text(friend.wrappedName)
