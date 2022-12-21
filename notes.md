@@ -593,5 +593,26 @@ All three of these tasks require you to modify the FilteredList view we made:
   - I just had to use `.rawValue` to get it to display in a `Text()`
   - I didn't have to do anything special for the value to get resolved to a string.
 - Make FilteredList accept an array of `SortDescriptor` objects to get used in its fetch request.
-  - This ended up a bit messy since I'm only using one `SortDescriptor`, but `FilteredList` definitely takes an array of them.
+  - This ended up a bit messy since I'm only using one `SortDescriptor`. But, `FilteredList` definitely takes an array of them, as required.
+
+## [Day 60 - Milestone: Projects 10-12](https://www.hackingwithswift.com/100/swiftui/60)
+
+> use URLSession to download some JSON from the internet, use Codable to convert it to Swift types, then use NavigationView, List, and more to display it to the user
+
+- fetch data from https://www.hackingwithswift.com/samples/friendface.json
+- Fetch the data and parse it into `User` and `Friend` structs.
+- Display a list of users with a little information about them, such as their name and whether they are active right now.
+- Create a detail view shown when a user is tapped, presenting more information about them, including the names of their friends.
+- Before you start your download, check that your `User` array is empty so that you don’t keep starting the download every time the view is shown.
+- `JSONDecoder().dateDecodingStrategy` `.iso8601`
+- decode as an array of users like this: `JSONDecoder().decode([User].self, from: data)`
+
+- `User`
+    - user record fields
+    - tags
+    - friends
+- `Friend`
+    - relationship to another user
+    - we could verify that the cached `name` is the same as that `User`'s' `name`
+    - maybe this can be a transparent wrapper somehow?
 
