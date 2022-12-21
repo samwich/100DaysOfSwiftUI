@@ -616,3 +616,27 @@ All three of these tasks require you to modify the FilteredList view we made:
     - we could verify that the cached `name` is the same as that `User`'s' `name`
     - maybe this can be a transparent wrapper somehow?
 
+[Day 61 - Time for Core Data](https://www.hackingwithswift.com/100/swiftui/61)
+
+I can't help but think that this is teaching some bad CoreData habits.
+
+TODO: take a look at https://www.hackingwithswift.com/quick-start/swiftui/introduction-to-using-core-data-with-swiftui - 
+
+- Wrap the code that updates core data in `await MainActor.run {}`
+- use `User` and `Friend` to decode the JSON
+- create Core Data entities `CachedUser` and `CachedFriend`
+    - unique constrain their `id` properties
+    - I don't think the Friend model makes sense. User should just have a to-many relationship to itself.
+
+- HWS+
+    - just copy everything from the server and rely on CoreData to dedupe everything I guess...
+    - I'm running into the same error that someone else had on the forum where very few friends would show up for each user and it had to do with how the instructions told us to set up the data model. Interestingly, it was showing more friends before I added the call to moc.save().
+
+I don't think I'd have gotten this one:
+
+        var friendsArray: [CachedFriend] {
+            let set = friends as? Set<CachedFriend> ?? []
+            return set.sorted {
+                $0.wrappedName < $1.wrappedName
+            }
+        }

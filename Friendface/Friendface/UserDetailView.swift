@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct UserDetailView: View {
-    @State var user: User
+    @State var user: CachedUser
     var body: some View {
         VStack{
             Section {
@@ -16,34 +16,33 @@ struct UserDetailView: View {
 
                 Text(user.age.formatted())
 
-                Text(user.company)
+                Text(user.wrappedCompany)
 
-                Text(user.email)
+                Text(user.wrappedEmail)
 
-                Text(user.address)
+                Text(user.wrappedAddress)
 
                 ScrollView {
-                    Text(user.about)
+                    Text(user.wrappedAbout)
                 }
 
-                Text(user.registered.formatted())
+                Text(user.wrappedRegistered.formatted())
             }
             
-            Text(user.tags.joined(separator: ", "))
-                .padding()
+            Text(user.wrappedTags)
 
-            List(user.friends) { friend in
-                Text(friend.name)
+            List(user.friendsArray) { friend in
+                Text(friend.wrappedName)
             }
         }
-        .navigationTitle(user.name)
+        .navigationTitle(user.wrappedName)
     }
 }
 
-struct UserDetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationView {
-            UserDetailView(user: User.example)
-        }
-    }
-}
+//struct UserDetailView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        NavigationView {
+//            UserDetailView(user: User.example)
+//        }
+//    }
+//}
