@@ -616,7 +616,7 @@ All three of these tasks require you to modify the FilteredList view we made:
     - we could verify that the cached `name` is the same as that `User`'s' `name`
     - maybe this can be a transparent wrapper somehow?
 
-[Day 61 - Time for Core Data](https://www.hackingwithswift.com/100/swiftui/61)
+## [Day 61 - Time for Core Data](https://www.hackingwithswift.com/100/swiftui/61)
 
 I can't help but think that this is teaching some bad CoreData habits.
 
@@ -640,3 +640,18 @@ I don't think I'd have gotten this one:
                 $0.wrappedName < $1.wrappedName
             }
         }
+
+## [Day 62 - Project 12, Instafilter](https://www.hackingwithswift.com/100/swiftui/62)
+
+- Instafilter: Introduction
+- How property wrappers become structs
+    - `@State` is a `@propertyWrapper`
+    - use `@Binding` to pass a `@State` binding to a child view
+    - `didSet` won't fire on a property wrapper when a value is changed via a `$`binding
+        - `Slider(value: $blurAmount, in: 0...20) //` `didSet` won't fire
+    - `didSet` will fire when the value is changed via the `=` operator
+        - `blurAmount = 5 //` `didSet` will fire
+- Responding to state changes using onChange()
+    - 
+- Showing multiple options with confirmationDialog()
+    - 
