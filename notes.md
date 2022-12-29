@@ -652,6 +652,7 @@ I don't think I'd have gotten this one:
     - `didSet` will fire when the value is changed via the `=` operator
         - `blurAmount = 5 //` `didSet` will fire
 - Responding to state changes using onChange()
-    - 
+    - `.onChange(of:) {}` modifier
+    - it doesn't matter which element you attach it to, it will run whenever the named element changes
 - Showing multiple options with confirmationDialog()
     - 

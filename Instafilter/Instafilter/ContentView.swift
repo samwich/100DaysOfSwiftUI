@@ -8,11 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var blurAmount = 0.0 {
-        didSet {
-            print("blurAmount changed to \(blurAmount)")
-        }
-    }
+    @State private var blurAmount = 0.0
     
     var body: some View {
         VStack {
@@ -23,6 +19,9 @@ struct ContentView: View {
             
             Button("Random Blur") {
                 blurAmount = Double.random(in: 0...20)
+            }
+            .onChange(of: blurAmount) { newValue in
+                print("New value \(newValue)")
             }
         }
         .padding()
