@@ -655,4 +655,5 @@ I don't think I'd have gotten this one:
     - `.onChange(of:) {}` modifier
     - it doesn't matter which element you attach it to, it will run whenever the named element changes
 - Showing multiple options with confirmationDialog()
-    - 
+    - `confirmationDialog(title, isPresented:) { multiple option views } message: { the actual title on iOS }`
+    - the background color doesn't change until the dialog is dismissed. I tried `backgroundColor.animation(.default)` and it didn't start the animation until the dialog had completely slid out of view.
