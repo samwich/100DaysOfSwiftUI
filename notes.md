@@ -675,4 +675,12 @@ I don't think I'd have gotten this one:
             - `ciContext.createCGImage(_, from: ciFilter.outputImage.extent)`
     - `Image(uiImage: UIImage(cgImage: ciContext.createCGImage(....)))`
 - Wrapping a UIViewController in a SwiftUI view
-    - 
+    - UIKit
+        - `UIView` is the parent class of all UIKit views
+        - `UIViewController` brings a view to life
+        - UIKit uses delegation extensively. most view behaviors will be implemented as delegates.
+    - `PHPickerViewController` and `PHPickerViewControllerDelegate`
+    - make a `struct` that conforms to `UIViewControllerRepresentable`
+    - temporarily add `typealias UIViewControllerType = PHPickerViewController` to get Xcode to autocomplete our protocol conformance
+    - Now ImagePicker() make a Photos Library picker display, but it doesn't do anything when you interact with its interface elements.
+    - Tune in next time for _coordinators_.
