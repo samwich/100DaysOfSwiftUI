@@ -657,3 +657,22 @@ I don't think I'd have gotten this one:
 - Showing multiple options with confirmationDialog()
     - `confirmationDialog(title, isPresented:) { multiple option views } message: { the actual title on iOS }`
     - the background color doesn't change until the dialog is dismissed. I tried `backgroundColor.animation(.default)` and it didn't start the animation until the dialog had completely slid out of view.
+
+## [Day 63 - Project 13, part 2](https://www.hackingwithswift.com/100/swiftui/63)
+
+- Integrating Core Image with SwiftUI
+    - `.onAppear` is attached to `VStack` because `image?` is optional
+    - `Image` - a SwiftUI View
+    - `UIImage` - UIKit. kind of like SwiftUI's `Image`
+        - `UIImage(named:)`
+    - `CGImage` - CoreGraphics. A bunch of pixels
+    - `CIImage` - CoreImage. A recipe for creating an image
+    - CoreImage
+        - `CIFilter`: `crystallize` `pixellate` `twirlDistortion`
+            - `ciFilter.inputKeys` `kCIInput___Key`
+            - `ciFilter.setValue(_, forKey:)`
+        - `CIContext`
+            - `ciContext.createCGImage(_, from: ciFilter.outputImage.extent)`
+    - `Image(uiImage: UIImage(cgImage: ciContext.createCGImage(....)))`
+- Wrapping a UIViewController in a SwiftUI view
+    - 
