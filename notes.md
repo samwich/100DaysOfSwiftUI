@@ -684,3 +684,18 @@ I don't think I'd have gotten this one:
     - temporarily add `typealias UIViewControllerType = PHPickerViewController` to get Xcode to autocomplete our protocol conformance
     - Now ImagePicker() make a Photos Library picker display, but it doesn't do anything when you interact with its interface elements.
     - Tune in next time for _coordinators_.
+
+## [Day 64 - Project 13, part 3](https://www.hackingwithswift.com/100/swiftui/64)
+
+- Using coordinators to manage SwiftUI view controllers
+    - SwiftUI coordinators are completely different from UIKit coordinators
+    - `class Coordinator: NSObject, PHPickerViewControllerDelegate`
+	    - `PHPickerViewControllerDelegate` is the thing that actaully does something with the user's image selections.
+	    - `Coordinator/picker()` ultimately takes the PHPicker's image selection and assigns it to `ImagePicker`'s `$image` binding
+    - `struct ImagePicker: UIViewControllerRepresentable`
+	    - `makeCoordinator()` provides `UIViewControllerRepresentable` protocol conformance
+	    - `makeUIViewController()`'s `context.coordinator` is the view's delegated coordinator
+    - `ImagePicker` wraps `PHPickerViewController`, who's delegate is `Coordinator`
+    - I'm not sure why `.onChange(of: inputImage)` is calling a separate function rather than setting `image` directly. I tested it and it worked just fine.
+- How to save images to the user’s photo library
+    - 
