@@ -641,7 +641,7 @@ I don't think I'd have gotten this one:
             }
         }
 
-## [Day 62 - Project 12, Instafilter](https://www.hackingwithswift.com/100/swiftui/62)
+## [Day 62 - Project 13, Instafilter](https://www.hackingwithswift.com/100/swiftui/62)
 
 - Instafilter: Introduction
 - How property wrappers become structs
@@ -690,12 +690,28 @@ I don't think I'd have gotten this one:
 - Using coordinators to manage SwiftUI view controllers
     - SwiftUI coordinators are completely different from UIKit coordinators
     - `class Coordinator: NSObject, PHPickerViewControllerDelegate`
-	    - `PHPickerViewControllerDelegate` is the thing that actaully does something with the user's image selections.
-	    - `Coordinator/picker()` ultimately takes the PHPicker's image selection and assigns it to `ImagePicker`'s `$image` binding
+        - `PHPickerViewControllerDelegate` is the thing that actaully does something with the user's image selections.
+        - `Coordinator/picker()` ultimately takes the PHPicker's image selection and assigns it to `ImagePicker`'s `$image` binding
     - `struct ImagePicker: UIViewControllerRepresentable`
-	    - `makeCoordinator()` provides `UIViewControllerRepresentable` protocol conformance
-	    - `makeUIViewController()`'s `context.coordinator` is the view's delegated coordinator
+        - `makeCoordinator()` provides `UIViewControllerRepresentable` protocol conformance
+        - `makeUIViewController()`'s `context.coordinator` is the view's delegated coordinator
     - `ImagePicker` wraps `PHPickerViewController`, who's delegate is `Coordinator`
     - I'm not sure why `.onChange(of: inputImage)` is calling a separate function rather than setting `image` directly. I tested it and it worked just fine.
 - How to save images to the user’s photo library
-    - 
+    - `UIImageWriteToSavedPhotosAlbum()`
+        - `UIImageWriteToSavedPhotosAlbum(`
+            - `_ image: UIImage, `
+            - `_ completionTarget: Any?, `
+            - `_ completionSelector: Selector?, `
+            - `_ contextInfo: UnsafeMutableRawPointer?)`
+        - was created before Objective-C had blocks, so it wants an `NSObject` `completionTarget` and a `Selector` method name to call on completion
+    - so we create `class ImageSaver: NSObject`
+        - `writeToPhotoAlbum(image:)`
+            - `UIImageWriteToSavedPhotosAlbum(`
+                - `image,`
+                - `self,` 
+                - `#selector(saveCompleted)`, 
+                - `nil)`
+        - `@objc func saveCompleted(...`
+            - we use the `@objc` attribute to mark it as available to `#selector()`
+
