@@ -732,3 +732,5 @@ I don't think I'd have gotten this one:
     - It seems that `currentFilter.setValue` can take a `Double` , where `currentFilter.intensity` needed a `Float`
     - maybe there should be an `onChange(of: currentFilter)` rather than `setFilter()`
 - Saving the filtered image using UIImageWriteToSavedPhotosAlbum()
+    - The tutorial keeps referring to `saveCompleted` as `didFinishSavingWithError`
+    - `successHandler` and `errorHandler` could give us some useful visual feedback
