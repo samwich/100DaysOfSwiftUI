@@ -725,3 +725,10 @@ I don't think I'd have gotten this one:
     - With `onChange(of:perform)`, why are we discarding the argument and calling `loadImage()` from the trailing closure rather than passing `loadImage` as the `perform:` argument?
 - Basic image filtering using Core Image
     - Could `loadImage()` begin with `guard let beginImage = CIImage(image: inputImage)` instead? 
+
+## [ Day 66 - Project 13, part 5](https://www.hackingwithswift.com/100/swiftui/66)
+
+- Customizing our filter using confirmationDialog()
+    - It seems that `currentFilter.setValue` can take a `Double` , where `currentFilter.intensity` needed a `Float`
+    - maybe there should be an `onChange(of: currentFilter)` rather than `setFilter()`
+- Saving the filtered image using UIImageWriteToSavedPhotosAlbum()
