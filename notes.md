@@ -715,3 +715,10 @@ I don't think I'd have gotten this one:
         - `@objc func saveCompleted(...`
             - we use the `@objc` attribute to mark it as available to `#selector()`
 
+## [Day 65 - Project 13, part 4](https://www.hackingwithswift.com/100/swiftui/65)
+
+- Building our basic UI
+    - SwiftUI will do the right thing with optional views like `Image?`. Maybe it's also good for performance?
+    - Instead of putting save logic inline with the button, make a separate function and set the button's `action` parameter.
+- Importing an image into SwiftUI using PHPickerViewController
+- Basic image filtering using Core Image
