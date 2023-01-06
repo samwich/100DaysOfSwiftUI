@@ -734,3 +734,15 @@ I don't think I'd have gotten this one:
 - Saving the filtered image using UIImageWriteToSavedPhotosAlbum()
     - The tutorial keeps referring to `saveCompleted` as `didFinishSavingWithError`
     - `successHandler` and `errorHandler` could give us some useful visual feedback
+
+## [Day 67 - Project 13, part 6](https://www.hackingwithswift.com/100/swiftui/67)
+
+### Challenge
+- Try making the Save button disabled if there is no image in the image view.
+    - I still think that `.disabled()` modifier should be called `.enabled()`
+- Experiment with having more than one slider, to control each of the input keys you care about. For example, you might have one for radius and one for intensity.
+    - [Core Image Filter Reference](https://developer.apple.com/library/archive/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html)
+    - setting the `.disabled()` modifier with `currentFilter.inputKeys.contains()` didn't work reliably, so I put `if` statements in the VStack directly
+- Explore the range of available Core Image filters, and add any three of your choosing to the app.
+    - This runs up against SwiftUI's 10 child view limit.
+    - The tutorial said that `.confirmationDialog()` could be scrollable.
