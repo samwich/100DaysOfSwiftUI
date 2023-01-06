@@ -721,4 +721,6 @@ I don't think I'd have gotten this one:
     - SwiftUI will do the right thing with optional views like `Image?`. Maybe it's also good for performance?
     - Instead of putting save logic inline with the button, make a separate function and set the button's `action` parameter.
 - Importing an image into SwiftUI using PHPickerViewController
+    - `ImagePicker/Coordinator/parent` should be a constant with `let` rather than `var`.
+    - Why are we discarding the argument and calling `loadImage()` from the trailing closure rather than passing `loadImage` as the `perform:` argument?
 - Basic image filtering using Core Image
