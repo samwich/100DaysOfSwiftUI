@@ -746,3 +746,12 @@ I don't think I'd have gotten this one:
 - Explore the range of available Core Image filters, and add any three of your choosing to the app.
     - This runs up against SwiftUI's 10 child view limit.
     - The tutorial said that `.confirmationDialog()` could be scrollable.
+
+## [Day 68 - Project 14, part 1](https://www.hackingwithswift.com/100/swiftui/68)
+
+- Bucket List: Introduction
+- Adding conformance to Comparable for custom types
+    - `Comparable` protocol
+        - implement `static func <`
+- Writing data to the documents directory
+- Switching view states with enums
