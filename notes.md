@@ -754,4 +754,8 @@ I don't think I'd have gotten this one:
     - `Comparable` protocol
         - implement `static func <`
 - Writing data to the documents directory
+    - get documents directories `FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)`
+    - add file name `url.appendingPathComponent("message.txt")`
+    - write to url: `str.write(to: url, atomically: true, encoding: .utf8)`
+    - read from url: `String(contentsOf: url)`
 - Switching view states with enums
