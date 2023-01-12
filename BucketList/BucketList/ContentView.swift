@@ -7,22 +7,41 @@
 
 import SwiftUI
 
+enum LoadingState {
+    case loading, success, failure
+}
+
+struct LoadingView: View {
+    var body: some View {
+        Text("Loading...")
+    }
+}
+
+struct SuccessView: View {
+    var body: some View {
+        Text("Success!")
+    }
+}
+
+struct FailureView: View {
+    var body: some View {
+        Text("Failed.")
+    }
+}
+
 struct ContentView: View {
+    var loadingState = LoadingState.loading
+    
     var body: some View {
         VStack {
-            Text("Hello World")
-                .onTapGesture {
-                    let str = "Test Message"
-                    let url = getDocumentsDirectory().appendingPathComponent("message.txt")
-                    
-                    do {
-                        try str.write(to: url, atomically: true, encoding: .utf8)
-                        let input = try String(contentsOf: url)
-                        print(input)
-                    } catch {
-                        print(error.localizedDescription)
-                    }
-                }
+            switch loadingState {
+            case .loading:
+                LoadingView()
+            case .success:
+                SuccessView()
+            case .failure:
+                FailureView()
+            }
         }
         .padding()
     }

@@ -761,4 +761,5 @@ I don't think I'd have gotten this one:
     - Challenge: Write a FileManager-Decodable extension.
         - TODO: I created `extension FileManager/decode()`, but haven't tested it yet
 - Switching view states with enums
-    - 
+    - use an `enum` to represent mutually exclusive UI states like loading/success/failure
+
