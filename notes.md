@@ -758,4 +758,7 @@ I don't think I'd have gotten this one:
     - add file name `url.appendingPathComponent("message.txt")`
     - write to url: `str.write(to: url, atomically: true, encoding: .utf8)`
     - read from url: `String(contentsOf: url)`
+    - Challenge: Write a FileManager-Decodable extension.
+        - TODO: I created `extension FileManager/decode()`, but haven't tested it yet
 - Switching view states with enums
+    - 
