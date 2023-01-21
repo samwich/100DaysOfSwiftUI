@@ -774,3 +774,12 @@ I don't think I'd have gotten this one:
         - `MapAnnotation(coordinate:, content: View)`
             - `content:` could be a `View` such as `VStack` or `NavigationLink`
 - Using Touch ID and Face ID with SwiftUI
+    - Authentication reason
+        - FaceID reason is set in **xcode > Target > Info > Privacy FaceID** `INFOPLIST_KEY_NSFaceIDUsageDescription`
+        - TouchID reason is set with `LAContext/evaluatePolicy(localizedReason:)`
+    - `LocalAuthentication`
+        - `LAContext()`
+            - `.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) -> Bool`
+                - `&error` is an `NSErrorPointer`
+            - `.evaluatePolicy(LAPolicy, localizedReason:, reply:(Bool, Error?)->Void )`
+    - Turn on FaceID in the simulator with **Features > Face ID**
