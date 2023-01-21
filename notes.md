@@ -763,3 +763,14 @@ I don't think I'd have gotten this one:
 - Switching view states with enums
     - use an `enum` to represent mutually exclusive UI states like loading/success/failure
 
+## [Day 69 - Project 14, part 2](https://www.hackingwithswift.com/100/swiftui/69)
+- Integrating MapKit with SwiftUI
+    - `MapKit`
+    - `MKCoordinateRegion(center:CLLocationCoordinate2D span:MKCoordinateSpan)`
+    - `CLLocationCoordinate2D(latitude:longitude)`
+    - `Map(coordinateRegion:annotationItems)`
+    - Annotations
+        - `MapMarker(coordinate:)`
+        - `MapAnnotation(coordinate:, content: View)`
+            - `content:` could be a `View` such as `VStack` or `NavigationLink`
+- Using Touch ID and Face ID with SwiftUI
