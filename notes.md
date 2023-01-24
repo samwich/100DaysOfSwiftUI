@@ -783,3 +783,14 @@ I don't think I'd have gotten this one:
                 - `&error` is an `NSErrorPointer`
             - `.evaluatePolicy(LAPolicy, localizedReason:, reply:(Bool, Error?)->Void )`
     - Turn on FaceID in the simulator with **Features > Face ID**
+
+## [Day 70 - Project 14, part 3](https://www.hackingwithswift.com/100/swiftui/70)
+- Adding user locations to a map
+    - Do a bunch of `HStack`, `VStack`, and `.padding()` to get the button into the lower right.
+    - create `Location: Identifiable, Codable, Equatable`
+        - `CLLocationCoordinate2D` isn't `Codable`, so we store lat. and lon. as `Double`
+    - `Map(coordinateRegion: annotationItems: annotationContent: (item)->(annotation view)`
+        - `{ location in Text(location.name) }`
+    - The `Circle` in the `VStack` and `mapRegion.center` just happen to be in the same place in this example. It would be better to logically link them.
+- Improving our map annotations
+- Selecting and editing map annotations
