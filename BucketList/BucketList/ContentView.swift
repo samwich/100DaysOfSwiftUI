@@ -14,6 +14,7 @@ struct ContentView: View {
         span: MKCoordinateSpan(latitudeDelta: 25, longitudeDelta: 25)
     )
     @State private var locations = [Location]()
+    @State private var selectedPlace: Location?
     
     var body: some View {
         ZStack {
@@ -28,13 +29,14 @@ struct ContentView: View {
                             .clipShape(Circle())
                         
                         Text(location.name)
+                            .fixedSize() // don't show a clipped label when increasing the name length
+                    }
+                    .onTapGesture {
+                        selectedPlace = location
                     }
                 }
             }
             .ignoresSafeArea()
-            .onAppear() {
-                locations.append(Location.example)
-            }
             
             Circle()
                 .fill(.blue)
@@ -59,6 +61,13 @@ struct ContentView: View {
                     .font(.title)
                     .clipShape(Circle())
                     .padding(.trailing) // move the button away from the right edge a bit
+                }
+            }
+        }
+        .sheet(item: $selectedPlace) { place in
+            EditView(location: place) { updatedLocation in
+                if let index = locations.firstIndex(of: place) {
+                    locations[index] = updatedLocation
                 }
             }
         }

@@ -797,3 +797,6 @@ I don't think I'd have gotten this one:
     - make `Location/==()` more efficient for `Equatable`
     - It would be nice to use `Location.example` in the SwiftUI preview
 - Selecting and editing map annotations
+    - `.sheet(item: Optional?) { unwrappedOptionalItem in ... }`
+    - `EditView` constructor is setting some `@State private var`s with `_name = State(initialValue: location.name)`
+    - `Text()` in a `MapAnnotation` might be clipped until the map is interacted with. Use `.fixedSize()` modifier to work around it.

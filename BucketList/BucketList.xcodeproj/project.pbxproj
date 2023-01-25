@@ -12,6 +12,7 @@
 		22198B0A2969FC4000B0FFD8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22198B092969FC4000B0FFD8 /* Assets.xcassets */; };
 		22198B0D2969FC4000B0FFD8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22198B0C2969FC4000B0FFD8 /* Preview Assets.xcassets */; };
 		223CEA132980965D001A9F81 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223CEA122980965D001A9F81 /* Location.swift */; };
+		223CEA172980BA6D001A9F81 /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223CEA162980BA6D001A9F81 /* EditView.swift */; };
 		225D1888296A32E60053128E /* FileManager-Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225D1887296A32E60053128E /* FileManager-Decodable.swift */; };
 /* End PBXBuildFile section */
 
@@ -22,6 +23,7 @@
 		22198B092969FC4000B0FFD8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		22198B0C2969FC4000B0FFD8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		223CEA122980965D001A9F81 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		223CEA162980BA6D001A9F81 /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
 		225D1887296A32E60053128E /* FileManager-Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager-Decodable.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -57,6 +59,7 @@
 			children = (
 				22198B052969FC3F00B0FFD8 /* BucketListApp.swift */,
 				22198B072969FC3F00B0FFD8 /* ContentView.swift */,
+				223CEA162980BA6D001A9F81 /* EditView.swift */,
 				223CEA122980965D001A9F81 /* Location.swift */,
 				225D1887296A32E60053128E /* FileManager-Decodable.swift */,
 				22198B092969FC4000B0FFD8 /* Assets.xcassets */,
@@ -144,6 +147,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				225D1888296A32E60053128E /* FileManager-Decodable.swift in Sources */,
+				223CEA172980BA6D001A9F81 /* EditView.swift in Sources */,
 				22198B082969FC3F00B0FFD8 /* ContentView.swift in Sources */,
 				223CEA132980965D001A9F81 /* Location.swift in Sources */,
 				22198B062969FC3F00B0FFD8 /* BucketListApp.swift in Sources */,
