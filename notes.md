@@ -793,4 +793,7 @@ I don't think I'd have gotten this one:
         - `{ location in Text(location.name) }`
     - The `Circle` in the `VStack` and `mapRegion.center` just happen to be in the same place in this example. It would be better to logically link them.
 - Improving our map annotations
+    - add `Location/coordinate: CLLocationCoordinate2D` convenience property
+    - make `Location/==()` more efficient for `Equatable`
+    - It would be nice to use `Location.example` in the SwiftUI preview
 - Selecting and editing map annotations
