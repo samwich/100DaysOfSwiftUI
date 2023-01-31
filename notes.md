@@ -800,3 +800,11 @@ I don't think I'd have gotten this one:
     - `.sheet(item: Optional?) { unwrappedOptionalItem in ... }`
     - `EditView` constructor is setting some `@State private var`s with `_name = State(initialValue: location.name)`
     - `Text()` in a `MapAnnotation` might be clipped until the map is interacted with. Use `.fixedSize()` modifier to work around it.
+
+## [Day 71 - Project 14, part 4](https://www.hackingwithswift.com/100/swiftui/71)
+- Downloading data from Wikipedia
+    - Build up some nested `Codable` structs to decode the wikipedia json
+    - Represent loading state with an enum
+        - TODO: Maybe we can make the enum's values into `View`s so we don't need a `switch` statement
+        - When we sort the pages by title, maybe there's another version of `sorted()` that would be better
+- Sorting Wikipedia results
