@@ -808,3 +808,6 @@ I don't think I'd have gotten this one:
         - TODO: Maybe we can make the enum's values into `View`s so we don't need a `switch` statement
         - When we sort the pages by title, maybe there's another version of `sorted()` that would be better
 - Sorting Wikipedia results
+    - Don't make the view responsible for knowing how to sort pages: make `Page` conform to `Comparable`
+    - access `page.terms["description"].first` with Optional Chaining
+        - I think the nil coalescing for "No further information" belongs in the view, not in the `Page` struct.
