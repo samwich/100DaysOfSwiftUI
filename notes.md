@@ -811,3 +811,21 @@ I don't think I'd have gotten this one:
     - Don't make the view responsible for knowing how to sort pages: make `Page` conform to `Comparable`
     - access `page.terms["description"].first` with Optional Chaining
         - I think the nil coalescing for "No further information" belongs in the view, not in the `Page` struct.
+
+## [Day 72 - Project 14, part 5](https://www.hackingwithswift.com/100/swiftui/72)
+- Introducing MVVM into your SwiftUI project
+    - Model, View, View-Model
+        - move `@State private …` from View to ViewModel as `@Published …`
+        - add the ViewModel to the View with `@StateObject private var viewModel = ViewModel()`
+            - and then access the moved properties via `viewModel`
+        - make ViewModel internals read-only with `@Published private(set) …`
+            - the compiler will highlight parts of the View that try to write to ViewModel internals
+            - move those parts of the View to the ViewModel as functions
+                - `addLocation()` and `update()`
+    - extend `FileManager` with `documentsDirectory` property
+        - `let savePath = FileManager.documentsDirectory.appendingPathComponent("SavedPlaces")`
+    - add `init()` and `save()`
+        - `data.write(to: savePath, options: [.atomicWrite, .completeFileProtection])`
+            - `.atomicWrite`
+            - `.completeFileProtection` - encrypted
+- Locking our UI behind Face ID
