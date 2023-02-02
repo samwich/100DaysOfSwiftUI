@@ -513,7 +513,7 @@ GeometryReader, ScrollView, NavigationLink
   - `.alert` buttons with roles `.destructive` and `.cancel`
   - put a trash icon in the toolbar
 
-## [Day 6 - Project 11, part 4 - Bookworm](https://www.hackingwithswift.com/100/swiftui/56)
+## [Day 56 - Project 11, part 4 - Bookworm](https://www.hackingwithswift.com/100/swiftui/56)
 - our custom view doesn't support accessibility features
 - Right now it’s possible to select no title, author, or genre for books, which causes a problem for the detail view. Please fix this, either by forcing defaults, validating the form, or showing a default picture for unknown genres – you can choose.
   - I'm putting the validation logic in `AddBookView`, like we did with CupcakeCorner.
