@@ -815,6 +815,7 @@ I don't think I'd have gotten this one:
 ## [Day 72 - Project 14, part 5](https://www.hackingwithswift.com/100/swiftui/72)
 - Introducing MVVM into your SwiftUI project
     - Model, View, View-Model
+        - ViewModel is marked with `@MainActor class …`
         - move `@State private …` from View to ViewModel as `@Published …`
         - add the ViewModel to the View with `@StateObject private var viewModel = ViewModel()`
             - and then access the moved properties via `viewModel`
@@ -829,3 +830,9 @@ I don't think I'd have gotten this one:
             - `.atomicWrite`
             - `.completeFileProtection` - encrypted
 - Locking our UI behind Face ID
+    - `import LocalAuthentication` , `LAContext`, `canEvaluatePolicy()`
+    - reply/success callback
+        - should give the error: "publishing changes from background threads is not allowed"
+        - I'm not seeing that error. I wonder if there have been concurrency updates since then that fix this particular case. My simulator is running iOS 15.5 and I'm using Swift 5.7. Nonetheless, I'll wrap `self.isUnlocked = true` in `Task { @MainActor in … }` as suggested
+    - For showing the `if` statement that shows the UI when authenticated, the video says to put it outside of the VStack, but the code samples say to put it inside the VStack.
+
