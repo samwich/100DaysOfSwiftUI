@@ -852,4 +852,5 @@ I don't think I'd have gotten this one:
     - move `fetchNearbyPlaces()`
     - I'm leaving the `LoadingState` enum in `EditView`
     - I should move the `onSave` invocation to the ViewModel so that it can be in charge of when it gets called.
+    - NB: in the ViewModel initializer, you **don't** have to set the `@Published` vars with `_varName = Published(initialValue:)`
 

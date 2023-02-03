@@ -13,7 +13,6 @@ struct EditView: View {
     }
     
     @Environment(\.dismiss) var dismiss
-    var location: Location
     var onSave: (Location) -> Void
     
     @StateObject private var viewModel: ViewModel
@@ -57,7 +56,6 @@ struct EditView: View {
     }
     
     init(location: Location, onSave: @escaping (Location) -> Void) {
-        self.location = location
         self.onSave = onSave
         _viewModel = StateObject(wrappedValue: ViewModel(location: location))
     }

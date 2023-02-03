@@ -27,8 +27,8 @@ extension EditView {
         
         init(location: Location) {
             self.location = location
-            _name = Published(initialValue: location.name)
-            _description = Published(initialValue: location.description)
+            name = location.name
+            description = location.description
         }
         
         func fetchNearbyPlaces() async {
