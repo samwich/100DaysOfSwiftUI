@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2206E669298C7B3B0057C65E /* EditView-ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2206E668298C7B3B0057C65E /* EditView-ViewModel.swift */; };
 		22198B062969FC3F00B0FFD8 /* BucketListApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22198B052969FC3F00B0FFD8 /* BucketListApp.swift */; };
 		22198B082969FC3F00B0FFD8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22198B072969FC3F00B0FFD8 /* ContentView.swift */; };
 		22198B0A2969FC4000B0FFD8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22198B092969FC4000B0FFD8 /* Assets.xcassets */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2206E668298C7B3B0057C65E /* EditView-ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EditView-ViewModel.swift"; sourceTree = "<group>"; };
 		22198B022969FC3F00B0FFD8 /* BucketList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BucketList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22198B052969FC3F00B0FFD8 /* BucketListApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BucketListApp.swift; sourceTree = "<group>"; };
 		22198B072969FC3F00B0FFD8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -65,12 +67,13 @@
 			children = (
 				22198B052969FC3F00B0FFD8 /* BucketListApp.swift */,
 				22198B072969FC3F00B0FFD8 /* ContentView.swift */,
-				22623D4C298B3B1900351DC1 /* FileManager-DocumentsDirectory.swift */,
 				22623D4A298B366100351DC1 /* ContentView-ViewModel.swift */,
 				223CEA162980BA6D001A9F81 /* EditView.swift */,
+				2206E668298C7B3B0057C65E /* EditView-ViewModel.swift */,
 				2251A1382989D80D00A787B5 /* Result.swift */,
 				223CEA122980965D001A9F81 /* Location.swift */,
 				225D1887296A32E60053128E /* FileManager-Decodable.swift */,
+				22623D4C298B3B1900351DC1 /* FileManager-DocumentsDirectory.swift */,
 				22198B092969FC4000B0FFD8 /* Assets.xcassets */,
 				22198B0B2969FC4000B0FFD8 /* Preview Content */,
 			);
@@ -160,6 +163,7 @@
 				223CEA172980BA6D001A9F81 /* EditView.swift in Sources */,
 				22198B082969FC3F00B0FFD8 /* ContentView.swift in Sources */,
 				223CEA132980965D001A9F81 /* Location.swift in Sources */,
+				2206E669298C7B3B0057C65E /* EditView-ViewModel.swift in Sources */,
 				22623D4B298B366100351DC1 /* ContentView-ViewModel.swift in Sources */,
 				22623D4D298B3B1900351DC1 /* FileManager-DocumentsDirectory.swift in Sources */,
 				22198B062969FC3F00B0FFD8 /* BucketListApp.swift in Sources */,

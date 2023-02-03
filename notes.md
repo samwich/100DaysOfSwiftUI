@@ -836,3 +836,12 @@ I don't think I'd have gotten this one:
         - I'm not seeing that error. I wonder if there have been concurrency updates since then that fix this particular case. My simulator is running iOS 15.5 and I'm using Swift 5.7. Nonetheless, I'll wrap `self.isUnlocked = true` in `Task { @MainActor in … }` as suggested
     - For showing the `if` statement that shows the UI when authenticated, the video says to put it outside of the VStack, but the code samples say to put it inside the VStack.
 
+## [Day 73 - project 14, part 6](https://www.hackingwithswift.com/books/ios-swiftui/bucket-list-wrap-up)
+
+### Bucket List: Wrap up
+1. Our + button is rather hard to tap. Try moving all its modifiers to the image inside the button – what difference does it make, and can you think why?
+    - Maybe the `View` that the `label` closure returns defines the tappable area of the `Button`.
+3.  Our app silently fails when errors occur during biometric authentication, so add code to show those errors in an alert.
+    - This alert basically duplicates what the built-in FaceID shows us.
+    - I noticed this in the console: `[SwiftUI] Publishing changes from background threads is not allowed; make sure to publish values from the main thread (via operators like receive(on:)) on model updates.` So I wrapped it in a main actor task. I guess I missed that yesterday.
+5.  Create another view model, this time for `EditView`. What you put in the view model is down to you, but I would recommend leaving `dismiss` and `onSave` in the view itself – the former uses the environment, which can only be read by the view, and the latter doesn’t really add anything when moved into the model.

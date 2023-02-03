@@ -49,13 +49,13 @@ struct ContentView: View {
                             viewModel.addLocation()
                         } label: {
                             Image(systemName: "plus")
+                                .padding() // make the background area larger
+                                .background(.black.opacity(0.75))
+                                .foregroundColor(.white)
+                                .font(.title)
+                                .clipShape(Circle())
+                                .padding(.trailing) // move the button away from the right edge a bit
                         }
-                        .padding() // make the background area larger
-                        .background(.black.opacity(0.75))
-                        .foregroundColor(.white)
-                        .font(.title)
-                        .clipShape(Circle())
-                        .padding(.trailing) // move the button away from the right edge a bit
                     }
                 }
             } else {
@@ -66,6 +66,9 @@ struct ContentView: View {
                 .background(.blue)
                 .foregroundColor(.white)
                 .clipShape(Capsule())
+                .alert("Click Unlock places to try again", isPresented: $viewModel.showingAuthenticationErrorAlert) {
+                    Button("OK") {}
+                }
             }
         }
         .sheet(item: $viewModel.selectedPlace) { place in
