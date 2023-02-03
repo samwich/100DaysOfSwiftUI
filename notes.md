@@ -844,4 +844,12 @@ I don't think I'd have gotten this one:
 3.  Our app silently fails when errors occur during biometric authentication, so add code to show those errors in an alert.
     - This alert basically duplicates what the built-in FaceID shows us.
     - I noticed this in the console: `[SwiftUI] Publishing changes from background threads is not allowed; make sure to publish values from the main thread (via operators like receive(on:)) on model updates.` So I wrapped it in a main actor task. I guess I missed that yesterday.
-5.  Create another view model, this time for `EditView`. What you put in the view model is down to you, but I would recommend leaving `dismiss` and `onSave` in the view itself – the former uses the environment, which can only be read by the view, and the latter doesn’t really add anything when moved into the model.
+3.  Create another view model, this time for `EditView`. What you put in the view model is down to you, but I would recommend leaving `dismiss` and `onSave` in the view itself – the former uses the environment, which can only be read by the view, and the latter doesn’t really add anything when moved into the model.
+    - `@StateObject private var viewModel …` is initialized with `_viewModel = StateObject(wrappedValue: ViewModel(location: location))`
+    - move read/write field properties
+    - move read-only loadingState and pages result
+    - move new location instance creation from the Save Button closure to a computed property on the ViewModel
+    - move `fetchNearbyPlaces()`
+    - I'm leaving the `LoadingState` enum in `EditView`
+    - I should move the `onSave` invocation to the ViewModel so that it can be in charge of when it gets called.
+
