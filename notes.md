@@ -883,4 +883,6 @@ I don't think I'd have gotten this one:
     - make "choose the flag ..." also read the current round and score
     - speak "round 1 of 5" instead of "round 1 slash 5"
 - Fixing Word Scramble
+    - use `accessibilityLabel` for the label, and `.accessibilityHint` to disclose further details
+    - the on-screen keyboard is pretty annoying with VoiceOver
 - Fixing Bookworm
