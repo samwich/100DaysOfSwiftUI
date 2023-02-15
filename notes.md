@@ -886,3 +886,4 @@ I don't think I'd have gotten this one:
     - use `accessibilityLabel` for the label, and `.accessibilityHint` to disclose further details
     - the on-screen keyboard is pretty annoying with VoiceOver
 - Fixing Bookworm
+    - update `RatingView` with `accessibilityAdjustableAction`
