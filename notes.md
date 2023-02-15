@@ -858,7 +858,7 @@ I don't think I'd have gotten this one:
 - Need to use a real device to use VoiceOver
     - Xcode > Settings > Accounts: make a Personal Team
     - Xcode > Targets > Signing & Caps: select Team
-    - iPhone > Settings > General > Developer Mode (then restart)
+    - iPhone > Settings > Privacy & Security > Developer Mode (then restart)
     - Xcode > Select your iPhone in the "run target" dropdown at the top of the workspace window
     - iPhone > Settings > General > VPN & Device Mgmt: Trust the app/developer
 - Identifying views with useful labels
@@ -875,3 +875,12 @@ I don't think I'd have gotten this one:
 - Reading the value of controls
     - `.accessibilityValue(String(value))` will be spoken when the value changes
     - `.accessibilityAdjustableAction { direction in }` makes the view swipe to adjust. Add this modifier to a container view that includes the visual controls as children.
+
+## [Day 75 - project 15, part 2](https://www.hackingwithswift.com/100/swiftui/75)
+- Fixing Guess the Flag
+    - on launch, the active VoiceOver element isn't predictable
+    - I'd like it to read "choose the flag of ..." when the answer alert is dismissed.
+    - make "choose the flag ..." also read the current round and score
+    - speak "round 1 of 5" instead of "round 1 slash 5"
+- Fixing Word Scramble
+- Fixing Bookworm
