@@ -867,4 +867,9 @@ I don't think I'd have gotten this one:
         - accessibilityAddTraits
         - accessibilityRemoveTraits
 - Hiding and grouping accessibility data
+    - `Image(decorative: "character")` to hide a decorative image from VoiceOver
+    - `.accessibilityHidden(true)` to hide a view from VoiceOver
+    - `.accessibilityElement(children: .combine)` to concatenate children with a pause between each one
+    - `.accessibilityElement()` default value is `.accessibilityElement(children: .ignore)`
+    - `.accessibilityLabel("Your score is 1000")` to override the automatic VoiceOver value
 - Reading the value of controls
