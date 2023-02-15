@@ -854,3 +854,17 @@ I don't think I'd have gotten this one:
     - I should move the `onSave` invocation to the ViewModel so that it can be in charge of when it gets called.
     - NB: in the ViewModel initializer, you **don't** have to set the `@Published` vars with `_varName = Published(initialValue:)`
 
+## [Day 74 - project 15, part 1](https://www.hackingwithswift.com/100/swiftui/74)
+- Need to use a real device to use VoiceOver
+    - Xcode > Settings > Accounts: make a Personal Team
+    - Xcode > Targets > Signing & Caps: select Team
+    - iPhone > Settings > General > Developer Mode (then restart)
+    - Xcode > Select your iPhone in the "run target" dropdown at the top of the workspace window
+    - iPhone > Settings > General > VPN & Device Mgmt: Trust the app/developer
+- Identifying views with useful labels
+    - View modifiers
+        - accessibilityLabel
+        - accessibilityAddTraits
+        - accessibilityRemoveTraits
+- Hiding and grouping accessibility data
+- Reading the value of controls
