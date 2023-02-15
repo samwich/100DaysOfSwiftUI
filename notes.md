@@ -873,3 +873,5 @@ I don't think I'd have gotten this one:
     - `.accessibilityElement()` default value is `.accessibilityElement(children: .ignore)`
     - `.accessibilityLabel("Your score is 1000")` to override the automatic VoiceOver value
 - Reading the value of controls
+    - `.accessibilityValue(String(value))` will be spoken when the value changes
+    - `.accessibilityAdjustableAction { direction in }` makes the view swipe to adjust. Add this modifier to a container view that includes the visual controls as children.
