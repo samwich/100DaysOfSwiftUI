@@ -892,5 +892,7 @@ I don't think I'd have gotten this one:
 - The check out view in Cupcake Corner uses an image and loading spinner that don’t add anything to the UI, so find a way to make the screenreader not read them out.
     - add `.accessibilityElement()` to ignore the `AsyncImage`
 - Fix the list rows in iExpense so they read out the name and value in one single VoiceOver label, and their type in a hint.
-    - 
+    - ignore it with `.accessibilityElement()`
+    - in the `.accessibilityLabel()`, use `format: .currency(…)` to have it read the amount correctly
+    - I'd like to correct how `.navigationTitle("iExpense")` is pronounced
 - Do a full accessibility review of Moonshot – what changes do you need to make so that it’s fully accessible?

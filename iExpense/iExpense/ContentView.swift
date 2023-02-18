@@ -25,6 +25,9 @@ struct ItemListView: View {
                 Text(item.amount, format: .currency(code: Locale.current.currencyCode ?? "USD"))
                     .foregroundColor(colorForAmount(item.amount))
             }
+            .accessibilityElement()
+            .accessibilityLabel("\(item.name), \(item.amount, format: .currency(code: Locale.current.currencyCode ?? "USD"))")
+            .accessibilityHint(item.type)
         }
         .onDelete(perform: deleteItems)
     }
