@@ -887,3 +887,10 @@ I don't think I'd have gotten this one:
     - the on-screen keyboard is pretty annoying with VoiceOver
 - Fixing Bookworm
     - update `RatingView` with `accessibilityAdjustableAction`
+
+## [Day 76 - project 15, part 3](https://www.hackingwithswift.com/100/swiftui/76)
+- The check out view in Cupcake Corner uses an image and loading spinner that don’t add anything to the UI, so find a way to make the screenreader not read them out.
+    - add `.accessibilityElement()` to ignore the `AsyncImage`
+- Fix the list rows in iExpense so they read out the name and value in one single VoiceOver label, and their type in a hint.
+    - 
+- Do a full accessibility review of Moonshot – what changes do you need to make so that it’s fully accessible?
