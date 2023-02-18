@@ -18,7 +18,7 @@ struct MissionListView: View {
                     MissionView(mission: mission, astronauts: astronauts)
                 } label: {
                     HStack {
-                        Image(mission.image)
+                        Image(decorative: mission.image)
                             .resizable()
                             .scaledToFit()
                             .frame(width: 100, height: 100)

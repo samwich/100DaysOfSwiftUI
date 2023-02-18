@@ -37,6 +37,12 @@ struct CrewMembersView: View {
                                 Text(crewMember.astronaut.name)
                                     .foregroundColor(.white)
                                     .font(.headline)
+                                    .accessibilityLabel(crewMember.astronaut.name
+                                        .replacingOccurrences(of: ".", with: " ")
+                                        .replacingOccurrences(of: "III", with: "the third")
+                                        .replacingOccurrences(of: "II", with: "the second")
+                                        .replacingOccurrences(of: "I", with: "the first")
+                                    )
                                 Text(crewMember.role)
                                     .foregroundColor(.secondary)
                             }
