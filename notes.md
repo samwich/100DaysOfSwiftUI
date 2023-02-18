@@ -896,3 +896,17 @@ I don't think I'd have gotten this one:
     - in the `.accessibilityLabel()`, use `format: .currency(…)` to have it read the amount correctly
     - I'd like to correct how `.navigationTitle("iExpense")` is pronounced
 - Do a full accessibility review of Moonshot – what changes do you need to make so that it’s fully accessible?
+    - View as Grid/List button
+        - we could create a more VoiceOver-friendly list view and make it available when VoiceOver is on
+    - Description of each mission patch
+    - Why does Apollo 15 say something else in the list view?
+        - VoiceOver image text recognition
+    - "Launch Date: "
+    - Description of each astronaut image
+    - `CrewMembersView`
+        - scrolling `HStack` might be hard to use
+        - Middle initials with period are read like full stops - maybe there's a text formatter for english names.
+        - generation marker in name (II, III) are read as number (two, three) instead of ordinal (second, third)
+    - `AstronautView`
+        - detected text in image for Frank F. Borman II is going crazy and grabbing random words from various text fields :-(
+        - 
