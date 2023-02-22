@@ -11,6 +11,9 @@
 		22A88EC629A5747500083A46 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A88EC529A5747500083A46 /* ContentView.swift */; };
 		22A88EC829A5747600083A46 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22A88EC729A5747600083A46 /* Assets.xcassets */; };
 		22A88ECB29A5747600083A46 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22A88ECA29A5747600083A46 /* Preview Assets.xcassets */; };
+		22A88ED229A577EB00083A46 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A88ED129A577EB00083A46 /* Person.swift */; };
+		22A88ED429A579B700083A46 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A88ED329A579B700083A46 /* ImagePicker.swift */; };
+		22A88EDD29A5A71A00083A46 /* FileManager+DocumentsDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A88EDC29A5A71A00083A46 /* FileManager+DocumentsDirectory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +22,10 @@
 		22A88EC529A5747500083A46 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		22A88EC729A5747600083A46 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		22A88ECA29A5747600083A46 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		22A88ED129A577EB00083A46 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		22A88ED329A579B700083A46 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		22A88ED529A59B1D00083A46 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		22A88EDC29A5A71A00083A46 /* FileManager+DocumentsDirectory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+DocumentsDirectory.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,8 +58,12 @@
 		22A88EC229A5747500083A46 /* Nomenclator */ = {
 			isa = PBXGroup;
 			children = (
+				22A88ED529A59B1D00083A46 /* Info.plist */,
 				22A88EC329A5747500083A46 /* NomenclatorApp.swift */,
 				22A88EC529A5747500083A46 /* ContentView.swift */,
+				22A88ED329A579B700083A46 /* ImagePicker.swift */,
+				22A88ED129A577EB00083A46 /* Person.swift */,
+				22A88EDC29A5A71A00083A46 /* FileManager+DocumentsDirectory.swift */,
 				22A88EC729A5747600083A46 /* Assets.xcassets */,
 				22A88EC929A5747600083A46 /* Preview Content */,
 			);
@@ -137,7 +148,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22A88ED229A577EB00083A46 /* Person.swift in Sources */,
+				22A88ED429A579B700083A46 /* ImagePicker.swift in Sources */,
 				22A88EC629A5747500083A46 /* ContentView.swift in Sources */,
+				22A88EDD29A5A71A00083A46 /* FileManager+DocumentsDirectory.swift in Sources */,
 				22A88EC429A5747500083A46 /* NomenclatorApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -269,6 +283,8 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Nomenclator/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Nomenclator/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Nomenclator needs access to securely store your selected Photos.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -297,6 +313,8 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Nomenclator/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Nomenclator/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Nomenclator needs access to securely store your selected Photos.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

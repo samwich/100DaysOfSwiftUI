@@ -826,8 +826,8 @@ I don't think I'd have gotten this one:
     - extend `FileManager` with `documentsDirectory` property
         - `let savePath = FileManager.documentsDirectory.appendingPathComponent("SavedPlaces")`
     - add `init()` and `save()`
-        - `data.write(to: savePath, options: [.atomicWrite, .completeFileProtection])`
-            - `.atomicWrite`
+        - `data.write(to: savePath, options: [.atomic, .completeFileProtection])`
+            - `.atomicWrite` - deprecated since iOS 14. Use `.atomic` instead.
             - `.completeFileProtection` - encrypted
 - Locking our UI behind Face ID
     - `import LocalAuthentication` , `LAContext`, `canEvaluatePolicy()`
@@ -912,31 +912,38 @@ I don't think I'd have gotten this one:
 
 ## [Day 77 Milestone: Projects 13-15](https://www.hackingwithswift.com/100/swiftui/77)
 
-### Challenge
+### Challenge - Nomenclator
 
 > …build an app that asks users to import a picture from their photo library, then attach a name to whatever they imported. The full collection of pictures they name should be shown in a `List`, and tapping an item in the list should show a detail screen with a larger version of the picture.
 
--   Wrap `PHPickerViewController` so it can be used to select photos.
+-  [x] Wrap `PHPickerViewController` so it can be used to select photos.
     - Day 63 - Instafilter
-    - 
+    - probably need a privacy setting for album access
+        - [x] Info > `Privacy - Photo Library Usage Description`
 -   Detect when a new photo is imported, and immediately ask the user to name the photo.
-    - show the photo, a text field, and a save button
--   Save that name and photo somewhere safe.
+    - [x] `.onChange(of:)` ? - something else
+    - show the photo, a text field, and a save button? or just show an alert
+    - [ ] figure out the right way to dismiss sheets
+-  [x] Save that name and photo somewhere safe.
     - `yourUIImage.jpegData(compressionQuality: 0.8)`
-    - create a UUID to link the name with the photo
-    - encrypt with `jpegData.write(to: yourURL, options: [.atomic, .completeFileProtection])`
+    - [x] create a UUID to link the name with the photo
+    - encrypt with `myUIImage.jpegData.write(to: yourURL, options: [.atomic, .completeFileProtection])`
+    - [x] encode and write out the people json file
 -   Show all names and photos in a list, sorted by name.
     - also by DateTime / order added?
--   Create a detail screen that shows a picture full size.
+    - [x] load and decode people from storage
+-  [x] Create a detail screen that shows a picture full size.
     - you could eventually add a note field here
--   Decide on a way to save all this data.
+    - [ ] edit name?
+-  [x] Decide on a way to save all this data.
     - json file for metadata and just a bunch of jpegs should be fine
         - very large number of files might need subdirectory - I assume filesystem directory performance will be fine for hundreds of images. I'll need to reengineer the list view long before the filesystem is a problem.
-    - might need to switch to coredata for cloudkit?
+- [ ] how do we load images from disk in an efficient way?
+    - [ ] how do we display thumbnails in list view in an efficient way?
 
 ### UI
 - Title - 
-- Add button (nav link?)
+- Add button (show sheet)
     - PHPicker to select photo
     - Name text field
     - Save Button
