@@ -14,28 +14,36 @@ struct ContentView: View {
     @State private var image: UIImage?
 
     @State private var showingNameEditor = false
-    @State private var name = "bob"
+    @State private var name = ""
     
     var body: some View {
         NavigationView {
             VStack {
-                Button("Add") {
+                Button("Import Photo") {
                     showingImagePicker = true
                 }
                 .sheet(isPresented: $showingImagePicker) {
                     ImagePicker(image: $image)
                 }
                 .onChange(of: image) { _ in
-                    showingNameEditor = true
+                    if image != nil {
+                        showingNameEditor = true
+                    }
                 }
                 .sheet(isPresented: $showingNameEditor) {
                     VStack {
-                        Text("selected Image")
+                        if let image {
+                            Image(uiImage: image)
+                                .resizable()
+                                .scaledToFit()
+                                .padding()
+                        }
                         TextField("Name", text: $name)
                         Button("Save") {
                             save()
                             showingNameEditor = false // this should probably be a dismiss environment thingy
                         }
+                        .padding()
                     }
                 }
                 List {
@@ -74,19 +82,23 @@ struct ContentView: View {
     
     func save() {
         let person = Person(id: UUID(), name: name)
-        people.append(person)
         
-        do {
-            let data = try JSONEncoder().encode(people)
-            try data.write(to: Person.peopleURL, options: [.atomic, .completeFileProtection])
-        } catch {
-            print("Unable to save people.json")
-        }
         do {
             let imageURL = FileManager.documentsDirectory.appendingPathComponent(person.idString)
             try image?.jpegData(compressionQuality: 0.8)?.write(to: imageURL, options: [.atomic, .completeFileProtection])
         } catch {
             print("Unable to save person image.")
+            return
+        }
+
+        people.append(person)
+        name = ""
+
+        do {
+            let data = try JSONEncoder().encode(people)
+            try data.write(to: Person.peopleURL, options: [.atomic, .completeFileProtection])
+        } catch {
+            print("Unable to save people.json")
         }
     }
 }

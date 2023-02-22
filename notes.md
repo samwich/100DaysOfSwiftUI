@@ -920,15 +920,19 @@ I don't think I'd have gotten this one:
     - Day 63 - Instafilter
     - probably need a privacy setting for album access
         - [x] Info > `Privacy - Photo Library Usage Description`
+        - [x] Cancel button doesn't always dismiss picker. Move `picker.dismiss()` above the guard statement in `picker(_, didFinishPicking:)`.
 -   Detect when a new photo is imported, and immediately ask the user to name the photo.
     - [x] `.onChange(of:)` ? - something else
     - show the photo, a text field, and a save button? or just show an alert
-    - [ ] figure out the right way to dismiss sheets
+        - [x] show photo on naming sheet
+    - [x] fix `name` defaults to "bob"
+    - [x] only show the naming sheet if a photo was selected
 -  [x] Save that name and photo somewhere safe.
     - `yourUIImage.jpegData(compressionQuality: 0.8)`
     - [x] create a UUID to link the name with the photo
     - encrypt with `myUIImage.jpegData.write(to: yourURL, options: [.atomic, .completeFileProtection])`
     - [x] encode and write out the people json file
+        - [x] don't add the person to the array or write out the json file if the image file can't be written
 -   Show all names and photos in a list, sorted by name.
     - also by DateTime / order added?
     - [x] load and decode people from storage
