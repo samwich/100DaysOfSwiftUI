@@ -5,6 +5,7 @@
 //  Created by Sam Johnson on 2023-02-22.
 //
 
+import CoreLocation
 import SwiftUI
 
 extension ContentView {
@@ -17,6 +18,9 @@ extension ContentView {
         @Published var showingNameEditor = false
         @Published var name = ""
 
+        @Published var locationFetcher = LocationFetcher()
+        @Published var location: CLLocationCoordinate2D?
+
         init() {
             do {
                 let data = try Data(contentsOf: Person.peopleURL)
@@ -24,11 +28,12 @@ extension ContentView {
             } catch {
                 people = []
             }
+            locationFetcher.start()
         }
         
-        func save() {
-            let person = Person(id: UUID(), name: name)
-            
+        func save(person: Person) {
+            name = "" // reset to default
+
             do {
                 try image?.jpegData(compressionQuality: 0.8)?.write(to: person.imageURL(), options: [.atomic, .completeFileProtection])
             } catch {
@@ -37,7 +42,6 @@ extension ContentView {
             }
             
             people.append(person)
-            name = ""
             people.sort()
             
             do {

@@ -964,4 +964,18 @@ I don't think I'd have gotten this one:
     - [x] PersonEdit
 - [x] sort by name
 
+## [Day 78 Time for MapKit](https://www.hackingwithswift.com/100/swiftui/78)
+
+
+- [x] add "Privacy - Location When In Use Usage Description" to project info
+- [x] get the user's current location
+    - [x] locationFetcher.lastKnownLocation
+- [ ] show current location on a map while adding name
+- [x] save location with person
+    - [x] add lat/lon to `Person`
+    - [x] location computed property
+- [ ] show map with location in person detail view
+
+- [ ] stop using NavigationView
+- [ ] 
 

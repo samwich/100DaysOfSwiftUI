@@ -21,6 +21,7 @@ struct ContentView: View {
                 }
                 .onChange(of: viewModel.image) { _ in
                     if viewModel.image != nil {
+                        viewModel.location = viewModel.locationFetcher.lastKnownLocation
                         viewModel.showingNameEditor = true
                     }
                 }

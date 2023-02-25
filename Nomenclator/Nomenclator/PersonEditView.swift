@@ -22,12 +22,18 @@ struct PersonEditView: View {
                 
                 TextField("Name", text: $viewModel.name)
                 Button("Save") {
-                    viewModel.save()
+                    save()
                     dismiss()
                 }
                 .padding()
             }
         }
+    }
+    
+    func save() {
+        let person = Person(id: UUID(), name: viewModel.name, location: viewModel.location)
+        
+        viewModel.save(person: person)
     }
 }
 
