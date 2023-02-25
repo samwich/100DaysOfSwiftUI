@@ -8,7 +8,7 @@
 import CoreLocation
 import Foundation
 
-struct Person: Codable, Equatable, Identifiable {
+struct Person: Codable, Comparable, Equatable, Identifiable {
     let id: UUID
     var name: String
     var latitude: Double
@@ -37,5 +37,9 @@ struct Person: Codable, Equatable, Identifiable {
     
     static var peopleURL: URL {
         return FileManager.documentsDirectory.appendingPathComponent("people.json")
+    }
+    
+    static func < (lhs: Person, rhs: Person) -> Bool {
+        lhs.name < rhs.name
     }
 }

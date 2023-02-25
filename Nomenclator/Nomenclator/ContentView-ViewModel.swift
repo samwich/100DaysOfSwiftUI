@@ -37,8 +37,8 @@ extension ContentView {
             }
             
             people.append(person)
-            people.sort() { $0.name < $1.name }
             name = ""
+            people.sort()
             
             do {
                 let data = try JSONEncoder().encode(people)
