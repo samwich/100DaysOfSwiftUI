@@ -957,4 +957,11 @@ I don't think I'd have gotten this one:
             - Photo
             - Name
 
+- [x] ContentView MVVM
+- [x] pull views out of ContentView
+    - [x] PersonListItem
+    - [x] PersonDetail
+    - [x] PersonEdit
+- [x] sort by name
+
 

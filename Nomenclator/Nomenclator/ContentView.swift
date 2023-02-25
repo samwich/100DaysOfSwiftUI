@@ -8,97 +8,33 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var people: [Person]
-
-    @State private var showingImagePicker = false
-    @State private var image: UIImage?
-
-    @State private var showingNameEditor = false
-    @State private var name = ""
+    @StateObject private var viewModel = ViewModel()
     
     var body: some View {
         NavigationView {
             VStack {
                 Button("Import Photo") {
-                    showingImagePicker = true
+                    viewModel.showingImagePicker = true
                 }
-                .sheet(isPresented: $showingImagePicker) {
-                    ImagePicker(image: $image)
+                .sheet(isPresented: $viewModel.showingImagePicker) {
+                    ImagePicker(image: $viewModel.image)
                 }
-                .onChange(of: image) { _ in
-                    if image != nil {
-                        showingNameEditor = true
+                .onChange(of: viewModel.image) { _ in
+                    if viewModel.image != nil {
+                        viewModel.showingNameEditor = true
                     }
                 }
-                .sheet(isPresented: $showingNameEditor) {
-                    VStack {
-                        if let image {
-                            Image(uiImage: image)
-                                .resizable()
-                                .scaledToFit()
-                                .padding()
-                        }
-                        TextField("Name", text: $name)
-                        Button("Save") {
-                            save()
-                            showingNameEditor = false // this should probably be a dismiss environment thingy
-                        }
-                        .padding()
-                    }
+                .sheet(isPresented: $viewModel.showingNameEditor) {
+                    PersonEditView(viewModel: viewModel)
                 }
+                
                 List {
-                    ForEach(people) { person in
-                        NavigationLink {
-                            Image(uiImage: UIImage(contentsOfFile: person.imageURL().path)!)
-                                .resizable()
-                                .scaledToFit()
-                                .padding()
-                            Text(person.name)
-                                .font(.largeTitle)
-                        } label: {
-                            HStack {
-                                Image(uiImage: UIImage(contentsOfFile: person.imageURL().path)!)
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 100, height: 100)
-                                Text(person.name)
-                            }
-                        }
+                    ForEach(viewModel.people) { person in
+                        PersonListItemView(person: person)
                     }
                 }
                 .navigationTitle("Nomenclator")
             }
-        }
-    }
-
-    init() {
-        do {
-            let data = try Data(contentsOf: Person.peopleURL)
-            people = try JSONDecoder().decode([Person].self, from: data)
-        } catch {
-            people = []
-        }
-    }
-    
-    func save() {
-        let person = Person(id: UUID(), name: name)
-        
-        do {
-            let imageURL = FileManager.documentsDirectory.appendingPathComponent(person.idString)
-            try image?.jpegData(compressionQuality: 0.8)?.write(to: imageURL, options: [.atomic, .completeFileProtection])
-        } catch {
-            print("Unable to save person image.")
-            return
-        }
-
-        people.append(person)
-        name = ""
-
-        do {
-            let data = try JSONEncoder().encode(people)
-            try data.write(to: Person.peopleURL, options: [.atomic, .completeFileProtection])
-        } catch {
-            print("Unable to save people.json")
         }
     }
 }
