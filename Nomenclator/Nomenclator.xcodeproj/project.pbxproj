@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		223A298E29A6DC7900DDB92D /* LocationFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223A298D29A6DC7900DDB92D /* LocationFetcher.swift */; };
 		223A299029A6EACD00DDB92D /* PersonEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223A298F29A6EACD00DDB92D /* PersonEditView.swift */; };
 		223A299429A6F66D00DDB92D /* ContentView-ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223A299329A6F66D00DDB92D /* ContentView-ViewModel.swift */; };
-		223A298E29A6DC7900DDB92D /* LocationFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223A298D29A6DC7900DDB92D /* LocationFetcher.swift */; };
 		22A88EC429A5747500083A46 /* NomenclatorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A88EC329A5747500083A46 /* NomenclatorApp.swift */; };
 		22A88EC629A5747500083A46 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A88EC529A5747500083A46 /* ContentView.swift */; };
 		22A88EC829A5747600083A46 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22A88EC729A5747600083A46 /* Assets.xcassets */; };
@@ -17,13 +17,14 @@
 		22A88ED229A577EB00083A46 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A88ED129A577EB00083A46 /* Person.swift */; };
 		22A88ED429A579B700083A46 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A88ED329A579B700083A46 /* ImagePicker.swift */; };
 		22A88EDD29A5A71A00083A46 /* FileManager+DocumentsDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A88EDC29A5A71A00083A46 /* FileManager+DocumentsDirectory.swift */; };
+		22F8E27029AAD80B004CC318 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F8E26F29AAD80B004CC318 /* MapView.swift */; };
 		22F92ABF29AABBF900A023EE /* PersonListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F92ABE29AABBF900A023EE /* PersonListItemView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		223A298D29A6DC7900DDB92D /* LocationFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationFetcher.swift; sourceTree = "<group>"; };
 		223A298F29A6EACD00DDB92D /* PersonEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonEditView.swift; sourceTree = "<group>"; };
 		223A299329A6F66D00DDB92D /* ContentView-ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ContentView-ViewModel.swift"; sourceTree = "<group>"; };
-		223A298D29A6DC7900DDB92D /* LocationFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationFetcher.swift; sourceTree = "<group>"; };
 		22A88EC029A5747500083A46 /* Nomenclator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nomenclator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22A88EC329A5747500083A46 /* NomenclatorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NomenclatorApp.swift; sourceTree = "<group>"; };
 		22A88EC529A5747500083A46 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -33,6 +34,7 @@
 		22A88ED329A579B700083A46 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		22A88ED529A59B1D00083A46 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		22A88EDC29A5A71A00083A46 /* FileManager+DocumentsDirectory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+DocumentsDirectory.swift"; sourceTree = "<group>"; };
+		22F8E26F29AAD80B004CC318 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		22F92ABE29AABBF900A023EE /* PersonListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonListItemView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -72,6 +74,7 @@
 				223A299329A6F66D00DDB92D /* ContentView-ViewModel.swift */,
 				223A298F29A6EACD00DDB92D /* PersonEditView.swift */,
 				22F92ABE29AABBF900A023EE /* PersonListItemView.swift */,
+				22F8E26F29AAD80B004CC318 /* MapView.swift */,
 				22A88ED329A579B700083A46 /* ImagePicker.swift */,
 				223A298D29A6DC7900DDB92D /* LocationFetcher.swift */,
 				22A88ED129A577EB00083A46 /* Person.swift */,
@@ -167,6 +170,7 @@
 				22A88EDD29A5A71A00083A46 /* FileManager+DocumentsDirectory.swift in Sources */,
 				223A299429A6F66D00DDB92D /* ContentView-ViewModel.swift in Sources */,
 				22A88EC429A5747500083A46 /* NomenclatorApp.swift in Sources */,
+				22F8E27029AAD80B004CC318 /* MapView.swift in Sources */,
 				223A299029A6EACD00DDB92D /* PersonEditView.swift in Sources */,
 				22F92ABF29AABBF900A023EE /* PersonListItemView.swift in Sources */,
 			);

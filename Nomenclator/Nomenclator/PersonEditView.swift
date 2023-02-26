@@ -26,6 +26,11 @@ struct PersonEditView: View {
                     dismiss()
                 }
                 .padding()
+                if let location = viewModel.location {
+                    MapView(location: location)
+                } else {
+                    Text("No location available.")
+                }
             }
         }
     }

@@ -19,6 +19,12 @@ struct PersonListItemView: View {
                 .padding()
             Text(person.name)
                 .font(.largeTitle)
+            if let location = person.location {
+                MapView(location: location)
+            } else {
+                Text("No location available.")
+            }
+
         } label: {
             HStack {
                 Image(uiImage: UIImage(contentsOfFile: person.imageURL().path)!)
