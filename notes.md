@@ -979,3 +979,10 @@ I don't think I'd have gotten this one:
 - [ ] stop using NavigationView
 - [ ] 
 
+## [Day 79 Project 16, part 1](https://www.hackingwithswift.com/100/swiftui/79)
+
+- Reading custom values from the environment with @EnvironmentObject
+    - `@EnvironmentObject` reference type
+    - `.environmentObject()` view modifier makes the object available to all child views
+    - https://developer.apple.com/documentation/swiftui/stateobject
+- Creating tabs with TabView and tabItem()
