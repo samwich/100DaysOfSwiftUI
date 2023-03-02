@@ -990,3 +990,12 @@ I don't think I'd have gotten this one:
     - `.tabItem { Label() }` the view that lets you select the tab
     - `.tag(Hashable)` provides a unique identifier for the tab. Used in the `TabView`'s `selection:`
     - Maybe a `TabView` shouldn't be a child of a `NavigationView` ?
+
+## [Project 16, part 2](https://www.hackingwithswift.com/100/swiftui/80)
+- Manually publishing ObservableObject changes
+    - `DispatchQueue.main.asyncAfter(deadline: seconds)` schedules some work
+    - `@Published` publishes the effects of changing a property 
+    - `@Published` has the same effect as a computed property with `willSet { objectWillChange.send() }`
+    - If I use `@Published` and `willSet`, who will win?
+- Understanding Swift’s Result type
+- Controlling image interpolation in SwiftUI
