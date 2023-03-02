@@ -992,10 +992,24 @@ I don't think I'd have gotten this one:
     - Maybe a `TabView` shouldn't be a child of a `NavigationView` ?
 
 ## [Project 16, part 2](https://www.hackingwithswift.com/100/swiftui/80)
-- Manually publishing ObservableObject changes
-    - `DispatchQueue.main.asyncAfter(deadline: seconds)` schedules some work
-    - `@Published` publishes the effects of changing a property 
-    - `@Published` has the same effect as a computed property with `willSet { objectWillChange.send() }`
-    - If I use `@Published` and `willSet`, who will win?
-- Understanding Swift’s Result type
-- Controlling image interpolation in SwiftUI
+
+### Manually publishing ObservableObject changes
+- `DispatchQueue.main.asyncAfter(deadline: seconds)` schedules some work
+- `@Published` publishes the effects of changing a property 
+- `@Published` has the same effect as a computed property with `willSet { objectWillChange.send() }`
+- If I use `@Published` and `willSet`, who will win?
+
+### Understanding Swift’s Result type
+
+throwing in a `Task` will produce an `Error` `Result`
+
+    let fetchTask = Task { () -> String in … return "" }
+    let result = await fetchTask.result // result is Result<String, Error>
+    switch result {
+        case .success(let str):
+            output = str
+        case .failure(let error):
+            output = "Error: \(error.localizedDescription)"
+    }
+
+### Controlling image interpolation in SwiftUI
