@@ -1013,3 +1013,5 @@ throwing in a `Task` will produce an `Error` `Result`
     }
 
 ### Controlling image interpolation in SwiftUI
+    Image("example")
+        .interpolation(.none)
