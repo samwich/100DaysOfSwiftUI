@@ -986,3 +986,7 @@ I don't think I'd have gotten this one:
     - `.environmentObject()` view modifier makes the object available to all child views
     - https://developer.apple.com/documentation/swiftui/stateobject
 - Creating tabs with TabView and tabItem()
+    - `TabView(selection:) content: {}` top level tab view
+    - `.tabItem { Label() }` the view that lets you select the tab
+    - `.tag(Hashable)` provides a unique identifier for the tab. Used in the `TabView`'s `selection:`
+    - Maybe a `TabView` shouldn't be a child of a `NavigationView` ?
