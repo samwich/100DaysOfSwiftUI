@@ -1025,13 +1025,22 @@ throwing in a `Task` will produce an `Error` `Result`
         1.  If you’re going to use them, use them in lots of places – it can be frustrating to press and hold on something only to find nothing happens.
         2.  Keep your list of options as short as you can – aim for three or less.
         3.  Don’t repeat options the user can already see elsewhere in your UI.
-
 - Adding custom row swipe actions to a List
     - `.swipeActions` modifier
         - `Button` for each button
     - `.swipeActions(edge:)` for swipe direction
     - `Button().tint(.orange)`
-
-- Scheduling local notifications
-
+- Scheduling local notifications (this example is for lock screen notifications only?)
+    - `import UserNotifications`
+    - Ask for permission:
+        - `UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, error in … }`
+    - Build notification request
+        - `let content = UNMutableNotificationContent()`
+            - `content.title`
+            - `content.subtitle`
+            - `content.sound`
+        - `let trigger = UNTimeIntervalNotificationTrigger(…)`
+        - `let request = UNNotificationRequest(identifier:content:trigger:)`
+    - Make the request
+        - `UNUserNotificationCenter.current().add(request)`
 - Adding Swift package dependencies in Xcode
