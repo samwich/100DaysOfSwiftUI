@@ -1027,6 +1027,10 @@ throwing in a `Task` will produce an `Error` `Result`
         3.  Don’t repeat options the user can already see elsewhere in your UI.
 
 - Adding custom row swipe actions to a List
+    - `.swipeActions` modifier
+        - `Button` for each button
+    - `.swipeActions(edge:)` for swipe direction
+    - `Button().tint(.orange)`
 
 - Scheduling local notifications
 
