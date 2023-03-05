@@ -1044,3 +1044,4 @@ throwing in a `Task` will produce an `Error` `Result`
     - Make the request
         - `UNUserNotificationCenter.current().add(request)`
 - Adding Swift package dependencies in Xcode
+- File > Add Packages …
