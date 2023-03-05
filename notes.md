@@ -979,7 +979,7 @@ I don't think I'd have gotten this one:
 - [ ] stop using NavigationView
 - [ ] 
 
-## [Day 79 Project 16, part 1](https://www.hackingwithswift.com/100/swiftui/79)
+## [Day 79 - Project 16, part 1](https://www.hackingwithswift.com/100/swiftui/79)
 
 - Reading custom values from the environment with @EnvironmentObject
     - `@EnvironmentObject` reference type
@@ -991,7 +991,7 @@ I don't think I'd have gotten this one:
     - `.tag(Hashable)` provides a unique identifier for the tab. Used in the `TabView`'s `selection:`
     - Maybe a `TabView` shouldn't be a child of a `NavigationView` ?
 
-## [Project 16, part 2](https://www.hackingwithswift.com/100/swiftui/80)
+## [Day 80 - Project 16, part 2](https://www.hackingwithswift.com/100/swiftui/80)
 
 ### Manually publishing ObservableObject changes
 - `DispatchQueue.main.asyncAfter(deadline: seconds)` schedules some work
@@ -1015,3 +1015,19 @@ throwing in a `Task` will produce an `Error` `Result`
 ### Controlling image interpolation in SwiftUI
     Image("example")
         .interpolation(.none)
+
+## [Day 81 Project 16, part 3](https://www.hackingwithswift.com/100/swiftui/81)
+
+- Creating context menus
+    - `.contextMenu` modifier
+        - Button Views in block have restricted styling
+    - Recommendations:
+        1.  If you’re going to use them, use them in lots of places – it can be frustrating to press and hold on something only to find nothing happens.
+        2.  Keep your list of options as short as you can – aim for three or less.
+        3.  Don’t repeat options the user can already see elsewhere in your UI.
+
+- Adding custom row swipe actions to a List
+
+- Scheduling local notifications
+
+- Adding Swift package dependencies in Xcode
