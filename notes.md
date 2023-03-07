@@ -1045,3 +1045,15 @@ throwing in a `Task` will produce an `Error` `Result`
         - `UNUserNotificationCenter.current().add(request)`
 - Adding Swift package dependencies in Xcode
 - File > Add Packages …
+
+## [Day 82 Project 16, part 4](https://www.hackingwithswift.com/100/swiftui/82)
+
+### HotProspects
+
+- Building our tab bar
+    - To remove a swift package: Project > Swift Packages
+    - `ProspectsView`
+        - add `FilterType` enum to `ProspectsView`
+        - vary page title by enum value
+- Sharing data across tabs using @EnvironmentObject
+- Dynamically filtering a SwiftUI List
