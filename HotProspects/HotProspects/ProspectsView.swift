@@ -14,10 +14,22 @@ struct ProspectsView: View {
     
     let filter: FilterType
     
+    @EnvironmentObject var prospects: Prospects
+    
     var body: some View {
         NavigationView {
-            Text("Hello")
+            Text("People: \(prospects.people.count)")
                 .navigationTitle(title)
+                .toolbar {
+                    Button {
+                        let prospect = Prospect()
+                        prospect.name = "Paul Hudson"
+                        prospect.email = "paul@hackingwithswift.com"
+                        prospects.people.append(prospect)
+                    } label: {
+                        Label("Scan", systemImage: "qrcode.viewfinder")
+                    }
+                }
         }
     }
     

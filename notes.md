@@ -1056,4 +1056,6 @@ throwing in a `Task` will produce an `Error` `Result`
         - add `FilterType` enum to `ProspectsView`
         - vary page title by enum value
 - Sharing data across tabs using @EnvironmentObject
+    - process will crash if `@EnvironmentObject` value is nil. This might not be true in Swift 6.
+    - create `Prospects` as a `@StateObject` in the parent view, and then access it as `@EnvironmentObject` in child views.
 - Dynamically filtering a SwiftUI List
