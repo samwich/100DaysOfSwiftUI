@@ -1059,3 +1059,5 @@ throwing in a `Task` will produce an `Error` `Result`
     - process will crash if `@EnvironmentObject` value is nil. This might not be true in Swift 6.
     - create `Prospects` as a `@StateObject` in the parent view, and then access it as `@EnvironmentObject` in child views.
 - Dynamically filtering a SwiftUI List
+    - add `filteredProspects` as a computed property to `ProspectsView`
+    - Knowledge of the `FilterType` enum is in ContentView, and it's repeated all over ProspectsView
