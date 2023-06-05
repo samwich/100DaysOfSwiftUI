@@ -1072,3 +1072,6 @@ throwing in a `Task` will produce an `Error` `Result`
     - How secure is  [https://github.com/twostraws/CodeScanner](https://github.com/twostraws/CodeScanner) ?
     - I can't test this on my iPhone today because I can't add a developer team to Xcode because it's WWDC keynote day?
 - Adding options with swipe actions
+    - `@Published` - `objectWillChange.send()`
+    - `fileprivate(set)`
+
