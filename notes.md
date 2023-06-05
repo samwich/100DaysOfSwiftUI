@@ -1061,3 +1061,10 @@ throwing in a `Task` will produce an `Error` `Result`
 - Dynamically filtering a SwiftUI List
     - add `filteredProspects` as a computed property to `ProspectsView`
     - Knowledge of the `FilterType` enum is in ContentView, and it's repeated all over ProspectsView
+
+## [Day 83 Project 16, part 5](https://www.hackingwithswift.com/100/swiftui/83)
+
+- Generating and scaling up a QR code
+    - `Image.interpolation()` modifier wants to be before `.scaledToFit()`
+- Scanning QR codes with SwiftUI
+- Adding options with swipe actions
