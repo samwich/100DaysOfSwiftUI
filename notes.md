@@ -1067,4 +1067,8 @@ throwing in a `Task` will produce an `Error` `Result`
 - Generating and scaling up a QR code
     - `Image.interpolation()` modifier wants to be before `.scaledToFit()`
 - Scanning QR codes with SwiftUI
+    - File > Add Packages…
+    - Target > add row for "Privacy - Camera Usage Description"
+    - How secure is  [https://github.com/twostraws/CodeScanner](https://github.com/twostraws/CodeScanner) ?
+    - I can't test this on my iPhone today because I can't add a developer team to Xcode because it's WWDC keynote day?
 - Adding options with swipe actions
