@@ -1098,6 +1098,9 @@ throwing in a `Task` will produce an `Error` `Result`
 - Add an icon to the “Everyone” screen showing whether a prospect was contacted or not.
     - I'm using `.opacity(filter == .none ? 1.0 : 0.0)` to hide it on non-Everyone tabs.
 - Use JSON and the documents directory for saving and loading our user data.
+    - TODO: copy FileManager extensions from BucketList
+    - Migrate from UserDefaults by first trying to load data from document directory first, then falling back to UserDefaults. Only save data to document directory.
+    - TODO: clean up stale data in UserDefaults if you find it.
 - Use a confirmation dialog to customize the way users are sorted in each tab – by name or by most recent.
 
 Build issues started disappearing in Xcode

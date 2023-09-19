@@ -17,22 +17,32 @@ class Prospect: Identifiable, Codable {
 @MainActor class Prospects: ObservableObject {
     @Published private(set) var people: [Prospect]
     let saveKey = "SavedData"
-    
+    let savePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("Prospects")
+
     init() {
-        if let data = UserDefaults.standard.data(forKey: saveKey) {
-            if let decoded = try? JSONDecoder().decode([Prospect].self, from: data) {
-                people = decoded
-                return
-            }
-        }
         
-        // no saved data - first run only
-        people = []
+        do {
+            let data = try Data(contentsOf: savePath)
+            people = try JSONDecoder().decode([Prospect].self, from: data)
+        } catch {
+            print("JSON not loaded from FileManager. Trying UserDefaults.")
+            if let data = UserDefaults.standard.data(forKey: saveKey) {
+                if let decoded = try? JSONDecoder().decode([Prospect].self, from: data) {
+                    people = decoded
+                    return
+                }
+            }
+            print("JSON not loaded from UserDefaults. First launch.")
+            people = []
+        }
     }
     
     private func save() {
-        if let encoded = try? JSONEncoder().encode(people) {
-            UserDefaults.standard.set(encoded, forKey: saveKey)
+        do {
+            let encoded = try JSONEncoder().encode(people)
+            try encoded.write(to: savePath, options: [.atomic, .completeFileProtection])
+        } catch {
+            print("Unable to save prospects to savePath.")
         }
     }
     
