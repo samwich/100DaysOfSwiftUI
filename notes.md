@@ -1099,3 +1099,11 @@ throwing in a `Task` will produce an `Error` `Result`
     - I'm using `.opacity(filter == .none ? 1.0 : 0.0)` to hide it on non-Everyone tabs.
 - Use JSON and the documents directory for saving and loading our user data.
 - Use a confirmation dialog to customize the way users are sorted in each tab – by name or by most recent.
+
+Build issues started disappearing in Xcode
+https://developer.apple.com/forums/thread/715103?answerId=735082022#735082022
+
+Update 1: Unchecking Prefs>General>Show Live Issues makes it stop, but you lose Live Issues
+Update 2: run DevToolsSecurity -enable
+
+This answer attributes it to a SourceKit problem and has steps to find the SourceKit error message https://developer.apple.com/forums/thread/715103?answerId=746427022#746427022
