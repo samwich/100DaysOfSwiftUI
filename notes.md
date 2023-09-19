@@ -1093,3 +1093,9 @@ throwing in a `Task` will produce an `Error` `Result`
     - `UNMutableNotificationContent` and set `title`, `subtitle`, `sound`
     - notification scheduling: `UNCalendarNotificationTrigger` and `UNTimeIntervalNotificationTrigger`
     - `UNUserNotificationCenter.current().getNotificationSettings(completionHandler:)`
+
+## [Day 85 Project 16, part 7](https://www.hackingwithswift.com/books/ios-swiftui/hot-prospects-wrap-up)
+- Add an icon to the “Everyone” screen showing whether a prospect was contacted or not.
+    - I'm using `.opacity(filter == .none ? 1.0 : 0.0)` to hide it on non-Everyone tabs.
+- Use JSON and the documents directory for saving and loading our user data.
+- Use a confirmation dialog to customize the way users are sorted in each tab – by name or by most recent.
