@@ -1102,6 +1102,12 @@ throwing in a `Task` will produce an `Error` `Result`
     - Migrate from UserDefaults by first trying to load data from document directory first, then falling back to UserDefaults. Only save data to document directory.
     - TODO: clean up stale data in UserDefaults if you find it.
 - Use a confirmation dialog to customize the way users are sorted in each tab – by name or by most recent.
+    - Add a SortingType enum just like the FilterType
+    - Add a `sortedProspects` property to sort the `filteredProspects` property
+        - use `.reversed()` for the `.date` case so that most recent are first
+    - Add a button in the toolbar next to the qrcode scan button. Use an HStack to make both show up.
+    - Use `.confirmationDialog()` modifier
+    - I don't think a confirmation dialog is a good UI for choosing sort ordering.
 
 Build issues started disappearing in Xcode
 https://developer.apple.com/forums/thread/715103?answerId=735082022#735082022

@@ -14,16 +14,23 @@ struct ProspectsView: View {
         case none, contacted, uncontacted
     }
     
+    enum SortingType {
+        case name, date
+    }
+    
     let filter: FilterType
+
+    @State private var sortBy = SortingType.date
     
     @EnvironmentObject var prospects: Prospects
     
     @State private var isShowingScanner = false
+    @State private var isShowingSortBy = false
     
     var body: some View {
         NavigationView {
             List {
-                ForEach(filteredProspects) { prospect in
+                ForEach(sortedProspects) { prospect in
                     HStack {
                         VStack(alignment: .leading) {
                             Text(prospect.name)
@@ -66,14 +73,29 @@ struct ProspectsView: View {
             }
                 .navigationTitle(title)
                 .toolbar {
-                    Button {
-                        isShowingScanner = true
-                    } label: {
-                        Label("Scan", systemImage: "qrcode.viewfinder")
+                    HStack {
+                        Button {
+                            isShowingSortBy = true
+                        } label: {
+                            Label("Scan", systemImage: "arrow.up.arrow.down")
+                        }
+                        Button {
+                            isShowingScanner = true
+                        } label: {
+                            Label("Scan", systemImage: "qrcode.viewfinder")
+                        }
                     }
                 }
                 .sheet(isPresented: $isShowingScanner) {
-                    CodeScannerView(codeTypes: [.qr], simulatedData: "Paul Hudson\npaul@hackingwithswift.com", completion: handleScan)
+                    CodeScannerView(codeTypes: [.qr], simulatedData: "Paul Hudson\(Int.random(in: 0...10))\npaul@hackingwithswift.com", completion: handleScan)
+                }
+                .confirmationDialog("Sort By", isPresented: $isShowingSortBy) {
+                    Button("Name") {
+                        sortBy = .name
+                    }
+                    Button("Date") {
+                        sortBy = .date
+                    }
                 }
         }
     }
@@ -86,6 +108,16 @@ struct ProspectsView: View {
             return "Contacted people"
         case .uncontacted:
             return "Uncontacted people"
+        }
+    }
+    
+    var sortedProspects: [Prospect] {
+        switch sortBy {
+        case .name:
+            return filteredProspects.sorted { $0.name < $1.name }
+        case .date:
+            // Use reversed() to order by most recently added.
+            return filteredProspects.reversed()
         }
     }
     
