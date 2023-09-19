@@ -1075,3 +1075,10 @@ throwing in a `Task` will produce an `Error` `Result`
     - `@Published` - `objectWillChange.send()`
     - `fileprivate(set)`
 
+## [Day 84 Project 16, part 6](https://www.hackingwithswift.com/100/swiftui/84)
+
+- Saving and loading data with UserDefaults
+    - make the UserDefaults key a constant
+    - encapsulate save functionality within the object that's responsible for the data with `Prospects.save()`
+- Adding a context menu to an image
+- Posting notifications to the lock screen
