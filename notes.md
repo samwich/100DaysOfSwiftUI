@@ -1089,3 +1089,7 @@ throwing in a `Task` will produce an `Error` `Result`
     - TODO: the image stored in Photo Library is very low resolution
     - TODO: when I click the info button in the Photos app, it crashes, so I can't see the actual resolution of the saved QRCode
 - Posting notifications to the lock screen
+    - `import UserNotifications`
+    - `UNMutableNotificationContent` and set `title`, `subtitle`, `sound`
+    - notification scheduling: `UNCalendarNotificationTrigger` and `UNTimeIntervalNotificationTrigger`
+    - `UNUserNotificationCenter.current().getNotificationSettings(completionHandler:)`
