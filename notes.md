@@ -1081,4 +1081,11 @@ throwing in a `Task` will produce an `Error` `Result`
     - make the UserDefaults key a constant
     - encapsulate save functionality within the object that's responsible for the data with `Prospects.save()`
 - Adding a context menu to an image
+    - hiding caching code in `generateQRCode()` seems messy
+        - Ah, it's because it's modifying state during an update. 
+        - I didn't get the purple warning that the instructions said I would.
+    - helper function `updateCode()`
+    - trigger `updateCode` with `.onAppear` and `.onChange` modifiers
+    - TODO: the image stored in Photo Library is very low resolution
+    - TODO: when I click the info button in the Photos app, it crashes, so I can't see the actual resolution of the saved QRCode
 - Posting notifications to the lock screen
