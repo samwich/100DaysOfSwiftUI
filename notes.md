@@ -1126,6 +1126,10 @@ This answer attributes it to a SourceKit problem and has steps to find the Sourc
     - `.scaleEffect` with `.gesture(MagnificationGesture())`
         - `.onChanged` and `.onEnded`
     - `.rotationEffect` with `.gesture(RotationGesture())`
-    - 
+    - child gesture takes priority over parent gesture by default
+    - `.highPriorityGesture()` will override a child gestures
+    - `.simultaneousGesture()` will fire the parent gesture first, followed by the child gesture
+    - gesture sequence
+        - 
 - Making vibrations with UINotificationFeedbackGenerator and Core Haptics
 - Disabling user interactivity with allowsHitTesting()

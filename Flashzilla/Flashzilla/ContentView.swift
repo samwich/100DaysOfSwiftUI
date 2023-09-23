@@ -14,40 +14,22 @@ struct ContentView: View {
     var body: some View {
         VStack {
             Text("Hello, world!")
-                .rotationEffect(currentAmount + finalAmount)
-                .gesture(
-                    RotationGesture()
-                        .onChanged({ angle in
-                            currentAmount = angle
-                        })
-                        .onEnded({ angle in
-                            finalAmount += currentAmount
-                            currentAmount = .zero
-                        })
-                )
-//                .scaleEffect(currentAmount + finalAmount)
-//                .gesture(
-//                    MagnificationGesture()
-//                        .onChanged({ amount in
-//                            currentAmount = amount - 1
-//                        })
-//                        .onEnded({ amount in
-//                            finalAmount += currentAmount
-//                            currentAmount = 0
-//                        })
-//                )
-//                .onTapGesture(count: 2) {
-//                    print("Double tapped!")
-//                }
-//                .onTapGesture {
-//                    print("Tapped!")
-//                }
-//                .onLongPressGesture(minimumDuration: 2) {
-//                    print("Long pressed!")
-//                } onPressingChanged: { inProgress in
-//                    print("In progress \(inProgress)!")
-//                }
+                .onTapGesture {
+                    print("Text tapped")
+                }
         }
+        .simultaneousGesture(
+            TapGesture()
+                .onEnded({ _ in
+                    print("VStack tapped")
+                })
+        )
+//        .highPriorityGesture(
+//            TapGesture()
+//                .onEnded {
+//                    print("VStack tapped")
+//                }
+//        )
         .padding()
     }
 }
