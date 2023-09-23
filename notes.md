@@ -1116,3 +1116,16 @@ Update 1: Unchecking Prefs>General>Show Live Issues makes it stop, but you lose 
 Update 2: run DevToolsSecurity -enable
 
 This answer attributes it to a SourceKit problem and has steps to find the SourceKit error message https://developer.apple.com/forums/thread/715103?answerId=746427022#746427022
+
+## [Day 86 Project 17, part 1](https://www.hackingwithswift.com/100/swiftui/86)
+
+- Flashzilla: Introduction
+- How to use gestures in SwiftUI
+    - `.onTapGesture(count:)`
+    - `.onLongPressGesture(minimmumDuration:)`
+    - `.scaleEffect` with `.gesture(MagnificationGesture())`
+        - `.onChanged` and `.onEnded`
+    - `.rotationEffect` with `.gesture(RotationGesture())`
+    - 
+- Making vibrations with UINotificationFeedbackGenerator and Core Haptics
+- Disabling user interactivity with allowsHitTesting()
