@@ -1129,7 +1129,9 @@ This answer attributes it to a SourceKit problem and has steps to find the Sourc
     - child gesture takes priority over parent gesture by default
     - `.highPriorityGesture()` will override a child gestures
     - `.simultaneousGesture()` will fire the parent gesture first, followed by the child gesture
-    - gesture sequence
-        - 
+    - gesture sequencing
+        - create gestures with `DragGesture()` and `LongPressGesture()`
+        - create a combined `SequenceGesture` with `let combined = pressGesture.sequenced(before: dragGesture)`
+        - add it to a view with `.gesture(combined)`
 - Making vibrations with UINotificationFeedbackGenerator and Core Haptics
 - Disabling user interactivity with allowsHitTesting()
