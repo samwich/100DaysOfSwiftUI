@@ -1134,4 +1134,15 @@ This answer attributes it to a SourceKit problem and has steps to find the Sourc
         - create a combined `SequenceGesture` with `let combined = pressGesture.sequenced(before: dragGesture)`
         - add it to a view with `.gesture(combined)`
 - Making vibrations with UINotificationFeedbackGenerator and Core Haptics
+    - Looks like simulator doesn't support haptics: https://developer.apple.com/documentation/corehaptics/playing_a_custom_haptic_pattern_from_a_file
+    - via UIKit: `UINotificationFeedbackGenerator().notificationOccurred(.success)`
+    - Running it on my iPhone is sluggish. the first taps are lost or take seconds to register.
+    - with `CoreHaptics`: 
+        - `CHHapticEngine.capabilitiesForHardware().supportsHaptics`
+        - `engine = try CHHapticEngine()`; `engine?.start()`
+        - create events with `let event = CHHapticEvent(eventType: parameters: relativeTime:)`
+        - `let pattern = try CHHapticPattern(events: events, parameters: [])`
+        - `let player = try engine?.makePlayer(with: pattern)`
+        - `player?.start(atTime:)`
+    - Even though 20 haptic events are submitted, I only feel 8-10 taps within the 2 second duration. 
 - Disabling user interactivity with allowsHitTesting()
