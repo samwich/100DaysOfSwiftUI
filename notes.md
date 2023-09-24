@@ -1146,3 +1146,6 @@ This answer attributes it to a SourceKit problem and has steps to find the Sourc
         - `player?.start(atTime:)`
     - Even though 20 haptic events are submitted, I only feel 8-10 taps within the 2 second duration. 
 - Disabling user interactivity with allowsHitTesting()
+    - `.allowsHitTesting(false)` makes taps fall through to the view behind in a ZStack
+    - `Spacer()` seems to eat the tap events
+    - `.contentShape(Rectangle())` on the containing view will pass the `Spacer()` taps to the containing view
