@@ -1149,3 +1149,13 @@ This answer attributes it to a SourceKit problem and has steps to find the Sourc
     - `.allowsHitTesting(false)` makes taps fall through to the view behind in a ZStack
     - `Spacer()` seems to eat the tap events
     - `.contentShape(Rectangle())` on the containing view will pass the `Spacer()` taps to the containing view
+
+## [Day 87 Project 17, part 2](https://www.hackingwithswift.com/100/swiftui/87)
+- Triggering events repeatedly using a timer
+    - `Combine`
+    - `let timer = Timer.publish(every: 1, tolerance: 0.5, on: .main, in: .common).autoconnect()`
+        - `tolerance` is added to `every`, but won't drift (by more than `tolerance`?)
+    - `.onReceive(timer) { time in … }`
+    - `timer.upstream.connect().cancel()`
+- How to be notified when your SwiftUI app moves to the background
+- Supporting specific accessibility needs with SwiftUI
