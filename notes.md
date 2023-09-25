@@ -1158,4 +1158,9 @@ This answer attributes it to a SourceKit problem and has steps to find the Sourc
     - `.onReceive(timer) { time in … }`
     - `timer.upstream.connect().cancel()`
 - How to be notified when your SwiftUI app moves to the background
+    - `@Environment(\.scenePhase)`
+    - `.onChange(of: scenePhase) { … }`
+    - `.active` it's possible for a scene to receive user events
+    - `.inactive` scene might be visible, but cannot receive user events. e.g.: control center is obscuring any part of the app
+    - `.background` scene is not visible to the user. may be terminated by the system to reclaim resources.
 - Supporting specific accessibility needs with SwiftUI
