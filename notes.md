@@ -1169,3 +1169,10 @@ This answer attributes it to a SourceKit problem and has steps to find the Sourc
     - `@Environment(\.accessibilityReduceTransparency)`
     - `UIAccessibility.isReduceMotionEnabled`
     - make your own withOptionalAnimation wrapper to reduce boilerplate
+
+## [DAY 88 Project 17, part 3](https://www.hackingwithswift.com/100/swiftui/88)
+- Designing a single card view
+    - Target > Info > Supported interface orientations
+    - `.foregroundColor()` is deprecated in iOS 17, `.foregroundStyle()` is available from iOS 15.
+- Building a stack of cards
+- Moving views with DragGesture and offset()
