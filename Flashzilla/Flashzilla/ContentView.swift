@@ -8,22 +8,35 @@
 import SwiftUI
 
 struct ContentView: View {
-    @Environment(\.scenePhase) var scenePhase
+    @Environment(\.accessibilityReduceMotion) var reduceMotion
+    @Environment(\.accessibilityReduceTransparency) var reduceTransparency
+    @State private var scale = 1.0
     
     var body: some View {
         VStack {
-            Text("Hello")
-                .onChange(of: scenePhase) { newValue in
-                    if newValue == .active {
-                        print("Active")
-                    } else if newValue == .inactive {
-                        print("Inactive")
-                    } else if newValue == .background {
-                        print("Background")
+            Text("Hello, World animation!")
+                .padding()
+                .scaleEffect(scale)
+                .onTapGesture {
+                    withOptionalAnimation {
+                        scale *= 1.5
                     }
                 }
+            Text("Hello, World transparency!")
+                .padding()
+                .background(reduceTransparency ? .black : .black.opacity(0.5))
+                .foregroundColor(.white)
+                .clipShape(.capsule)
         }
         .padding()
+    }
+    
+    func withOptionalAnimation<Result>(_ animation: Animation? = .default, _ body: () throws -> Result) rethrows -> Result {
+        if UIAccessibility.isReduceMotionEnabled {
+            return try body()
+        } else {
+            return try withAnimation(animation, body)
+        }
     }
 }
 

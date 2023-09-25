@@ -1164,3 +1164,8 @@ This answer attributes it to a SourceKit problem and has steps to find the Sourc
     - `.inactive` scene might be visible, but cannot receive user events. e.g.: control center is obscuring any part of the app
     - `.background` scene is not visible to the user. may be terminated by the system to reclaim resources.
 - Supporting specific accessibility needs with SwiftUI
+    - `@Environment(\.accessibilityDifferentiateWithoutColor)`  
+    - `@Environment(\.accessibilityReduceMotion)`
+    - `@Environment(\.accessibilityReduceTransparency)`
+    - `UIAccessibility.isReduceMotionEnabled`
+    - make your own withOptionalAnimation wrapper to reduce boilerplate
