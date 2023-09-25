@@ -1175,4 +1175,5 @@ This answer attributes it to a SourceKit problem and has steps to find the Sourc
     - Target > Info > Supported interface orientations
     - `.foregroundColor()` is deprecated in iOS 17, `.foregroundStyle()` is available from iOS 15.
 - Building a stack of cards
+    - make our own `stacked` modifier by extending `View`
 - Moving views with DragGesture and offset()
