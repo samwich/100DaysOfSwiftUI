@@ -1177,3 +1177,7 @@ This answer attributes it to a SourceKit problem and has steps to find the Sourc
 - Building a stack of cards
     - make our own `stacked` modifier by extending `View`
 - Moving views with DragGesture and offset()
+    - `offset` is a `CGSize`
+    - `.rotationEffect`, `.offset`, `.opacity`
+        - `.offset` amplification makes it feel like we're making a swipe gesture rather than directly manipulating the card with a 1:1 drag. Maybe measuring drag acceleration would end up feeling more natural.
+    - before adding the `DragGesture()` `.onEnded`, it seemed like SwiftUI was already removing some cards from the view as I swiped them away.
