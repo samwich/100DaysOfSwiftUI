@@ -1193,3 +1193,13 @@ This answer attributes it to a SourceKit problem and has steps to find the Sourc
     - Use change the of scenePhase to set `isActive`, which is our own internal meaning. Then we can use `isActive` to stop the counter for other reasons.
     - I assume it would be better for power efficiency to pause the timer when leaving `ScenePhase.active`, rather than just ignoring it. I'm guessing the timer will keep firing every second while in the background.
 - Ending the app with allowsHitTesting()
+
+## [Day 90 Project 17, part 5](https://www.hackingwithswift.com/100/swiftui/90)
+
+- Making iPhones vibrate with UINotificationFeedbackGenerator
+    - `UINotificationFeedbackGenerator`
+    - `feedback.prepare()` to improve responsiveness at the cost of battery life. the phone will start ignoring `prepare()` if you never send an event. `prepare()` will start working again once you send an event.
+    - `feedback.notificationOccurred(.success)`
+    - The Pepsi Challenge: Don't overuse haptic feedback.
+- Fixing the bugs
+- Adding and deleting cards
