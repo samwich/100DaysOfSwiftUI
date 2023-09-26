@@ -1190,4 +1190,6 @@ This answer attributes it to a SourceKit problem and has steps to find the Sourc
     - The `differentiateWithoutColor` background color of `.black` doesn't work well in light mode, only dark mode. I've changed it from `.black` to `.background`
     - The circle symbols on the sides as a visual differentiator are not the best. A stamp that fades on top of the card as it's swiped could be better.
 - Counting down with a Timer
+    - Use change the of scenePhase to set `isActive`, which is our own internal meaning. Then we can use `isActive` to stop the counter for other reasons.
+    - I assume it would be better for power efficiency to pause the timer when leaving `ScenePhase.active`, rather than just ignoring it. I'm guessing the timer will keep firing every second while in the background.
 - Ending the app with allowsHitTesting()
