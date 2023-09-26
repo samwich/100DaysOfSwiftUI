@@ -1170,7 +1170,7 @@ This answer attributes it to a SourceKit problem and has steps to find the Sourc
     - `UIAccessibility.isReduceMotionEnabled`
     - make your own withOptionalAnimation wrapper to reduce boilerplate
 
-## [DAY 88 Project 17, part 3](https://www.hackingwithswift.com/100/swiftui/88)
+## [Day 88 Project 17, part 3](https://www.hackingwithswift.com/100/swiftui/88)
 - Designing a single card view
     - Target > Info > Supported interface orientations
     - `.foregroundColor()` is deprecated in iOS 17, `.foregroundStyle()` is available from iOS 15.
@@ -1181,3 +1181,13 @@ This answer attributes it to a SourceKit problem and has steps to find the Sourc
     - `.rotationEffect`, `.offset`, `.opacity`
         - `.offset` amplification makes it feel like we're making a swipe gesture rather than directly manipulating the card with a 1:1 drag. Maybe measuring drag acceleration would end up feeling more natural.
     - before adding the `DragGesture()` `.onEnded`, it seemed like SwiftUI was already removing some cards from the view as I swiped them away.
+
+## [Day 89 Project 17, part 4](https://www.hackingwithswift.com/100/swiftui/89)
+
+- Coloring views as we swipe
+    - You can currently swipe cards that are not at the top of the deck.
+    - adjust `.fill` as `offset` changes
+    - The `differentiateWithoutColor` background color of `.black` doesn't work well in light mode, only dark mode. I've changed it from `.black` to `.background`
+    - The circle symbols on the sides as a visual differentiator are not the best. A stamp that fades on top of the card as it's swiped could be better.
+- Counting down with a Timer
+- Ending the app with allowsHitTesting()
