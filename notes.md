@@ -1221,6 +1221,8 @@ This answer attributes it to a SourceKit problem and has steps to find the Sourc
 ### Challenge
 - When adding a card, the textfields keep their current text – fix that so that the textfields clear themselves after a card is added.
 - If you drag a card to the right but not far enough to remove it, then release, you see it turn red as it slides back to the center. Why does this happen and how can you fix it? (Tip: think about the way we set `offset` back to 0 immediately, even though the card hasn’t animated yet. You might solve this with a ternary within a ternary, but a custom modifier will be cleaner.)
+    - don't set the background to white until the horizontal offset is zero
+    - I made cardColor a computed property on CardView. I wonder if that could have a performance impact compared to making it a modifier, as suggested.
 - For a harder challenge: when the users gets an answer wrong, add that card goes back into the array so the user can try it again. Doing this successfully means rethinking the `ForEach` loop, because relying on simple integers isn’t enough – your cards need to be uniquely identifiable.
 
 Still thirsty for more? Try upgrading our loading and saving code in two ways:
