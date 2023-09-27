@@ -1201,5 +1201,10 @@ This answer attributes it to a SourceKit problem and has steps to find the Sourc
     - `feedback.prepare()` to improve responsiveness at the cost of battery life. the phone will start ignoring `prepare()` if you never send an event. `prepare()` will start working again once you send an event.
     - `feedback.notificationOccurred(.success)`
     - The Pepsi Challenge: Don't overuse haptic feedback.
+    - haptic engine errors in the console when running on my iPhone 11 Pro
 - Fixing the bugs
+    - only allow the top card to be swiped with `.allowsHitTesting(index == cards.count - 1)`
+    - Accessibility
+        - `Image(decorative: "background")`
+        - `.accessibilityHidden(index < cards.count - 1)` to ignore background cards.
 - Adding and deleting cards
