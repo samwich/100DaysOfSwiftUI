@@ -1208,3 +1208,11 @@ This answer attributes it to a SourceKit problem and has steps to find the Sourc
         - `Image(decorative: "background")`
         - `.accessibilityHidden(index < cards.count - 1)` to ignore background cards.
 - Adding and deleting cards
+    - show and dismiss sheet
+    - `Card` is in Flashzilla.swift
+    - `NavigationView` so we can `dismiss`
+    - store as JSON in UserDefaults
+        - UserDefaults isn't appropriate.
+        - I'd rather the loading logic not be duplicated between EditCards and ContentView
+    - calling `onAppear(perform:)` failed silently. it needed a leading period: `.onAppear`
+
