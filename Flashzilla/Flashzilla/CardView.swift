@@ -10,6 +10,7 @@ import SwiftUI
 struct CardView: View {
     let card: Card
     var removal: (() -> Void)? = nil
+    var retry: (() -> Void)? = nil
     
     @Environment(\.accessibilityDifferentiateWithoutColor) var differentiateWithoutColor
     @Environment(\.accessibilityVoiceOverEnabled) var voiceOverEnabled
@@ -69,10 +70,12 @@ struct CardView: View {
                     if abs(offset.width) > 100 {
                         if offset.width > 0 {
                             feedback.notificationOccurred(.success)
+                            removal?()
                         } else {
                             feedback.notificationOccurred(.error)
+                            retry?()
+                            offset = .zero
                         }
-                        removal?()
                     } else {
                         offset = .zero
                     }

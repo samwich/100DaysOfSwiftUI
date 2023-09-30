@@ -1224,6 +1224,10 @@ This answer attributes it to a SourceKit problem and has steps to find the Sourc
     - don't set the background to white until the horizontal offset is zero
     - I made cardColor a computed property on CardView. I wonder if that could have a performance impact compared to making it a modifier, as suggested.
 - For a harder challenge: when the users gets an answer wrong, add that card goes back into the array so the user can try it again. Doing this successfully means rethinking the `ForEach` loop, because relying on simple integers isn’t enough – your cards need to be uniquely identifiable.
+    - pass CardView both removal and retry closures.
+    - The ForEach loop identifies cards by index. When the underlying array changes, the indices don't. The faces of the cards change to reflect the new underlying array, rather than the cards moving around to follow the values in the array. That's why Card needs to have a persistent identifier. The HWS solution suggests using `Identifiable` and then looking up the index for each element as they're iterated. Then suggests using enumerated(), which is like Ruby's each_with_index.
+    - Some combination of `ForEach` and `enumerated()` wants the Card to be `Hashable`
+    - destructuring the enumerated element into `(index, card)` makes it so we don't have to rewrite how we access data inside the loop. This is less cluttered and makes the diff simpler.
 
 Still thirsty for more? Try upgrading our loading and saving code in two ways:
 
