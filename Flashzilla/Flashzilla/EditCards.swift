@@ -9,7 +9,7 @@ import SwiftUI
 
 struct EditCards: View {
     @Environment(\.dismiss) var dismiss
-    @State private var cards = [Card]()
+    @State private var cards = CardManager.load()
     @State private var newPrompt = ""
     @State private var newAnswer = ""
     @FocusState private var newPromptIsFocused: Bool
@@ -41,20 +41,11 @@ struct EditCards: View {
                 Button("Done", action: done)
             }
             .listStyle(.grouped)
-            .onAppear(perform: loadData)
         }
     }
     
     func done() {
         dismiss()
-    }
-    
-    func loadData() {
-        cards = CardManager.load()
-    }
-    
-    func saveData() {
-        CardManager.save(cards: cards)
     }
     
     func addCard() {
@@ -64,7 +55,7 @@ struct EditCards: View {
         
         let card = Card(prompt: trimmedPrompt, answer: trimmedAnswer)
         cards.insert(card, at: 0)
-        saveData()
+        CardManager.save(cards: cards)
         newPrompt = ""
         newAnswer = ""
         newPromptIsFocused = true
@@ -72,7 +63,7 @@ struct EditCards: View {
     
     func removeCards(at offsets: IndexSet) {
         cards.remove(atOffsets: offsets)
-        saveData()
+        CardManager.save(cards: cards)
     }
 }
 

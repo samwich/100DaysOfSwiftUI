@@ -1236,3 +1236,4 @@ Still thirsty for more? Try upgrading our loading and saving code in two ways:
 - Try to find a way to centralize the loading and saving code for the cards. You might need to experiment a little to find something you like!
     - I made a CardManager class with static load and save methods that just return and take an array of cards.
     - I think file management logic should be the responsibility of a Deck class that can select and manage different decks.
+    - My solution to this was almost identical to the HWS+ one. The only addition from HWS+ was to set `cards = CardManager.load()` when initializing each View.

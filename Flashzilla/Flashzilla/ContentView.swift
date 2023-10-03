@@ -17,7 +17,7 @@ extension View {
 struct ContentView: View {
     @Environment(\.accessibilityDifferentiateWithoutColor) var differentiateWithoutColor
     @Environment(\.accessibilityVoiceOverEnabled) var voiceOverEnabled
-    @State private var cards = [Card]()
+    @State private var cards = CardManager.load()
     
     @State private var timeRemaining = 100
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
@@ -95,7 +95,6 @@ struct ContentView: View {
             .sheet(isPresented: $showingEditScreen, onDismiss: resetCards) {
                 EditCards()
             }
-            .onAppear(perform: resetCards)
             
             if differentiateWithoutColor || voiceOverEnabled {
                 VStack {
@@ -149,10 +148,6 @@ struct ContentView: View {
         }
     }
     
-    func loadData() {
-        cards = CardManager.load()
-    }
-
     func removeCard(at index: Int) {
         guard index >= 0 else { return }
         cards.remove(at: index)
@@ -170,7 +165,7 @@ struct ContentView: View {
     func resetCards() {
         timeRemaining = 100
         isActive = true
-        loadData()
+        cards = CardManager.load()
     }
 }
 

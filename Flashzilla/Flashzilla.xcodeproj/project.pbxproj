@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2207C2712AC3C2CF00E12293 /* EditCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2207C2702AC3C2CF00E12293 /* EditCards.swift */; };
+		22564AD92ACB98C100676F5E /* FileManager-DocumentsDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22564AD82ACB98C100676F5E /* FileManager-DocumentsDirectory.swift */; };
+		22564ADB2ACB99EB00676F5E /* CardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22564ADA2ACB99EB00676F5E /* CardManager.swift */; };
 		227DD9092ABE69060065E60C /* FlashzillaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227DD9082ABE69060065E60C /* FlashzillaApp.swift */; };
 		227DD90B2ABE69060065E60C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227DD90A2ABE69060065E60C /* ContentView.swift */; };
 		227DD90D2ABE69070065E60C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 227DD90C2ABE69070065E60C /* Assets.xcassets */; };
@@ -18,6 +20,8 @@
 
 /* Begin PBXFileReference section */
 		2207C2702AC3C2CF00E12293 /* EditCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCards.swift; sourceTree = "<group>"; };
+		22564AD82ACB98C100676F5E /* FileManager-DocumentsDirectory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager-DocumentsDirectory.swift"; sourceTree = "<group>"; };
+		22564ADA2ACB99EB00676F5E /* CardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardManager.swift; sourceTree = "<group>"; };
 		227DD9052ABE69060065E60C /* Flashzilla.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flashzilla.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		227DD9082ABE69060065E60C /* FlashzillaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashzillaApp.swift; sourceTree = "<group>"; };
 		227DD90A2ABE69060065E60C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -62,6 +66,8 @@
 				227DD90A2ABE69060065E60C /* ContentView.swift */,
 				22DB055C2AC238610039793E /* CardView.swift */,
 				2207C2702AC3C2CF00E12293 /* EditCards.swift */,
+				22564ADA2ACB99EB00676F5E /* CardManager.swift */,
+				22564AD82ACB98C100676F5E /* FileManager-DocumentsDirectory.swift */,
 				227DD90C2ABE69070065E60C /* Assets.xcassets */,
 				227DD90E2ABE69070065E60C /* Preview Content */,
 			);
@@ -146,8 +152,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22564AD92ACB98C100676F5E /* FileManager-DocumentsDirectory.swift in Sources */,
 				227DD90B2ABE69060065E60C /* ContentView.swift in Sources */,
 				227DD9092ABE69060065E60C /* FlashzillaApp.swift in Sources */,
+				22564ADB2ACB99EB00676F5E /* CardManager.swift in Sources */,
 				22DB055D2AC238610039793E /* CardView.swift in Sources */,
 				2207C2712AC3C2CF00E12293 /* EditCards.swift in Sources */,
 				22DB055B2AC237620039793E /* Flashzilla.swift in Sources */,
