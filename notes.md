@@ -1232,4 +1232,7 @@ This answer attributes it to a SourceKit problem and has steps to find the Sourc
 Still thirsty for more? Try upgrading our loading and saving code in two ways:
 
 - Make it use documents JSON rather than `UserDefaults` – this is generally a good idea, so you should get practice with this.
+    -  Maybe this should be an extension of `FileManager`, but I don't have a clear instinct of what the Swifty thing to do is.
 - Try to find a way to centralize the loading and saving code for the cards. You might need to experiment a little to find something you like!
+    - I made a CardManager class with static load and save methods that just return and take an array of cards.
+    - I think file management logic should be the responsibility of a Deck class that can select and manage different decks.
