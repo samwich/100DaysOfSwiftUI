@@ -1237,3 +1237,12 @@ Still thirsty for more? Try upgrading our loading and saving code in two ways:
     - I made a CardManager class with static load and save methods that just return and take an array of cards.
     - I think file management logic should be the responsibility of a Deck class that can select and manage different decks.
     - My solution to this was almost identical to the HWS+ one. The only addition from HWS+ was to set `cards = CardManager.load()` when initializing each View.
+
+## [Day 92 Project 18, part 1](https://www.hackingwithswift.com/100/swiftui/92)
+
+- Layout and geometry: Introduction
+    - LayoutAndGeometry
+- How layout works in SwiftUI
+    - 
+- Alignment and alignment guides
+- How to create a custom alignment guide
