@@ -1243,6 +1243,13 @@ Still thirsty for more? Try upgrading our loading and saving code in two ways:
 - Layout and geometry: Introduction
     - LayoutAndGeometry
 - How layout works in SwiftUI
-    - 
+    - Three steps
+        - Parent reports available space
+        - Child decides how much space to take
+        - Parent positions child
+    - The `ContentView` View, modifiers like `.background()`, and Color.red, are _layout neutral_. A layout-neutral View is exactly the size of its `body` property.
+    - modifier call wraps the view in a `ModifiedContent` View
+    - if all of the Views in the hierarchy are layout-neutral, then they will take all available space
+    - `.frame()` modifier won't force its child `Image` to scale up to fill it
 - Alignment and alignment guides
 - How to create a custom alignment guide
