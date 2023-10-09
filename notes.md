@@ -1252,4 +1252,10 @@ Still thirsty for more? Try upgrading our loading and saving code in two ways:
     - if all of the Views in the hierarchy are layout-neutral, then they will take all available space
     - `.frame()` modifier won't force its child `Image` to scale up to fill it
 - Alignment and alignment guides
+    - `.frame(width:height:alignment:)`
+    - `.offset(x:y:)`
+    - `(alignment: .lastTextBaseline)`
+    - Override an alignment guide with `.alignmentGuide(.leading) { dimensions in dimensions[.leading] }`
+    - Overriding an alignment guide will expand the enclosing view to include it, whereas using `offset` to move the view will only change where it's rendered, not the dimesions of it's enclosing view.
+    - The alignment guide math feels like the opposite of offset. In this case, if you add to the x offset, the text moves to the right. If you subtract from the `.leading` alignment guide, the text moves to the right.
 - How to create a custom alignment guide
