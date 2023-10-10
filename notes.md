@@ -1271,4 +1271,11 @@ Still thirsty for more? Try upgrading our loading and saving code in two ways:
     - `.position(x:y:)` takes all available space offered to achieve its goal
     - `.offset(x:y:)` leaves its child's geometry intact, and renders at an offset. `.offset` only reports its childs original geometry to its own parent.
 - Understanding frames and coordinates inside GeometryReader
+    - global, local, and custom `coordinateSpace`s are different
+        - global is the whole screen
+        - local is relative to the parent View
+        - custom is relative to an ancestor View, defined with a `.coordinateSpace()` modifier
+    - a `GeometryReader` will fill all available space
+        - something about _preferred_ size vs _absolute_ size
+    - `geo.frame(in: .global).midX` returns `geo`'s `midX` in `.global`'s coordinate space. It does not return the `midX` of the `.global` coordinate space.
 - ScrollView effects using GeometryReader

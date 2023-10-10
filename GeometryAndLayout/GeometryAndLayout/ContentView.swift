@@ -7,42 +7,55 @@
 
 import SwiftUI
 
-extension VerticalAlignment {
-    enum MidAccountAndName: AlignmentID {
-        static func defaultValue(in context: ViewDimensions) -> CGFloat {
-            context[.top]
+struct OuterView: View {
+    var body: some View {
+        VStack {
+            Text("Top of outer")
+            InnerView()
+                .background(.green)
+            Text("Bottom of outer")
         }
     }
-    
-    static let midAccountAndName = VerticalAlignment(MidAccountAndName.self)
+}
+
+struct InnerView: View {
+    var body: some View {
+        HStack {
+            Text("Left")
+            GeometryReader { geo in
+                Text("Text in Inner Geo Reader \(Int(geo.frame(in: .global).midX))")
+                    .background(.blue)
+                    .onTapGesture {
+                        let g = geo.frame(in: .global)
+                        let c = geo.frame(in: .named("Custom OuterView"))
+                        let l = geo.frame(in: .local)
+                        
+                        print("GeometryReader's center in various coordinateSpaces:")
+                        print("Global:    (\(Int(g.midX)), \(Int(g.midY)))")
+                        print("OuterView: (\(Int(c.midX)), \(Int(c.midY)))")
+                        print("Local:     (\(Int(l.midX)), \(Int(l.midY)))")
+                        print("GeometryReader's frame in various coordinateSpaces:")
+                        print("Global:    (\(Int(g.minX)), \(Int(g.minY))) - (\(Int(g.maxX)), \(Int(g.maxY)))")
+                        print("OuterView: (\(Int(c.minX)), \(Int(c.minY))) - (\(Int(c.maxX)), \(Int(c.maxY)))")
+                        print("Local:      (\(Int(l.minX)),  \(Int(l.minY))) - (\(Int(l.maxX)), \(Int(l.maxY)))")
+                    }
+            }
+            .background(.orange)
+            Text("Right")
+        }
+    }
 }
 
 struct ContentView: View {
     var body: some View {
-            ZStack {
-
-                // .position() takes all available space offered to achieve its goal
-                Text("Hello, world! .position()")
-                    .position(x: 100, y: 60)
-                    .border(.blue, width: 3)
-
-                Text("Hello, world! .position()")
+//        GeometryReader { g1 in
+//            VStack {
+//                Text("Outside of OuterView, global midX is \(Int(g1.frame(in: .global).midX))")
+                OuterView()
                     .background(.red)
-                    .border(.black)
-                    .position(x: 100, y: 100)
-
-                Text("Hello, world! .offset()")
-                    .offset(x: 50, y: 10)
-                    .background(.orange)
-                    .border(.black)
-
-                Text("Hello, world! .offset()")
-                    .border(.black)
-                    .background(.yellow)
-                    .offset(x: 80, y: 200)
-                
-            }
-        .padding()
+                    .coordinateSpace(name: "Custom OuterView")
+//            }
+//        }
     }
 }
 
