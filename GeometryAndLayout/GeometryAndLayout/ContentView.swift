@@ -7,79 +7,54 @@
 
 import SwiftUI
 
+extension VerticalAlignment {
+    enum MidAccountAndName: AlignmentID {
+        static func defaultValue(in context: ViewDimensions) -> CGFloat {
+            context[.top]
+        }
+    }
+    
+    static let midAccountAndName = VerticalAlignment(MidAccountAndName.self)
+}
+
 struct ContentView: View {
     var body: some View {
-        VStack {
-
-            Text(".center")
-            HStack(alignment: .center) {
-                Text("Live")
-                    .font(.caption)
-                Text("long")
-                Text("and")
-                    .font(.title)
-                Text("prosper")
-                    .font(.largeTitle)
-            }
-            .border(.black, width: 1)
-            
-            Text(".firstTextBaseline")
-            HStack(alignment: .firstTextBaseline) {
-                Text("Live")
-                    .font(.caption)
-                Text("long")
-                Text("and")
-                    .font(.title)
-                Text("prosper")
-                    .font(.largeTitle)
-            }
-            .border(.black, width: 1)
-            
-            Text(".lastTextBaseline")
-            HStack(alignment: .lastTextBaseline) {
-                Text("Live")
-                    .font(.caption)
-                Text("long")
-                Text("and")
-                    .font(.title)
-                Text("prosper")
-                    .font(.largeTitle)
-            }
-            .border(.black, width: 1)
-            
-            Text("Live long and prosper")
-                .frame(width: 300, height: 100, alignment: .topLeading)
-                .offset(x: 50, y: 50)
-                .border(.black, width: 1)
-
-            VStack(alignment: .leading) {
-                Text("Hello, world!")
-                    .alignmentGuide(.leading) { d in
-                        d[.trailing]
-                    }
-                Text("This is a longer line of text")
-            }
-            .background(.red)
-            .padding()
-            .frame(width: 400)
-            .background(.blue)
-            .border(.black, width: 1)
-            
-            VStack(alignment: .leading) {
-                ForEach(0..<10) { position in
-                    Text("Number \(position)")
-                        .alignmentGuide(.leading) { _ in
-                            Double(position) * -10
-                        }
+        HStack(alignment: .midAccountAndName) {
+            VStack {
+                Color.red.frame(height: 1)
+                ZStack {
+                    Color.blue.frame(height: 1)
+                    Text("@twostraws")
+                        .alignmentGuide(.midAccountAndName) { $0[VerticalAlignment.center] }
                 }
+                Color.red.frame(height: 1)
+                Image(.gruelEater)
+                    .resizable()
+                    .frame(width: 90, height: 90)
+                Text("hello")
+                    .font(.caption)
+                Text("hello")
+                    .font(.caption)
+                Text("hello")
+                    .font(.caption)
             }
-            .background(.red)
-            .padding()
-            .frame(width: 400)
-            .background(.blue)
-            .border(.black, width: 1)
+            .frame(width: 100)
             
+            VStack {
+                Text("Full name:")
+                Text("Full name:")
+                Text("Full name:")
+                Color.red.frame(height: 1)
+                ZStack {
+                    Color.blue.frame(height: 1)
+                    Text("PAUL HUDSON")
+                        .alignmentGuide(.midAccountAndName) { $0[VerticalAlignment.center] }
+                        .font(.largeTitle)
+                }
+                Color.red.frame(height: 1)
+            }
         }
+        .padding()
     }
 }
 
