@@ -19,41 +19,29 @@ extension VerticalAlignment {
 
 struct ContentView: View {
     var body: some View {
-        HStack(alignment: .midAccountAndName) {
-            VStack {
-                Color.red.frame(height: 1)
-                ZStack {
-                    Color.blue.frame(height: 1)
-                    Text("@twostraws")
-                        .alignmentGuide(.midAccountAndName) { $0[VerticalAlignment.center] }
-                }
-                Color.red.frame(height: 1)
-                Image(.gruelEater)
-                    .resizable()
-                    .frame(width: 90, height: 90)
-                Text("hello")
-                    .font(.caption)
-                Text("hello")
-                    .font(.caption)
-                Text("hello")
-                    .font(.caption)
+            ZStack {
+
+                // .position() takes all available space offered to achieve its goal
+                Text("Hello, world! .position()")
+                    .position(x: 100, y: 60)
+                    .border(.blue, width: 3)
+
+                Text("Hello, world! .position()")
+                    .background(.red)
+                    .border(.black)
+                    .position(x: 100, y: 100)
+
+                Text("Hello, world! .offset()")
+                    .offset(x: 50, y: 10)
+                    .background(.orange)
+                    .border(.black)
+
+                Text("Hello, world! .offset()")
+                    .border(.black)
+                    .background(.yellow)
+                    .offset(x: 80, y: 200)
+                
             }
-            .frame(width: 100)
-            
-            VStack {
-                Text("Full name:")
-                Text("Full name:")
-                Text("Full name:")
-                Color.red.frame(height: 1)
-                ZStack {
-                    Color.blue.frame(height: 1)
-                    Text("PAUL HUDSON")
-                        .alignmentGuide(.midAccountAndName) { $0[VerticalAlignment.center] }
-                        .font(.largeTitle)
-                }
-                Color.red.frame(height: 1)
-            }
-        }
         .padding()
     }
 }

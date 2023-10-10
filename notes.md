@@ -1265,3 +1265,10 @@ Still thirsty for more? Try upgrading our loading and saving code in two ways:
         - add a static property to `VerticalAlignment` to make it easy to use
     - configure the parent view to use your custom alignment guide
     - use `.alignmentGuide(.myCustomAlignmentGuide) { d in … }` on each unrelated child view you want to align
+
+## [Day 93 Project 18, part 2](https://www.hackingwithswift.com/100/swiftui/93)
+- Absolute positioning for SwiftUI views
+    - `.position(x:y:)` takes all available space offered to achieve its goal
+    - `.offset(x:y:)` leaves its child's geometry intact, and renders at an offset. `.offset` only reports its childs original geometry to its own parent.
+- Understanding frames and coordinates inside GeometryReader
+- ScrollView effects using GeometryReader
