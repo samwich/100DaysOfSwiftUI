@@ -1279,3 +1279,10 @@ Still thirsty for more? Try upgrading our loading and saving code in two ways:
         - something about _preferred_ size vs _absolute_ size
     - `geo.frame(in: .global).midX` returns `geo`'s `midX` in `.global`'s coordinate space. It does not return the `midX` of the `.global` coordinate space.
 - ScrollView effects using GeometryReader
+    - Helix view
+        - I made the array access `colors.count` instead of hard-coding `7`
+        - each item's rotation is calculated from its y-axis position in the frame
+    - The album view
+        - What is `.rotation3DEffect(degrees:axis:)` geometry behavior?
+        - The `.frame()` right after the `rotation3DEffect` moves the first element some pixels from the leading edge of the scroll view. It also keeps the Text backgrounds from being cut off as they grow while moving toward the camera.
+        - The `.frame()` attached to the `GeometryReader` keeps the Text views from overlapping, but I'm not sure why it has this effect and the previous `.frame()` does not. 

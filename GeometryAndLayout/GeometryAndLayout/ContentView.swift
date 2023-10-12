@@ -7,55 +7,52 @@
 
 import SwiftUI
 
-struct OuterView: View {
+struct ContentView: View {
+    let colors: [Color] = [.red, .green, .blue, .orange, .pink, .purple, .yellow]
+    
     var body: some View {
         VStack {
-            Text("Top of outer")
-            InnerView()
-                .background(.green)
-            Text("Bottom of outer")
-        }
-    }
-}
-
-struct InnerView: View {
-    var body: some View {
-        HStack {
-            Text("Left")
-            GeometryReader { geo in
-                Text("Text in Inner Geo Reader \(Int(geo.frame(in: .global).midX))")
-                    .background(.blue)
-                    .onTapGesture {
-                        let g = geo.frame(in: .global)
-                        let c = geo.frame(in: .named("Custom OuterView"))
-                        let l = geo.frame(in: .local)
-                        
-                        print("GeometryReader's center in various coordinateSpaces:")
-                        print("Global:    (\(Int(g.midX)), \(Int(g.midY)))")
-                        print("OuterView: (\(Int(c.midX)), \(Int(c.midY)))")
-                        print("Local:     (\(Int(l.midX)), \(Int(l.midY)))")
-                        print("GeometryReader's frame in various coordinateSpaces:")
-                        print("Global:    (\(Int(g.minX)), \(Int(g.minY))) - (\(Int(g.maxX)), \(Int(g.maxY)))")
-                        print("OuterView: (\(Int(c.minX)), \(Int(c.minY))) - (\(Int(c.maxX)), \(Int(c.maxY)))")
-                        print("Local:      (\(Int(l.minX)),  \(Int(l.minY))) - (\(Int(l.maxX)), \(Int(l.maxY)))")
+            GeometryReader { fullHelix in
+                ScrollView {
+                    ForEach(0..<50) { i in
+                        GeometryReader { geoItem in
+                            Text("Row \(i)")
+                                .font(.title)
+                                .frame(maxWidth: .infinity)
+                                .background(colors[i % colors.count])
+                                .rotation3DEffect(
+                                    .degrees(geoItem.frame(in: .global).minY - fullHelix.size.height / 2) / 5,
+                                    axis: (x: 0.0, y: 1.0, z: 0.0)
+                                )
+                        }
+                        .frame(height: 40)
                     }
+                }
             }
-            .background(.orange)
-            Text("Right")
+            
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 0) {
+                    ForEach(1..<20) { num in
+                        GeometryReader { geo in
+                            Text("Album \(num)")
+                                .font(.largeTitle)
+                                .padding()
+                                .background(.red)
+                                .border(.black)
+                                .rotation3DEffect(
+                                    .degrees(-geo.frame(in: .global).minX) / 8,
+                                    axis: (x: 0.0, y: 1.0, z: 0.0)
+                                )
+                                .frame(width: 200, height: 100)
+                                .border(.purple)
+                        }
+                        .frame(width: 200, height: 120)
+                    }
+                }
+            }
+            .border(.blue)
+            
         }
-    }
-}
-
-struct ContentView: View {
-    var body: some View {
-//        GeometryReader { g1 in
-//            VStack {
-//                Text("Outside of OuterView, global midX is \(Int(g1.frame(in: .global).midX))")
-                OuterView()
-                    .background(.red)
-                    .coordinateSpace(name: "Custom OuterView")
-//            }
-//        }
     }
 }
 
