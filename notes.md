@@ -1291,5 +1291,6 @@ Still thirsty for more? Try upgrading our loading and saving code in two ways:
 ### Challenge
 - First, put your `ContentView` back to the spinning color rows example we had:
 - Make views near the top of the scroll view fade out to 0 opacity – I would suggest starting at about 200 points from the top.
+    - For the `.opacity()` value, the numerator is the `midY` of the row in the coordinate space of the ScrollView, and the denominator is 200 so that opacity will reach 1.0 at 200 points from the top.
 - Make views adjust their scale depending on their vertical position, with views near the bottom being large and views near the top being small. I would suggest going no smaller than 50% of the regular size.
 - For a real challenge make the views change color as you scroll. For the best effect, you should create colors using the Color(hue:saturation:brightness:) initializer, feeding in varying values for the hue.

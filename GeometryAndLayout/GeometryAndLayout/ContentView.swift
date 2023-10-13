@@ -19,6 +19,7 @@ struct ContentView: View {
                             .font(.title)
                             .frame(maxWidth: .infinity)
                             .background(colors[i % colors.count])
+                            .opacity(geoItem.frame(in: .global).midY / 200)
                             .rotation3DEffect(
                                 .degrees(geoItem.frame(in: .global).minY - fullHelix.size.height / 2) / 5,
                                 axis: (x: 0.0, y: 1.0, z: 0.0)
