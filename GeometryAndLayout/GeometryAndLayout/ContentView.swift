@@ -24,6 +24,12 @@ struct ContentView: View {
                                 .degrees(geoItem.frame(in: .global).minY - fullHelix.size.height / 2) / 5,
                                 axis: (x: 0.0, y: 1.0, z: 0.0)
                             )
+                            .scaleEffect(
+                                0.5 + (
+                                    geoItem.frame(in: .global).midY /
+                                    fullHelix.size.height
+                                )
+                            )
                     }
                     .frame(height: 40)
                 }
