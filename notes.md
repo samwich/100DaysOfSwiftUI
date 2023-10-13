@@ -1286,3 +1286,10 @@ Still thirsty for more? Try upgrading our loading and saving code in two ways:
         - What is `.rotation3DEffect(degrees:axis:)` geometry behavior?
         - The `.frame()` right after the `rotation3DEffect` moves the first element some pixels from the leading edge of the scroll view. It also keeps the Text backgrounds from being cut off as they grow while moving toward the camera.
         - The `.frame()` attached to the `GeometryReader` keeps the Text views from overlapping, but I'm not sure why it has this effect and the previous `.frame()` does not. 
+
+## [Day 94 Project 18, part 3](https://www.hackingwithswift.com/100/swiftui/94)
+### Challenge
+- First, put your `ContentView` back to the spinning color rows example we had:
+- Make views near the top of the scroll view fade out to 0 opacity – I would suggest starting at about 200 points from the top.
+- Make views adjust their scale depending on their vertical position, with views near the bottom being large and views near the top being small. I would suggest going no smaller than 50% of the regular size.
+- For a real challenge make the views change color as you scroll. For the best effect, you should create colors using the Color(hue:saturation:brightness:) initializer, feeding in varying values for the hue.
