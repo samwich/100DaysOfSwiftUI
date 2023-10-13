@@ -1322,4 +1322,15 @@ Still thirsty for more? Try upgrading our loading and saving code in two ways:
     - Absolutely positioning views using the position() modifier.
     - Using GeometryReader and GeometryProxy to make special effects.
 - Key points
+    - `.filter {}`
+    - `.map {}`
+    - `.compactMap {}`
+        - discards `nil`
+        - unwraps optionals
+            - The idea that you would use `compactMap` on a single optional value just for this side-effect feels bad. Maybe I'd feel better if it was called `unwrapMap`? Maybe if I think about it as a compact that maps rather than a map that compacts.
+    - `Result<Success, Failure>`
+        - `enum` with `.success` and `.failure`
+        - Throwing from result: `result.try()` returns on `.success` or throws on `.failure`
+        - Result from throwing: `Result { try … }`
+        - Special forms of map() for Result:  map(), mapError(), flatMap(), flatMapError() to operate either on `.success` or on `.failure`
 - Challenge
