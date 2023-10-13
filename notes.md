@@ -1297,3 +1297,29 @@ Still thirsty for more? Try upgrading our loading and saving code in two ways:
     - Applying the `.scaleEffect` after the `.rotation3DEffect` modifier keeps the rows at the bottom of the screen from obscuring our view.
 - For a real challenge make the views change color as you scroll. For the best effect, you should create colors using the Color(hue:saturation:brightness:) initializer, feeding in varying values for the hue.
     - I've started with `geoItem.frame(in: .global).midY / fullHelix.size.height`, but the ratio becomes >1.0 at the bottom of the view and the gradient doesn't look right. A denominator of `fullHelix.frame(in: .global).maxY` is better, but sill not perfect. The last couple of rows still go over 1.0. I ended up using `min(1.0, …)`.
+
+## [Day 95 Milestone: Projects 16-18](https://www.hackingwithswift.com/100/swiftui/95)
+- What you learned
+    - Reading environment values using @EnvironmentObject.
+    - Creating tabs with TabView.
+    - Using Swift’s Result type to send back success or failure.
+    - Manually publishing ObservableObject changes using objectWillChange.send().
+    - Controlling image interpolation.
+    - Adding swipe actions to list rows,.
+    - Placing buttons in a ContextMenu.
+    - Creating local notifications with the UserNotifications framework.
+    - Using third-party code with Swift package dependencies.
+    - Using map() and filter() to create new arrays based on an existing one.
+    - How to create dynamic QR codes.
+    - Attaching custom gestures to a SwiftUI view.
+    - Using UINotificationFeedbackGenerator to make iPhones vibrate.
+    - Disabling user interactivity using allowsHitTesting().
+    - Triggering events repeatedly using Timer.
+    - Tracking scene state changes as our app moves between the background and foreground.
+    - Supporting color blindness, reduced motion, and more.
+    - SwiftUI’s three step layout system.
+    - Alignment, alignment guides, and custom alignment guides.
+    - Absolutely positioning views using the position() modifier.
+    - Using GeometryReader and GeometryProxy to make special effects.
+- Key points
+- Challenge
