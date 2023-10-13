@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct ContentView: View {
-    let colors: [Color] = [.red, .green, .blue, .orange, .pink, .purple, .yellow]
-    
     var body: some View {
         GeometryReader { fullHelix in
             ScrollView {
@@ -18,7 +16,13 @@ struct ContentView: View {
                         Text("Row \(i)")
                             .font(.title)
                             .frame(maxWidth: .infinity)
-                            .background(colors[i % colors.count])
+                            .background(
+                                Color(
+                                    hue: min(1.0, (geoItem.frame(in: .global).minY / fullHelix.frame(in: .global).maxY)),
+                                    saturation: 0.7,
+                                    brightness: 1
+                                )
+                            )
                             .opacity(geoItem.frame(in: .global).midY / 200)
                             .rotation3DEffect(
                                 .degrees(geoItem.frame(in: .global).minY - fullHelix.size.height / 2) / 5,

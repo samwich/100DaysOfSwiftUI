@@ -1296,3 +1296,4 @@ Still thirsty for more? Try upgrading our loading and saving code in two ways:
     - `.scaleEffect()`:  The numerator is the row's `.global` `midY` and the denominator is the height of the ScrollView. Add 0.5 to define the minimum scale.
     - Applying the `.scaleEffect` after the `.rotation3DEffect` modifier keeps the rows at the bottom of the screen from obscuring our view.
 - For a real challenge make the views change color as you scroll. For the best effect, you should create colors using the Color(hue:saturation:brightness:) initializer, feeding in varying values for the hue.
+    - I've started with `geoItem.frame(in: .global).midY / fullHelix.size.height`, but the ratio becomes >1.0 at the bottom of the view and the gradient doesn't look right. A denominator of `fullHelix.frame(in: .global).maxY` is better, but sill not perfect. The last couple of rows still go over 1.0. I ended up using `min(1.0, …)`.
