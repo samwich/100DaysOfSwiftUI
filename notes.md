@@ -1334,9 +1334,26 @@ Still thirsty for more? Try upgrading our loading and saving code in two ways:
         - Result from throwing: `Result { try … }`
         - Special forms of map() for Result:  map(), mapError(), flatMap(), flatMapError() to operate either on `.success` or on `.failure`
 - Challenge
-    - At the very least you should lets users roll dice, and also let them see results from previous rolls. However, if you want to push yourself further you can try one or more of the following:
-    - Let the user customize the dice that are rolled: how many of them, and what type: 4-sided, 6-sided, 8-sided, 10-sided, 12-sided, 20-sided, and even 100-sided.
-    - Show the total rolled on the dice.
-    - Store the results using JSON or Core Data – anywhere they are persistent.
-    - Add haptic feedback when dice are rolled.
-    - For a real challenge, make the value rolled by the dice flick through various possible values before settling on the final figure.
+    - At the very least you should lets users roll dice, and also let them see results from previous rolls. 
+        - Data
+            - `rolls` list
+            - `Roll` struct
+                - `count` of dice, number of `sides`, `results` list
+            - some kind of data manager so the roll history sheet can access all rolls
+        - UI
+            - title
+            - `count` selector (1-10)
+            - `sides` selector (4, 6, 8, 10, 12, 20, 100)
+            - Roll button
+            - list of 5 recent rolls below (x-d-x: list, of, results)
+                - `RollView` for each row
+                - `recentRolls` is a computed property. `ForEach(0..<recentRolls.count, id: \.self)` would show 5 copies of the first roll. To fix it, I made `Roll` conform to `Identifiable` and changed the ForEach to `ForEach(recentRolls)`
+                - TODO: tap on list to show roll history sheet with all rolls, swipe to delete
+    - However, if you want to push yourself further you can try one or more of the following:
+        - Let the user customize the dice that are rolled: how many of them, and what type: 4-sided, 6-sided, 8-sided, 10-sided, 12-sided, 20-sided, and even 100-sided.
+            - completed in first step
+        - Show the total rolled on the dice.
+            - completed in first step
+        - Store the results using JSON or Core Data – anywhere they are persistent.
+        - Add haptic feedback when dice are rolled.
+        - For a real challenge, make the value rolled by the dice flick through various possible values before settling on the final figure.
