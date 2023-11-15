@@ -1350,10 +1350,13 @@ Still thirsty for more? Try upgrading our loading and saving code in two ways:
                 - `recentRolls` is a computed property. `ForEach(0..<recentRolls.count, id: \.self)` would show 5 copies of the first roll. To fix it, I made `Roll` conform to `Identifiable` and changed the ForEach to `ForEach(recentRolls)`
                 - TODO: tap on list to show roll history sheet with all rolls, swipe to delete
     - However, if you want to push yourself further you can try one or more of the following:
-        - Let the user customize the dice that are rolled: how many of them, and what type: 4-sided, 6-sided, 8-sided, 10-sided, 12-sided, 20-sided, and even 100-sided.
-            - completed in first step
-        - Show the total rolled on the dice.
-            - completed in first step
-        - Store the results using JSON or Core Data – anywhere they are persistent.
-        - Add haptic feedback when dice are rolled.
-        - For a real challenge, make the value rolled by the dice flick through various possible values before settling on the final figure.
+        - [x] Let the user customize the dice that are rolled: how many of them, and what type: 4-sided, 6-sided, 8-sided, 10-sided, 12-sided, 20-sided, and even 100-sided.
+        - [x] Show the total rolled on the dice.
+        - [x] Store the results using JSON or Core Data – anywhere they are persistent.
+            - [x] extend FileManager
+            - [x] create a storage manager
+            - [x] use the storage manager
+        - [ ] Add haptic feedback when dice are rolled.
+        - [ ] For a real challenge, make the value rolled by the dice flick through various possible values before settling on the final figure.
+### Inbox
+- make the numbers fixed-width instead of proportional

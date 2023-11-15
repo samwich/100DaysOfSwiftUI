@@ -10,13 +10,13 @@ import SwiftUI
 struct ContentView: View {
     @State private var diceCountsIndex = 1
     @State private var sidesIndex = 1
-    @State private var rolls: [Roll] = []
+    @State private var rolls = RollStorageManager.load()
     
     let diceCounts = Array(1...10)
     let diceSides = [4, 6, 8, 10, 12, 20, 100]
     
     var recentRolls: [Roll] {
-        let c = rolls.count >= 5 ? 5 : rolls.count
+        let c = min(5, rolls.count)
         return Array(rolls.reversed()[0..<c])
     }
     
@@ -29,6 +29,7 @@ struct ContentView: View {
                 Picker(selection: $diceCountsIndex) {
                     ForEach(0..<diceCounts.count, id: \.self) { i in
                         Text("\(diceCounts[i])")
+                            .font(.title)
                     }
                 } label: {
                     Text("Number of Dice")
@@ -46,9 +47,11 @@ struct ContentView: View {
             }
             
             Button("Roll!", action: roll)
-
-            ForEach(recentRolls) { roll in
-                RollView(roll: roll)
+            
+            Form {
+                ForEach(recentRolls) { roll in
+                    RollView(roll: roll)
+                }
             }
         }
         .padding()
@@ -57,6 +60,7 @@ struct ContentView: View {
     func roll() {
         let r = Roll(diceCounts[diceCountsIndex], d: diceSides[sidesIndex])
         rolls.append(r)
+        RollStorageManager.save(rolls: rolls)
     }
 }
 

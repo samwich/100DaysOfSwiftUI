@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct Roll: Identifiable {
-    let id = UUID()
+struct Roll: Codable, Identifiable {
+    var id = UUID()
     let count: Int
     let sides: Int
     let results: [Int]
@@ -19,7 +19,7 @@ struct Roll: Identifiable {
         self.results = (0..<count).map { _ in .random(in: 1...d) }
     }
 
-    func total() -> Int {
+    var total: Int {
         results.reduce(0, +)
     }
     
