@@ -11,6 +11,7 @@ struct ContentView: View {
     @State private var diceCountsIndex = 1
     @State private var sidesIndex = 1
     @State private var rolls = RollStorageManager.load()
+    @State private var feedback = UINotificationFeedbackGenerator()
     
     let diceCounts = Array(1...10)
     let diceSides = [4, 6, 8, 10, 12, 20, 100]
@@ -58,6 +59,7 @@ struct ContentView: View {
     }
     
     func roll() {
+        feedback.notificationOccurred(.error)
         let r = Roll(diceCounts[diceCountsIndex], d: diceSides[sidesIndex])
         rolls.append(r)
         RollStorageManager.save(rolls: rolls)

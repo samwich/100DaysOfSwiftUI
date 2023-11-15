@@ -1356,7 +1356,10 @@ Still thirsty for more? Try upgrading our loading and saving code in two ways:
             - [x] extend FileManager
             - [x] create a storage manager
             - [x] use the storage manager
-        - [ ] Add haptic feedback when dice are rolled.
+        - [x] Add haptic feedback when dice are rolled.
+            - [x] basic feedback using `UINotificationFeedbackGenerator`
+            - [ ] fancy feedback that starts fast and slows down like dice coming to rest
         - [ ] For a real challenge, make the value rolled by the dice flick through various possible values before settling on the final figure.
+            - [ ] coordinate it with the haptic feedback
 ### Inbox
 - make the numbers fixed-width instead of proportional
