@@ -1359,7 +1359,11 @@ Still thirsty for more? Try upgrading our loading and saving code in two ways:
         - [x] Add haptic feedback when dice are rolled.
             - [x] basic feedback using `UINotificationFeedbackGenerator`
             - [ ] fancy feedback that starts fast and slows down like dice coming to rest
-        - [ ] For a real challenge, make the value rolled by the dice flick through various possible values before settling on the final figure.
+        - [x] For a real challenge, make the value rolled by the dice flick through various possible values before settling on the final figure.
+            - [ ] don't display the total until the final value is shown? or make the total fade-in during the animation
             - [ ] coordinate it with the haptic feedback
+            - [ ] Instead of leaving `rollAnimationTimer` running and controlling the dice roll with `rollAnimationRunning: Bool`, find a way to start and stop or create and destroy the timer for each roll.
+            - [ ] explore moving the roll animation to `RollView`
 ### Inbox
-- make the numbers fixed-width instead of proportional
+- [x] make the numbers fixed-width instead of proportional
+
