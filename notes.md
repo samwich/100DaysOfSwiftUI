@@ -1364,6 +1364,15 @@ Still thirsty for more? Try upgrading our loading and saving code in two ways:
             - [ ] coordinate it with the haptic feedback
             - [ ] Instead of leaving `rollAnimationTimer` running and controlling the dice roll with `rollAnimationRunning: Bool`, find a way to start and stop or create and destroy the timer for each roll.
             - [ ] explore moving the roll animation to `RollView`
+        - [ ] Accessibility. This should have been implemented in part 1, and tested throughout.
 ### Inbox
 - [x] make the numbers fixed-width instead of proportional
+
+## [Day 96 Project 19, part 1](https://www.hackingwithswift.com/100/swiftui/96)
+
+- SnowSeeker: Introduction
+- Working with two side by side views in SwiftUI
+- Using alert() and sheet() with optionals
+- Using groups as transparent layout containers
+- Making a SwiftUI view searchable
 
