@@ -1372,6 +1372,10 @@ Still thirsty for more? Try upgrading our loading and saving code in two ways:
 
 - SnowSeeker: Introduction
 - Working with two side by side views in SwiftUI
+    - `NavigationView`
+        - each view adds another layer of leading-to-trailing navigation.
+        - `NavigationLink` will display/replace(?) the next layer
+    - use `navigationBarHidden(true)` modifier to hide the nav bar
 - Using alert() and sheet() with optionals
 - Using groups as transparent layout containers
 - Making a SwiftUI view searchable
