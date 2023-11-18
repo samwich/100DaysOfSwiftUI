@@ -7,19 +7,30 @@
 
 import SwiftUI
 
+struct User: Identifiable {
+    var id = "Taylor Swift"
+}
+
 struct ContentView: View {
+    @State private var selectedUser: User? = nil
+    @State private var isShowingAlert = false
+
     var body: some View {
-        NavigationView {
-            NavigationLink {
-                Text("New secondary")
-                    .navigationTitle("Primary")
-            } label: {
-                Text("Hello, world!")
+        Text("Hello, Sheet!")
+            .onTapGesture {
+                selectedUser = User()
             }
-            .navigationTitle("Primary")
-            
-            Text("Secondary")
-        }
+            .sheet(item: $selectedUser) { user in
+                Text(user.id)
+            }
+        
+        Text("Hello, Alert!")
+            .onTapGesture {
+                isShowingAlert = true
+            }
+            .alert("Welcome", isPresented: $isShowingAlert) {
+//                Button("Alrighty") {}
+            }
     }
 }
 

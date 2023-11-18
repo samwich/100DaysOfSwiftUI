@@ -1377,6 +1377,12 @@ Still thirsty for more? Try upgrading our loading and saving code in two ways:
         - `NavigationLink` will display/replace(?) the next layer
     - use `navigationBarHidden(true)` modifier to hide the nav bar
 - Using alert() and sheet() with optionals
+    - Sheet with an optional: `.sheet(item: Binding<Identifiable?>) { … }`
+    - Sheet with a Bool: `.sheet(isPresented: Binding<Bool>) { … }`
+    - Alert with an optional: NOPE
+    - Alert with a Bool: `.alert(title, isPresented: Bool)`
+        - Alert buttons always dismiss and set `isPresent = false`
+        - If you don't provide buttons, an "OK" will be automatically added
 - Using groups as transparent layout containers
 - Making a SwiftUI view searchable
 
