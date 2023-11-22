@@ -1384,5 +1384,9 @@ Still thirsty for more? Try upgrading our loading and saving code in two ways:
         - Alert buttons always dismiss and set `isPresent = false`
         - If you don't provide buttons, an "OK" will be automatically added
 - Using groups as transparent layout containers
+    - Use `Group` to attach modifiers like `.font()` or `.onTapGesture {}` to every child
+    - Use `Group` to give a view multiple sub views without having to make it a `@ViewBuilder`
+    - Work around the 10 child view limit
+    - `@Environment(\.horizontalSizeClass)` to switch between `VStack` and `HStack`
 - Making a SwiftUI view searchable
 
