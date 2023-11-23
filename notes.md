@@ -1389,4 +1389,9 @@ Still thirsty for more? Try upgrading our loading and saving code in two ways:
     - Work around the 10 child view limit
     - `@Environment(\.horizontalSizeClass)` to switch between `VStack` and `HStack`
 - Making a SwiftUI view searchable
+    - Make a bindable search `text` variable
+    - Make the nav view show a search field with `.searchable(text:Binding, prompt:)`
+    - This needs to be inside of a `NavigationStack` or maybe a `NavigationSplitView`?
+    - Make a computed property to return search results
+        - Don't use `contains()` in `collection.filter { $0.contains(searchText) }` use `localizedCaseInsensitiveContains()`
 
