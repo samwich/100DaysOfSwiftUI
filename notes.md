@@ -1395,3 +1395,13 @@ Still thirsty for more? Try upgrading our loading and saving code in two ways:
     - Make a computed property to return search results
         - Don't use `contains()` in `collection.filter { $0.contains(searchText) }` use `localizedCaseInsensitiveContains()`
 
+## [Day 97 Project 19, part 2](https://www.hackingwithswift.com/books/ios-swiftui/building-a-primary-list-of-items)
+
+- Building a primary list of items
+    - Bundle-Decodable.swift
+    - TODO: need to convert `NavigationView` to `NavigationSplitView`
+    - use `.overlay()` modifier to make a border
+    - "Generic parameter 'T' could not be inferred": so give swift a hint with `as [Resort]`
+- Making NavigationView work in landscape
+- Creating a secondary view for NavigationView
+- Searching for data in a List
