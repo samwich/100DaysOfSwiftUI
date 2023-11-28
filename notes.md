@@ -1403,5 +1403,8 @@ Still thirsty for more? Try upgrading our loading and saving code in two ways:
     - use `.overlay()` modifier to make a border
     - "Generic parameter 'T' could not be inferred": so give swift a hint with `as [Resort]`
 - Making NavigationView work in landscape
+    - add `WelcomeView` after the `List` view in `NavigationView`. It will show up when a detail view isn't displayed.
+    - You can use `UIDevice.current.userInterfaceIdiom` to make NavigationView always display in `.stack` style when on a phone.
+    - In the simulator, on iOS 16 and 17, in landscape orientation, when I select a second item from the list, the list doesn't close. And when I switch back to portrait orientation, clicking on the list items doesn't display the detail view.
 - Creating a secondary view for NavigationView
 - Searching for data in a List
