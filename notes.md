@@ -1407,4 +1407,8 @@ Still thirsty for more? Try upgrading our loading and saving code in two ways:
     - You can use `UIDevice.current.userInterfaceIdiom` to make NavigationView always display in `.stack` style when on a phone.
     - In the simulator, on iOS 16 and 17, in landscape orientation, when I select a second item from the list, the list doesn't close. And when I switch back to portrait orientation, clicking on the list items doesn't display the detail view.
 - Creating a secondary view for NavigationView
+    - Still having the problem with landscape breaking the list item selection
+    - Using a `switch` statement to translate size from `Int` to a descriptive `String`. Maybe a dictionary literal with a default value would be more "declarative"? I'd consider doing that if this was Ruby.
+    - I need to re-read this section, because I'm not sure why the sub-views were grouped the way they are.
+    - `Text("Foo", format: .list(type: .and))`
 - Searching for data in a List
