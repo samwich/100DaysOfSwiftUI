@@ -1416,3 +1416,13 @@ Still thirsty for more? Try upgrading our loading and saving code in two ways:
     - `@State private var searchText`
     - `.searchable()` modifier
     - `filteredResorts` computed property
+
+## [Project 19, part 3](https://www.hackingwithswift.com/100/swiftui/98)
+- Changing a view’s layout in response to size classes
+    - In this case, we'll change the layout only if we're horizontal-compact and the user has increased their dynamic type size to greater than `.large`.
+    - `@Environment(\.horizontalSizeClass)` and `@Environment(\.dynamicTypeSize)`
+    - `if sizeClass == .compact && typeSize > .large`
+    - Wrap views that are `Group`s to override their layout: `VStack(spacing: 10) { ResortDetailsView(resort: resort) }`
+    - Limit dynamic type size with modifier `.dynamicTypeSize(...DynamicTypeSize.xxxlarge)`
+- Binding an alert to an optional string
+- Letting the user mark favorites
