@@ -1408,7 +1408,11 @@ Still thirsty for more? Try upgrading our loading and saving code in two ways:
     - In the simulator, on iOS 16 and 17, in landscape orientation, when I select a second item from the list, the list doesn't close. And when I switch back to portrait orientation, clicking on the list items doesn't display the detail view.
 - Creating a secondary view for NavigationView
     - Still having the problem with landscape breaking the list item selection
-    - Using a `switch` statement to translate size from `Int` to a descriptive `String`. Maybe a dictionary literal with a default value would be more "declarative"? I'd consider doing that if this was Ruby.
-    - I need to re-read this section, because I'm not sure why the sub-views were grouped the way they are.
+    - Using a `switch` statement to translate size from `Int` to a descriptive `String`. Maybe a dictionary literal with a default value would be more "declarative"? I'd consider doing that if this was Ruby. (Looks like the default value happens at the call site in Swift rather than at the declaration like in Ruby)
+    - I need to re-read this section, because I'm not sure why the sub-views were grouped the way they are. A: The groups from SkiDetailsView could be moved to ResortDetailsView and you'd get the same result. I don't think there's a reason for the split.
     - `Text("Foo", format: .list(type: .and))`
 - Searching for data in a List
+    - `localizedCaseInsensitiveContains` stops matching when there's a trailing space in the input.
+    - `@State private var searchText`
+    - `.searchable()` modifier
+    - `filteredResorts` computed property
