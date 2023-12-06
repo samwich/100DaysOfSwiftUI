@@ -1434,3 +1434,12 @@ Still thirsty for more? Try upgrading our loading and saving code in two ways:
 - Letting the user mark favorites
     - use `@StateObject` / `@EnvironmentObject` to share favorites between views
     - adding the HStack here doesn't seem to make a difference in label layout. Maybe it will change if I switch to NavigationSplitView
+
+## [Day 99 Project 19, SnowSeeker Wrap Up](https://www.hackingwithswift.com/books/ios-swiftui/snowseeker-wrap-up)
+### Challenge
+- Add a photo credit over the `ResortView` image. The data is already loaded from the JSON for this purpose, so you just need to make it look good in the UI.
+    - To position the credit, I used the VStack in HStack with Spacers trick from BucketList.
+- Fill in the loading and saving methods for `Favorites`.
+    - UserDefaults
+- For a real challenge, let the user sort the resorts in `ContentView` either using the default order, alphabetical order, or country order.
+    - `Picker` in a `.toolbar {}`
