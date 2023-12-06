@@ -1430,4 +1430,7 @@ Still thirsty for more? Try upgrading our loading and saving code in two ways:
     - leave the `actions` closure empty so that SwiftUI provides the default buttons.
     - I'm not sure why we used a `fatalError` if we got the icon name wrong. It automatically sent a couple of crash reports to apple before I found my typo.
     - I'm still having trouble with the portrait list becoming unresponsive after switching to landscape and back. I see the same problem on my real iPhone max. I suspect I missed something when building the original NavigationView.
+        - Here's someone with the same problem in 2022 [NavigationView behavior](https://www.hackingwithswift.com/forums/swiftui/navigationview-behavior/12665)
 - Letting the user mark favorites
+    - use `@StateObject` / `@EnvironmentObject` to share favorites between views
+    - adding the HStack here doesn't seem to make a difference in label layout. Maybe it will change if I switch to NavigationSplitView
