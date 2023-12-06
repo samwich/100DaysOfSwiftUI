@@ -12,7 +12,7 @@ struct WelcomeView: View {
         VStack {
             Text("Welcome to SnowSeeker!")
                 .font(.largeTitle)
-            Text("Plesase sleect a resort from the lett-hand menu; swipe from the left edge to show it.")
+            Text("Please select a resort from the left-hand menu; swipe from the left edge to show it.")
                 .foregroundStyle(.secondary)
         }
     }

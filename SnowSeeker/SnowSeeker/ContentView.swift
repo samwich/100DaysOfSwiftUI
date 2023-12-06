@@ -30,7 +30,7 @@ struct ContentView: View {
                 } label: {
                     Image(resort.country)
                         .resizable()
-                        .scaledToFit()
+                        .scaledToFill()
                         .frame(width: 40, height: 25)
                         .clipShape(.rect(cornerRadius: 5))
                         .overlay(
