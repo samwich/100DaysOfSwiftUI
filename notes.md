@@ -1417,7 +1417,7 @@ Still thirsty for more? Try upgrading our loading and saving code in two ways:
     - `.searchable()` modifier
     - `filteredResorts` computed property
 
-## [Project 19, part 3](https://www.hackingwithswift.com/100/swiftui/98)
+## [Day 98 Project 19, part 3](https://www.hackingwithswift.com/100/swiftui/98)
 - Changing a view’s layout in response to size classes
     - In this case, we'll change the layout only if we're horizontal-compact and the user has increased their dynamic type size to greater than `.large`.
     - `@Environment(\.horizontalSizeClass)` and `@Environment(\.dynamicTypeSize)`
@@ -1425,4 +1425,9 @@ Still thirsty for more? Try upgrading our loading and saving code in two ways:
     - Wrap views that are `Group`s to override their layout: `VStack(spacing: 10) { ResortDetailsView(resort: resort) }`
     - Limit dynamic type size with modifier `.dynamicTypeSize(...DynamicTypeSize.xxxlarge)`
 - Binding an alert to an optional string
+    - I see, on day 96, that I found that it wasn't possible to control an alert with the presence of an optional. So we have to use nil coalescing for the `title`.
+    - `.alert(title, isPresented: Bool, presenting: selectedFacility?`
+    - leave the `actions` closure empty so that SwiftUI provides the default buttons.
+    - I'm not sure why we used a `fatalError` if we got the icon name wrong. It automatically sent a couple of crash reports to apple before I found my typo.
+    - I'm still having trouble with the portrait list becoming unresponsive after switching to landscape and back. I see the same problem on my real iPhone max. I suspect I missed something when building the original NavigationView.
 - Letting the user mark favorites
