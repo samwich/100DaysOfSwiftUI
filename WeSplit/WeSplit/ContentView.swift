@@ -29,11 +29,11 @@ struct ContentView: View {
     }
     
     var currencyFormat: FloatingPointFormatStyle<Double>.Currency {
-        .currency(code: Locale.current.currencyCode ?? "USD")
+        .currency(code: Locale.current.currency?.identifier ?? "USD")
     }
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             Form {
                 Section {
                     TextField("Amount", value: $checkAmount, format: currencyFormat)
@@ -76,9 +76,7 @@ struct ContentView: View {
             }
             .navigationTitle("WeSplit")
             .toolbar {
-                ToolbarItemGroup(placement: .keyboard) {
-                    Spacer()
-                    
+                if amountIsFocused {
                     Button("Done") {
                         amountIsFocused = false
                     }
@@ -88,8 +86,6 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
+#Preview {
+    ContentView()
 }
