@@ -1379,7 +1379,7 @@ Still thirsty for more? Try upgrading our loading and saving code in two ways:
 - Using alert() and sheet() with optionals
     - Sheet with an optional: `.sheet(item: Binding<Identifiable?>) { … }`
     - Sheet with a Bool: `.sheet(isPresented: Binding<Bool>) { … }`
-    - Alert with an optional: NOPE
+    - Alert with an optional: NOPE, you must use `isPresented: Bool`, but the optional value will be unwrapped automatically
     - Alert with a Bool: `.alert(title, isPresented: Bool)`
         - Alert buttons always dismiss and set `isPresent = false`
         - If you don't provide buttons, an "OK" will be automatically added
@@ -1443,3 +1443,14 @@ Still thirsty for more? Try upgrading our loading and saving code in two ways:
     - UserDefaults
 - For a real challenge, let the user sort the resorts in `ContentView` either using the default order, alphabetical order, or country order.
     - `Picker` in a `.toolbar {}`
+
+## Day 100 Final Exam
+- SwiftUI will render optional views if they have a value. Is the whole view optional?
+- `EditButton` will automatically switch between Edit and Done when tapped
+- Xcode NSManagedObject subclass generation can overwrite our changes (I don't think this is covered in 100DoSwiftUI)
+- the `animation(nil)` modifier is deprecated
+- coordinator classes help us work with UIViewController
+- use .onChange to observe @State
+- @Published announces changes from a property; @ObservedObject watches an observed object for changes.
+- use an enum for a custom alignment guide because it just provides a static method and should not be instantiated
+- 
