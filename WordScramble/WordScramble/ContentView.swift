@@ -18,14 +18,14 @@ struct ContentView: View {
     @State private var showingError = false
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             List {
                 Section {
                     Text("Score: \(score)")
                 }
                 Section {
                     TextField("Enter your word", text: $newWord)
-                        .autocapitalization(.none)
+                        .textInputAutocapitalization(.never)
                 }
                 Section {
                     ForEach(usedWords, id: \.self) { word in
@@ -47,9 +47,7 @@ struct ContentView: View {
                     Button("New game", action: startGame)
                 }
             }
-            .alert(errorTitle, isPresented: $showingError) {
-                Button("OK", role: .cancel) {}
-            } message: {
+            .alert(errorTitle, isPresented: $showingError) {} message: {
                 Text(errorMessage)
             }
         }
@@ -135,8 +133,6 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
+#Preview {
+    ContentView()
 }
