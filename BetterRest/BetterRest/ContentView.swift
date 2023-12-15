@@ -11,7 +11,7 @@ import SwiftUI
 struct ContentView: View {
     static var defaultWakeTime: Date {
         let components = DateComponents(hour: 7, minute: 0)
-        return Calendar.current.date(from: components) ?? Date.now
+        return Calendar.current.date(from: components) ?? .now
     }
     
     @State private var wakeUp = defaultWakeTime
@@ -21,7 +21,7 @@ struct ContentView: View {
     let coffeeServingAmounts = 1...20
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             Form {
                 Section("When do you want to wake up?") {
                     DatePicker("Please enter a time", selection: $wakeUp, displayedComponents: .hourAndMinute)
@@ -33,7 +33,7 @@ struct ContentView: View {
                 Section("Daily coffee intake") {
                     Picker("Daily coffee intake", selection: $coffeeAmount) {
                         ForEach(coffeeServingAmounts, id: \.self) { item in
-                            Text("\(item) " + (item == 1 ? "cup" : "cups"))
+                            Text("^[\(item) cup](inflect: true)")
                         }
                     }
                     .labelsHidden()
