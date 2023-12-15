@@ -22,11 +22,11 @@ struct ItemListView: View {
                 
                 Spacer()
                 
-                Text(item.amount, format: .currency(code: Locale.current.currencyCode ?? "USD"))
+                Text(item.amount, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
                     .foregroundColor(colorForAmount(item.amount))
             }
             .accessibilityElement()
-            .accessibilityLabel("\(item.name), \(item.amount, format: .currency(code: Locale.current.currencyCode ?? "USD"))")
+            .accessibilityLabel("\(item.name), \(item.amount, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))")
             .accessibilityHint(item.type)
         }
         .onDelete(perform: deleteItems)
@@ -44,11 +44,11 @@ struct ItemListView: View {
 }
 
 struct ContentView: View {
-    @StateObject var expenses = Expenses()
+    @State private var expenses = Expenses()
     @State private var showingAddExpense = false
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             List {
                 Section("Personal") {
                     ItemListView(items: expenses.personalItems, deleteItems: removePersonalItems)
@@ -59,10 +59,8 @@ struct ContentView: View {
             }
             .navigationTitle("iExpense")
             .toolbar {
-                Button {
+                Button("Add Expense", systemImage: "plus") {
                     showingAddExpense = true
-                } label: {
-                    Image(systemName: "plus")
                 }
             }
             .sheet(isPresented: $showingAddExpense) {
@@ -94,8 +92,6 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
+#Preview {
+    ContentView()
 }

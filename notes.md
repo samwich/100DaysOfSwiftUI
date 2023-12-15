@@ -164,7 +164,16 @@ withAnimation(), .autocapitalization(.none), .onSubmit, fatalError(), .onAppear(
     UserDefaults, @AppStorage
     Codable protocol
     IndexSet
-
+## Day 36 iExpense with new @Observable
+- Using @State with classes
+    - `@State private var = User()` looks the same as with a struct
+    - Use the`@Observable\n class User {` macro, instead of conforming to `ObservableObject` and using `@Published` on properties
+- Sharing SwiftUI state with @Observable
+    - All of the watching and reinvoking of the view is handled by  the @Observable macro, not by @State
+- Showing and hiding views
+- Deleting items using onDelete()
+- Storing user settings with UserDefaults
+- Archiving Swift objects with Codable
 ## Day 37 iExpense
 * Building a list we can delete from
     * Expenses class

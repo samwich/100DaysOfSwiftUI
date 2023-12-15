@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AddView: View {
-    @ObservedObject var expenses: Expenses
+    var expenses: Expenses
     @Environment(\.dismiss) var dismiss
     
     @State private var name = ""
@@ -18,7 +18,7 @@ struct AddView: View {
     let types = ["Business", "Personal"]
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             Form {
                 TextField("Name", text: $name)
                 
@@ -28,7 +28,7 @@ struct AddView: View {
                     }
                 }
                 
-                TextField("Amount", value: $amount, format: .currency(code: Locale.current.currencyCode ?? "USD"))
+                TextField("Amount", value: $amount, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
                     .keyboardType(.decimalPad)
                 
             }
@@ -44,8 +44,6 @@ struct AddView: View {
     }
 }
 
-struct AddView_Previews: PreviewProvider {
-    static var previews: some View {
-        AddView(expenses: Expenses())
-    }
+#Preview {
+    AddView(expenses: Expenses())
 }
