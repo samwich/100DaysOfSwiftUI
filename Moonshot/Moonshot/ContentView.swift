@@ -14,7 +14,7 @@ struct ContentView: View {
     let missions: [Mission] = Bundle.main.decode("missions.json")
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             Group {
                 ScrollView {
                     if showingAsGrid {
@@ -43,8 +43,6 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
+#Preview {
+    ContentView()
 }

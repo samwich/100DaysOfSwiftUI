@@ -216,6 +216,7 @@ GeometryReader, ScrollView, NavigationLink
     * .scaleToFit() .scaleToFill()
     * GeometryReader - aligned to top left corner by default
     * inside GeoRea.., nest two frames to center the content: .frame(width: geo.size.width, height: geo.size.height)
+    * In iOS 17 and later, replace this use of GeometryReader with `.containerRelativeFrame()` modifier
 * How ScrollView lets us work with scrolling data
     * ScrollView ... (.vertical | .horizontal) with HStack or VStack
     * Lazy( H | V )Stack - are "greedy" with layout space and will try to grow to infinity, vs regular stacks that are only as large as they need to be.
