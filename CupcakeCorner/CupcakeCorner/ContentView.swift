@@ -8,22 +8,22 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject var orderWrapper = OrderWrapper()
+    @State private var orderWrapper = Order()
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             Form {
                 Section {
                     Picker("Select your cake type", selection: $orderWrapper.type) {
-                        ForEach(OrderWrapper.types.indices, id: \.self) {
-                            Text(OrderWrapper.types[$0])
+                        ForEach(Order.types.indices, id: \.self) {
+                            Text(Order.types[$0])
                         }
                     }
 
                     Stepper("Number of cakes: \(orderWrapper.quantity)", value: $orderWrapper.quantity, in: 3...20)
                     
                     Section {
-                        Toggle("Any special requests?", isOn: $orderWrapper.specialRequestEnabled.animation())
+                        Toggle("Any special requests?", isOn: $orderWrapper.specialRequestEnabled)
                         
                         if orderWrapper.specialRequestEnabled {
                             Toggle("Add extra frosting", isOn: $orderWrapper.extraFrosting)
@@ -32,10 +32,8 @@ struct ContentView: View {
                     }
                     
                     Section {
-                        NavigationLink {
+                        NavigationLink("Delivery details") {
                             AddressView(orderWrapper: orderWrapper)
-                        } label: {
-                            Text("Delivery details")
                         }
                     }
                 }
@@ -45,8 +43,6 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
+#Preview {
+    ContentView()
 }

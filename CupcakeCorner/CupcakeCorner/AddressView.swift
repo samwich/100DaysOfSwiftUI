@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AddressView: View {
-    @ObservedObject var orderWrapper: OrderWrapper
+    @Bindable var orderWrapper: Order
     
     var body: some View {
         Form {
@@ -20,10 +20,8 @@ struct AddressView: View {
             }
             
             Section {
-                NavigationLink {
+                NavigationLink("Check out") {
                     CheckoutView(orderWrapper: orderWrapper)
-                } label: {
-                    Text("Check out")
                 }
             }
             .disabled(orderWrapper.hasValidAddress == false)
@@ -33,10 +31,6 @@ struct AddressView: View {
     }
 }
 
-struct AddressView_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationView {
-            AddressView(orderWrapper: OrderWrapper())
-        }
-    }
+#Preview {
+    AddressView(orderWrapper: Order())
 }

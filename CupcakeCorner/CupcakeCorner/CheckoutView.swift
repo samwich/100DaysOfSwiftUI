@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CheckoutView: View {
-    @ObservedObject var orderWrapper: OrderWrapper
+    var orderWrapper: Order
     
     @State private var confirmationMessage = ""
     @State private var showingConfirmation = false
@@ -36,11 +36,12 @@ struct CheckoutView: View {
                         await placeOrder()
                     }
                 }
-                    .padding()
+                .padding()
             }
         }
         .navigationTitle("Check out")
         .navigationBarTitleDisplayMode(.inline)
+        .scrollBounceBehavior(.basedOnSize)
         .alert("Thank you!", isPresented: $showingConfirmation) {
             Button("OK") {}
         } message: {
@@ -54,7 +55,7 @@ struct CheckoutView: View {
     }
     
     func placeOrder() async {
-        guard let encoded = try? JSONEncoder().encode(orderWrapper.order) else {
+        guard let encoded = try? JSONEncoder().encode(orderWrapper) else {
             print("Failed to encode order.")
             return
         }
@@ -63,11 +64,11 @@ struct CheckoutView: View {
         var request = URLRequest(url: url)
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpMethod = "POST"
-
+        
         do {
             let (data, _) = try await URLSession.shared.upload(for: request, from: encoded)
             let decodedOrder = try JSONDecoder().decode(Order.self, from: data)
-            confirmationMessage = "Your order for \(decodedOrder.quantity)x \(OrderWrapper.types[decodedOrder.type].lowercased()) cupcakes is on its way!"
+            confirmationMessage = "Your order for \(decodedOrder.quantity)x \(Order.types[decodedOrder.type].lowercased()) cupcakes is on its way!"
             showingConfirmation = true
         } catch {
             errorMessage = "Checkout failed.\n\nMessage:\(error.localizedDescription)"
@@ -76,10 +77,6 @@ struct CheckoutView: View {
     }
 }
 
-struct CheckoutView_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationView {
-            CheckoutView(orderWrapper: OrderWrapper())
-        }
-    }
+#Preview {
+    CheckoutView(orderWrapper: Order())
 }

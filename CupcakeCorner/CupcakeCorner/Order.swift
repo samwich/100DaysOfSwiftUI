@@ -7,27 +7,22 @@
 
 import Foundation
 
-@dynamicMemberLookup
-class OrderWrapper: ObservableObject {
-    static let types = ["Vanilla", "Strawberry", "Chocolate", "Rainbow"]
-    @Published var order = Order()
-    
-    subscript<T>(dynamicMember keyPath: KeyPath<Order, T>) -> T {
-        order[keyPath: keyPath]
+@Observable
+class Order: Codable {
+    enum CodingKeys: String, CodingKey {
+        case _type = "type"
+        case _quantity = "quantity"
+        case _specialRequestEnabled = "specialRequestEnabled"
+        case _extraFrosting = "extraFrosting"
+        case _addSprinkles = "addSprinkles"
+        case _name = "name"
+        case _city = "city"
+        case _streetAddress = "streetAddress"
+        case _zip = "zip"
     }
-    
-    subscript<T>(dynamicMember keyPath: WritableKeyPath<Order, T>) -> T {
-        get {
-            order[keyPath: keyPath]
-        }
-        
-        set {
-            order[keyPath: keyPath] = newValue
-        }
-    }
-}
 
-struct Order: Codable {
+    static let types = ["Vanilla", "Strawberry", "Chocolate", "Rainbow"]
+    
     var type = 0
     var quantity = 3
 
@@ -58,21 +53,21 @@ struct Order: Codable {
         return true
     }
     
-    var cost: Double {
+    var cost: Decimal {
         // $2 per cake
-        var cost = Double(quantity) * 2
+        var cost = Decimal(quantity) * 2
         
         // complicated cakes cost more - this is distracting
-        cost += (Double(type) / 2)
+        cost += Decimal(type) / 2
         
         // $1/cake for extra frosting
         if extraFrosting {
-            cost += Double(quantity)
+            cost += Decimal(quantity)
         }
         
         // $0.50/cake for sprinkles
         if addSprinkles {
-            cost += Double(quantity) / 2
+            cost += Decimal(quantity) / 2
         }
         
         return cost
