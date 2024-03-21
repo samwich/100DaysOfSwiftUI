@@ -5,48 +5,49 @@
 //  Created by Sam Johnson on 2022-12-15.
 //
 
+import SwiftData
 import SwiftUI
 
 struct DetailView: View {
     let book: Book
     
-    @Environment(\.managedObjectContext) var moc
+    @Environment(\.modelContext) var modelContext
     @Environment(\.dismiss) var dismiss
     @State private var showingDeleteAlert = false
 
     var body: some View {
         ScrollView {
             ZStack(alignment: .bottomTrailing) {
-                Image(book.genre ?? "Fantasy")
+                Image(book.genre)
                     .resizable()
                     .scaledToFit()
                 
-                Text(book.genre?.uppercased() ?? "FANTASY")
+                Text(book.genre.uppercased())
                     .font(.caption)
                     .fontWeight(.black)
                     .padding(8)
-                    .foregroundColor(.white)
+                    .foregroundStyle(.white)
                     .background(.black.opacity(0.75))
-                    .clipShape(Capsule())
+                    .clipShape(.capsule)
                     .offset(x: -5, y: -5)
             }
             
-            Text(book.author ?? "Unknown Author")
+            Text(book.author)
                 .font(.title)
-                .foregroundColor(.secondary)
+                .foregroundStyle(.secondary)
             
-            Text(book.review ?? "No review")
+            Text(book.review)
                 .padding()
             
-            RatingView(rating: .constant(Int(book.rating)))
+            RatingView(rating: .constant(book.rating))
                 .font(.largeTitle)
             
-            Text(book.date == nil ? "" : "Rated on \(book.date?.formatted(date: .abbreviated, time: .omitted) ?? "unknown date") at \(book.date?.formatted(date: .omitted, time: .shortened) ?? "unknown time").")
+            Text("Rated on \(book.date.formatted(date: .abbreviated, time: .omitted)) at \(book.date.formatted(date: .omitted, time: .shortened)).")
                 .font(.caption)
-
         }
-        .navigationTitle(book.title ?? "Unknown Book")
+        .navigationTitle(book.title)
         .navigationBarTitleDisplayMode(.inline)
+        .scrollBounceBehavior(.basedOnSize)
         .alert("Delete book?", isPresented: $showingDeleteAlert) {
             Button("Delete", role: .destructive, action: deleteBook)
             Button("Cancel", role: .cancel) {}
@@ -54,17 +55,14 @@ struct DetailView: View {
             Text("Are you sure?")
         }
         .toolbar {
-            Button {
+            Button("Delete this book", systemImage: "trash") {
                 showingDeleteAlert = true
-            } label: {
-                Label("Delete this book", systemImage: "trash")
             }
         }
     }
     
     func deleteBook() {
-        moc.delete(book)
-        try? moc.save()
+        modelContext.delete(book)
         dismiss()
     }
 }

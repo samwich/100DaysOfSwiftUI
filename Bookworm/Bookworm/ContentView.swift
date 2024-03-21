@@ -5,19 +5,20 @@
 //  Created by Sam Johnson on 2022-12-14.
 //
 
+import SwiftData
 import SwiftUI
 
 struct ContentView: View {
-    @Environment(\.managedObjectContext) var moc
-    @FetchRequest(sortDescriptors: [
-        SortDescriptor(\.title),
-        SortDescriptor(\.author)
-    ]) var books: FetchedResults<Book>
+    @Environment(\.modelContext) var modelContext
+    @Query(sort: [
+        SortDescriptor(\Book.title),
+        SortDescriptor(\Book.author)
+    ]) var books: [Book]
     
     @State private var showingAddScreen = false
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             List {
                 ForEach(books) { book in
                     NavigationLink {
@@ -27,10 +28,10 @@ struct ContentView: View {
                             EmojiRatingView(rating: book.rating)
                                 .font(.largeTitle)
                             VStack(alignment: .leading) {
-                                Text(book.title ?? "Unknown Title")
+                                Text(book.title)
                                     .font(.headline)
-                                    .foregroundColor(book.rating == 1 ? .red : .primary)
-                                Text(book.author ?? "Unknown Author")
+                                    .foregroundStyle(book.rating == 1 ? .red : .primary)
+                                Text(book.author)
                                     .font(.headline)
                             }
                         }
@@ -40,15 +41,13 @@ struct ContentView: View {
             }
             .navigationTitle("Bookworm")
             .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
+                ToolbarItem(placement: .topBarLeading) {
                     EditButton()
                 }
                 
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button("Add Book", systemImage: "plus") {
                         showingAddScreen.toggle()
-                    } label: {
-                        Label("Add Book", systemImage: "plus")
                     }
                 }
             }
@@ -61,9 +60,7 @@ struct ContentView: View {
     func deleteBooks(at offsets: IndexSet) {
         for offset in offsets {
             let book = books[offset]
-            moc.delete(book)
-            
-            try? moc.save()
+            modelContext.delete(book)
         }
     }
 }

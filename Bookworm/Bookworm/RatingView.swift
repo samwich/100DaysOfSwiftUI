@@ -27,13 +27,15 @@ struct RatingView: View {
             }
             
             ForEach(1..<maximumRating + 1, id: \.self) { number in
-                image(for: number)
-                    .foregroundColor(number > rating ? offColor : onColor)
-                    .onTapGesture {
-                        rating = number
-                    }
+                Button {
+                    rating = number
+                } label: {
+                    image(for: number)
+                        .foregroundStyle(number > rating ? offColor : onColor)
+                }
             }
         }
+        .buttonStyle(.plain)
         .accessibilityElement()
         .accessibilityLabel("Rating")
         .accessibilityValue(rating == 1 ? "1 star" : "\(rating) stars")
@@ -62,8 +64,6 @@ struct RatingView: View {
     }
 }
 
-struct RatingView_Previews: PreviewProvider {
-    static var previews: some View {
-        RatingView(rating: .constant(4))
-    }
+#Preview {
+    RatingView(rating: .constant(4))
 }

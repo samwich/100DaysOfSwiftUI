@@ -476,9 +476,23 @@ GeometryReader, ScrollView, NavigationLink
   - [JARED SINCLAIR - When Should I Use @State, @Binding, @ObservedObject, @EnvironmentObject, or @Environment?](https://jaredsinclair.com/2020/05/07/swiftui-cheat-sheet.html)
   - Use `@State` when your view needs to mutate one of its own properties.
   - Use `@Binding` when your view needs to mutate a property owned by an ancestor view, or owned by an observable object that an ancestor has a reference to.
+  - as of iOS 17, use `@Bindable` when accessing a shared class that uses the `@Observable` macro
 - Accepting multi-line text input with TextEditor
   - `@AppStorage` wrapper - is backed by `UserDefaults`
   - `TextEditor(text:)`
+
+### iOS 17 Swift Data
+- `App`
+    - `import SwiftData`
+    - add `.modelContainer(for:)` to `WindowGroup`
+- `@Model` class
+    - `import SwiftData`
+    - put `@Model` above the class definition
+- `View`
+    - `@Environment(\.modelContext) var modelContext`
+    - `@Query(sort:[]) var students: [Student]`
+
+### iOS 16 Core Data
 - How to combine Core Data and SwiftUI
   - `DataController: ObservableObject`
     - `NSPersistentContainer(name:)` persists data for the given model
@@ -497,16 +511,20 @@ GeometryReader, ScrollView, NavigationLink
   - `let newBook = Book(context: moc)` create a new instance of the model
   - then set its properties
   - then save it with `moc.save()`
+- Creating books with Swift Data
+    - just instantiate the `Book` with its normal initializer `init(title:author: etc)`
+    - save it with `modelContext.insert(newBook)`
 - Adding a custom star rating component
   - `RatingView` w/ `@Binding` for the rating value
   - Tell the previews to use a static value with `.constant(4)`
   - we create an image function to calculate the image shape for each star, but we put the color logic inline in the .foregroundColor(…) 🤷
-- Building a list with @FetchRequest
+- Building a list with @FetchRequest (Core Data)
   - Make an EmojiRatingView that takes `rating: Int16` because CoreData will be giving us an Int16
     - use a switch statement in the example
     - it only supports custom rating emojis for 1-5, higher than 5 just shows the 5th emoji
-    - it should be initialized with an take an array of emojis so it can support any rating value
+    - it should be initialized with an array of emojis so it can support any rating value
   - CoreData objects conform to `Identifiable`
+  - Make a list with Swift Data's `@Query`
 
 ## [Day 55 - Project 11, part 3 - Bookworm](https://www.hackingwithswift.com/100/swiftui/55)
 - Showing book details
@@ -517,6 +535,8 @@ GeometryReader, ScrollView, NavigationLink
   - `ForEach {}` `.onDelete(perform:)`
   - `managedObjectContext.delete(book)`
   - `managedObjectContext.save()`
+- Deleting from a Swift Data `@Query`
+    - `modelContext.delete(book)`
 - Using an alert to pop a `NavigationLink` programmatically
   - Use `dismiss()` to pop the NavigationLink
   - Use the `@Environment` wrapper to include `\.dismiss` and `.managedObjectContext` in `DetailView`
